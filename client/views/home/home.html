@@ -1,0 +1,79 @@
+<template name="home">
+    <div class="container">
+        <div class="intro-well wow animated bounceIn">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                    <h1 align="center">{{Config.title}}</h1>
+
+                    <h2 align="center">{{Config.subtitle}}</h2>
+
+                </div>
+                <!--                 <div class="col-lg-6 col-sm-6">
+                <img class="img-responsive" src="/img/image-header1.png" alt="">
+                </div> -->
+            </div>
+            <div class="row" align="center">
+                {{#if User}}
+                    <a href="{{pathFor 'listItems'}}" class="btn btn-success"><i
+                            class="fa fa-dashboard"></i> {{_ "dashboard"}}</a>
+                {{else}}
+                    <a class="btn btn-success"
+                       href="{{pathFor 'listItems'}}">{{_ "getstarted"}}</a>
+                {{/if}}
+            </div>
+
+            <!--<div class="row">-->
+            <!--<div class="col-md-5">-->
+            <!--&lt;!&ndash;<div class="template-favorites-sidebar">&ndash;&gt;-->
+            <!--<div class="panel panel-info">-->
+            <!--<div class="panel-heading">-->
+            <!--<h3 class="panel-title">{{_ "Processos_Title"}}</h3>-->
+            <!--</div>-->
+            <!--<div class="panel-body">-->
+            <!--<ul>-->
+            <!--{{> leaderboard }}-->
+            <!--</ul>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--</div>-->
+            <!--<div class="col-md-7">-->
+            <!--<div class="panel panel-info">-->
+            <!--<div class="panel-heading">-->
+            <!--<h3 class="panel-title">{{_ "Log_Processos_Title"}}</h3>-->
+            <!--</div>-->
+            <!--<div class="panel-body small">-->
+            {{> LogMessages}}
+            <!--{{> tabular table=TabularTables.LogMessages class="table table-bordered table-condensed"}}-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+</template>
+
+<!--<template name="Filtros">-->
+<!--<li>-->
+<!--<a class="FavLink" href="#" onclick="changeFilter(-1); return false;">Não executados hoje</a>-->
+<!--</li>-->
+<!--<li>-->
+<!--<a class="FavLink" href="#" onclick="changeFilter(1); return false;">Com problemas</a>-->
+<!--</li>-->
+<!--</template>-->
+
+<!--<template name="LogMessages">-->
+<!--<table class="table table-condensed">-->
+<!--<tbody>-->
+        <!--{{#each LogMessages}}-->
+<!--{{> LogMessage}}-->
+        <!--{{/each}}-->
+<!--</tbody>-->
+<!--</table>-->
+<!--</template>-->
+
+<!--<template name="LogMessage">-->
+<!--<TR class="small {{newstatus}}">-->
+<!--<td>{{Utils.MyprettyDate timestamp}}</td><td>{{tipo}}</td><td>{{oldstatus}}</td><td>{{newstatus}}</td><td>{{processo}}</td><td>{{message}}</td>-->
+<!--</TR>-->
+<!--</template>-->
+

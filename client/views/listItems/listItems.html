@@ -1,0 +1,90 @@
+<template name="listItems">
+    <div class="template-dashboard">
+        <div class="container">
+            <div class="row" id="champion-messages">
+                <div class="col-md-3">
+                    {{#if User}}
+                        {{> favoritesSidebar}}
+                        {{#if isInRole 'admin'}}
+                            <!--{{> addPost}}-->
+                        {{/if}}
+                    {{/if}}
+                </div>
+                <div class="col-md-9">
+                    {{> showAllItems}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="showAllItems">
+    <div class="template-posts">
+        {{#each  itemList}}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{nome}}</h3>
+                </div>
+                <div class="panel-body">
+                    {{> showItem}}
+                </div>
+            </div>
+        {{else}}
+            {{> noData}}
+        {{/each}}
+    </div>
+</template>
+
+<template name="showItem">
+    <div class="media-body">
+        <B>Nome do item:</B> {{nome}} <BR>
+        <B>Descrição do item:</B> {{descricao}} <BR>
+        <B>owner do item:</B> {{owner}} <BR>
+        <B>Duração do item:</B> {{duracao}} <BR>
+        <B>createdAt do item:</B> {{createdAt}} <BR>
+        <B>timestamp do item:</B> {{timestamp}} <BR>
+        <B>Estado do item:</B> {{estado}} <BR>
+        <B>dataInicio do item:</B> {{datainicio}} <BR>
+
+        <B>Picture do item:</B> <BR>
+        <p class="text-center">
+            {{#with getDoc picture 'Attachments'}}
+                <img src="{{url}}" class="img-thumbnail img-rounded">
+            {{/with}}
+        </p>
+        <ul>
+            {{#each subtarefas}}
+                <li>
+                    <B>Nome da Tarefa:</B> {{nome}} <BR>
+                    <B>Descrição da Tarefa:</B> {{descricao}} <BR>
+                    <B>Tipo:</B> {{tipo}} <BR>
+                    <B>Duração:</B> {{duracao}} <BR>
+                    <B>Estado:</B> {{estado}} <BR>
+                    <BR>
+                    <table>
+                        <tr>
+                            {{#each slots}}
+                                <td>
+                                    <div id="{{../../_id}}">
+                                        <div id="{{../_id}}">
+                                            <img id="{{@index}}" src="{{.}}" class="img-thumbnail">
+                                        </div>
+                                    </div>
+                                </td>
+                            {{/each}}
+                        </tr>
+                    </table>
+                </li>
+                <BR>
+            {{/each}}
+        </ul>
+        <a class="pull-left" href="#">
+            {{> profileThumb _id=owner }} {{niceName User._id}}
+        </a>
+    </div>
+</template>
+
+<template name="showSlot">
+    <div id="Slot-{{@index}}" class="slot"><img src="/{{.}}.png" class="img-thumbnail"></div>
+
+</template>

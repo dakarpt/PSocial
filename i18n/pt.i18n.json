@@ -1,0 +1,105 @@
+{
+  /*Config*/
+  "configName": "Minha app",
+  "configTitle": "titulo maior",
+  "configSubtitle": "subtitulo cccccccccccccc",
+  "Home": "Início",
+  /*Home*/
+  "getstarted": "Iniciar",
+  "dashboard": "Ir para o inicio",
+  "learn": "Learn more",
+  "intro": "Make Meteor Apps. Fast.",
+  "how": "How It Works",
+  "step_1": "Step 1",
+  "step_1_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  "step_2": "Step 2",
+  "step_2_text": "Oratio me istius philosophi non offendit; Qua tu etiam inprudens utebare non numquam.",
+  "step_3": "Step 3",
+  "step_3_text": "Et ille ridens: Video, inquit, quid agas; Duo Reges: constructio interrete.",
+  "section_ipad_header": "A revolutionary product",
+  "section_ipad_text": "Do really cool stuff really quickly",
+  "section_ipad_btn": "Made by MeteorFactory",
+  "final_text": "Your life will be instantly better.",
+  "final_cta": "Take a look",
+  /*Shared*/
+
+  "favorite": "Favoritos",
+  /* Notifications */
+
+  "Add_Notification": "Adicionar notificação",
+  "n_Title": "Título",
+  "n_Link": "Link",
+  "n_Icon": "Icon",
+  "n_To": "Destinatário",
+  "n_Insert": "Inserir",
+  /* Chat */
+
+  "chatUserList": "Lista de utilizadores",
+  "chatMessages": "Mensagens",
+  /* LOG */
+
+  "Log_Processos_Title": "Mensagens dos processos em Tempo-Real",
+  /*Navbar*/
+  "admin": "Admin",
+  "profile": "Perfil",
+  "account": "Conta",
+  "signout": "Sair",
+  "signup": "Registar",
+  "login": "Entrar",
+  "login2": "Entrar",
+  "edit_profile": "Editar perfil",
+  /*Not Found*/
+  "not_found": "Não encontrado.",
+  /* Reports */
+
+  "Reports_title": "Reports em Tempo-Real",
+  "Dashboard_Title": "Dashboard em Tempo-Real",
+  "Graph_Title": "Gráficos em Tempo-Real",
+  "Processos_Title": "Estado dos processos em Tempo-Real",
+  /*Dashboard*/
+  "add_post": "Adicionar Post",
+  "add_post_btn": "Adicionar Post",
+  "add_post_modal": "Adicionar com modal",
+  "add_post_modal_btn": "Adicionar post",
+  "edit_post": "Editar Post",
+  "delete": "Apagar",
+  "favorites": "Favoritos",
+  /*Account*/
+  "account_details": "Detalhes da conta",
+  "delete_account": "Apagar conta",
+  "delete_account_warn": "Esta operação é irreversível",
+  "delete_account_warn2": "De certeza que queres apagar a conta?",
+  "close": "Fechar",
+  "change_pswd": "Alterar a Password",
+  "Change_Password": "Alteração de Password",
+  "Change_Password_B": "Alterar a Password",
+  "Current_pw": "Password atual",
+  "New_pw": "Password nova",
+  "Confirm_pw": "Confirmar a Password nova",
+  /*Profile*/
+  "update": "Atualizar",
+  "p_Imagem": "Imagem",
+  "p_First_Name": "Primeiro Nome",
+  "p_Last_Name": "Último Nome",
+  "p_Birthday": "Aniversário",
+  "p_Bio": "Biografia",
+  "p_Location": "Localização",
+  "p_Country": "País",
+  "p_choose_file": "Escolhe o ficheiro",
+  /*Posts*/
+
+  "postTitle": "Titulo",
+  "postContent": "Conteudo",
+  "postPicture": "Foto",
+  // "uploadLabel": "Choose File"
+  "profilePicture": "Foto perfil",
+  "meteor_status_connected": "Ligado",
+  "meteor_status_connecting": "A ligar...",
+  "meteor_status_failed": "A ligação com o servidor falhou",
+  "meteor_status_waiting": "A aguardar pela ligação com o servidor,",
+  "meteor_status_offline": "Modo offline.",
+  "meteor_status_reconnect_in": "ligar em um segundo...",
+  "meteor_status_reconnect_in_plural": "Tentar a ligação novamente em __count__ segundos...",
+  "meteor_status_try_now_waiting": "Tentar agora",
+  "meteor_status_try_now_offline": "Ligar novamente"
+}

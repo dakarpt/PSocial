@@ -1,0 +1,73 @@
+<template name="notificationsDropdown">
+    <li class=".lang dropdown notificationsDropdown">
+        <a href="javascript:return false;" class=".lang">
+            {{#if notificationCount}}
+                <i class=".lang fa fa-{{dropdownIcon}}"></i>
+                <span class=".lang badge bg-success">{{notificationCount}}</span>
+            {{else}}
+                <i class=".lang fa fa-{{dropdownIconEmpty}}"></i>
+            {{/if}}
+        </a>
+        <ul class=".lang dropdown-menu" role="menu">
+            {{#if notificationCount}}
+                {{#each Notifications limit=5 unreadFirst=true}}
+                    <li class="notification {{notificationClass}}">
+                        <a href="/showNotification/{{_id}}"><i
+                                class="fa fa-{{icon}} fa-fw text-{{class}}"></i> {{title}}</a>
+                    </li>
+                {{/each}}
+                <!--<li class="text-center"><a href="/notifications">See all</a></li>-->
+            {{else}}
+                <li class="notification">
+                    <a href="/MyNotifications"><i class="fa fa-thumbs-up fa-fw text"></i> {{_ "Add_Notification" }}</a>
+                </li>
+                <!--<ul>-->
+                <!--<li><div class="well-sm">0 Notifications</div></li>-->
+                <!--<li><div class="well-sm">Add Notification</div></li>-->
+                <!--</ul>-->
+            {{/if}}
+        </ul>
+    </li>
+</template>
+
+<template name="notifications">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Notifications</h3>
+        </div>
+        <div class="panel-body">
+            <ul class="list-group">
+                {{#each Notifications}}
+                    <li class="list-group-item notification {{notificationClass}}">
+                        <i class="fa fa-{{icon}} text-{{class}}"></i>
+                        <a href="{{link}}">{{title}}</a>
+                        <span class="pull-right">{{ago}}</span>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+
+    </div>
+</template>
+<!--<template name="notificationsDropdown">-->
+<!--<div class="btn-group">-->
+<!--<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">-->
+<!--<i class="fa fa-bell"></i>-->
+<!--</button>-->
+<!--<ul class="dropdown-menu" role="menu">-->
+        <!--{{#each Notifications limit=5 readFirst=true}}-->
+<!--<li><a href="{{link}}" class="bg-{{class}}"><i class="fa fa-{{icon}}"></i>{{title}}</a></li>-->
+        <!--{{/each}}-->
+<!--</ul>-->
+<!--</div>-->
+<!--</template>-->
+
+<!--<template name="notifications">-->
+<!--<ul class="notification-list">-->
+        <!--{{#each Notifications}}-->
+<!--<li>-->
+<!--<a href="{{link}}" class="bg-{{class}}"><i class="fa-{{icon}}"></i> {{title}}</a>-->
+<!--</li>-->
+        <!--{{/each}}-->
+<!--</ul>-->
+<!--</template>-->

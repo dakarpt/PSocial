@@ -1,0 +1,84 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+meteor-base             # Packages every Meteor app needs to have
+mobile-experience       # Packages for a great mobile UX
+mongo                   # The database Meteor supports right now
+blaze-html-templates    # Compile .html files into Meteor Blaze views
+session                 # Client-side reactive dictionary for your app
+jquery                  # Helpful client-side library
+tracker                 # Meteor's client-side reactive programming library
+standard-minifiers      # JS/CSS minifiers run for production mode
+es5-shim                # ECMAScript 5 compatibility for older browsers.
+ecmascript              # Enable ECMAScript2015+ syntax in app code
+check
+aldeed:simple-schema
+accounts-password
+coffeescript
+less
+accounts-base
+aldeed:autoform@5.1.2
+alanning:roles
+aldeed:collection2
+matb33:collection-hooks
+raix:handlebar-helpers
+cfs:standard-packages
+cfs:gridfs
+yogiben:helpers
+iron:router
+yogiben:autoform-modals
+yogiben:pretty-email
+yogiben:autoform-map
+multiply:iron-router-progress
+manuelschoebel:ms-seo
+spiderable
+tap:i18n
+service-configuration
+yogiben:mixpanel
+juliancwirko:s-alert
+juliancwirko:s-alert-stackslide
+momentjs:moment
+zimme:iron-router-active
+comments
+favorites
+dburles:collection-helpers
+reywood:publish-composite
+percolate:momentum-iron-router
+percolate:momentum
+natestrauser:animate-css
+meteorhacks:subs-manager
+fastclick
+notifications
+timmyg:wow
+tsega:skrollr
+utilities:avatar
+logging
+reload
+random
+ejson
+useraccounts:iron-routing
+aldeed:template-extension
+meteorhacks:zones
+froatsnook:request
+aldeed:http
+user-thumbs
+yogiben:autoform-file
+yogiben:admin
+d3js:d3
+bshamblen:morrisjs
+cfs:base-package
+fortawesome:fontawesome
+useraccounts:bootstrap
+softwarerero:accounts-t9n
+tap:i18n-ui
+markdown
+francocatena:status
+aldeed:tabular
+east5th:check-checker
+audit-argument-checks
+meteorhacks:fast-render
+tmeasday:presence
+nerdmed:camanjs
