@@ -11,13 +11,14 @@
   if typeof callback == 'function'
     callback args... unless stop
 
+# Changed AR
 @lookup = (obj, root, required = true) ->
   if typeof root == 'undefined'
     root = if Meteor.isServer then global else window
   if typeof obj == 'string'
     ref = root
     arr = obj.split '.'
-      continue while arr.length and (ref = ref[arr.shift()])
+    continue while arr.length and (ref = ref[arr.shift()])
     if not ref and required
       throw new Error(obj + ' is not in the ' + root.toString())
     else
