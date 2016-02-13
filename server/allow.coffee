@@ -5,7 +5,7 @@ ProfilePictures.allow
     true
   download: (userId)->
     true
-    remove: (userId, doc)->
+  remove: (userId, doc)->
       userId == doc.owner
 
 #Processos.allow
@@ -67,11 +67,11 @@ Notifications.allow
 
 items.allow
   insert: (userId, doc) ->
-    true
+    isAdmin(userId)
   update: (userId, doc, fieldNames, modifier) ->
-    true
-    remove: (userId)->
-    true
+    isUser(userId)
+  remove: (userId)->
+    isAdmin(userId)
 
 #tarefas.allow
 #	insert: (userId, doc) ->
