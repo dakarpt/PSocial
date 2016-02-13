@@ -2,10 +2,12 @@
  * Created by aramos on 27-01-2016.
  */
 Template.showItem.events({
-    'click .media-body': function (e) {
+    'click .detalhes': function (e) {
         console.log("Item click", this, e);
-        console.log("Slot clicked=%s subtarefa= %s item=%s", e.target.attributes.id.value, e.target.parentElement.attributes.id.value, e.target.parentElement.parentElement.attributes.id.value)
         //Router.go("/listItem/" + this._id);
+        if (e.target.attributes.id===undefined)
+            return;
+        console.log("Slot clicked=%s subtarefa= %s item=%s", e.target.attributes.id.value, e.target.parentElement.attributes.id.value, e.target.parentElement.parentElement.attributes.id.value)
         var slotID = e.target.attributes.id.value;
         var subtarefaID = e.target.parentElement.attributes.id.value;
         var itemID = e.target.parentElement.parentElement.attributes.id.value;

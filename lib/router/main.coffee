@@ -28,6 +28,8 @@ Router.map ->
       [
         Meteor.subscribe 'items'
         Meteor.subscribe 'attachments'
+        Meteor.subscribe 'userData'
+        Meteor.subscribe 'ProfilePictures'
       ]
     data: ->
       itemList: items.find().fetch()
@@ -38,6 +40,7 @@ Router.map ->
       [
         Meteor.subscribe 'items'
         Meteor.subscribe 'attachments'
+        Meteor.subscribe 'ProfilePictures'
       ]
     data: ->
       items.findOne({_id: this.params._id});

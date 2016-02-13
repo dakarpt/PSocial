@@ -23,11 +23,14 @@
         {{#each  itemList}}
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">{{nome}}</h3>
+                    <h3 class="panel-title">Nome do item: {{nome}}
+                        <span class="pull-right">
+							<i class="fa fa-thumbs-up"></i> {{#with favoritesByDoc _id}}{{count}}{{/with}}
+                            <!--<i class="fa fa-comments"></i> {{commentCount _id}}-->
+						</span>
+                    </h3>
                 </div>
-                <div class="panel-body">
-                    {{> showItem}}
-                </div>
+                {{> showItem}}
             </div>
         {{else}}
             {{> noData}}
@@ -36,51 +39,77 @@
 </template>
 
 <template name="showItem">
-    <div class="media-body">
-        <B>Nome do item:</B> {{nome}} <BR>
-        <B>Descrição do item:</B> {{descricao}} <BR>
-        <B>owner do item:</B> {{owner}} <BR>
-        <B>Duração do item:</B> {{duracao}} <BR>
-        <B>createdAt do item:</B> {{createdAt}} <BR>
-        <B>timestamp do item:</B> {{timestamp}} <BR>
-        <B>Estado do item:</B> {{estado}} <BR>
-        <B>dataInicio do item:</B> {{datainicio}} <BR>
+    <div class="panel-body">
+        <div class="detalhes">
+            <B>Nome do item:</B> {{nome}} <BR>
+            <B>Descrição do item:</B> {{descricao}} <BR>
+            <B>owner do item:</B> {{owner}} <BR>
+            <B>Duração do item:</B> {{duracao}} <BR>
+            <B>createdAt do item:</B> {{createdAt}} <BR>
+            <B>timestamp do item:</B> {{timestamp}} <BR>
+            <B>Estado do item:</B> {{estado}} <BR>
+            <B>dataInicio do item:</B> {{datainicio}} <BR>
 
-        <B>Picture do item:</B> <BR>
-        <p class="text-center">
-            {{#with getDoc picture 'Attachments'}}
-                <img src="{{url}}" class="img-thumbnail">
-            {{/with}}
-        </p>
-        <ul>
-            {{#each subtarefas}}
-                <li>
-                    <B>Nome da Tarefa:</B> {{nome}} <BR>
-                    <B>Descrição da Tarefa:</B> {{descricao}} <BR>
-                    <B>Tipo:</B> {{tipo}} <BR>
-                    <B>Duração:</B> {{duracao}} <BR>
-                    <B>Estado:</B> {{estado}} <BR>
+            <B>Picture do item:</B> <BR>
+            <p class="text-center">
+                {{#with getDoc picture 'Attachments'}}
+                    <img src="{{url}}" class="img-thumbnail img-rounded">
+                {{/with}}
+            </p>
+            <ul>
+                {{#each subtarefas}}
+                    <li>
+                        <B>Nome da Tarefa:</B> {{nome}} <BR>
+                        <B>Descrição da Tarefa:</B>
+                        <p class="word-wrap break-word">{{descricao}}</p> <BR>
+                        <B>Tipo:</B> {{tipo}} <BR>
+                        <B>Duração:</B> {{duracao}} <BR>
+                        <B>Estado:</B> {{estado}} <BR>
+                        <BR>
+                        <div class="table-responsive">
+                            <table>
+                                <tr>
+                                    {{#each slots}}
+                                        <td>
+                                            <div id="{{../../_id}}" class="profile-thumb">
+                                                <div id="{{../_id}}" class="profile-thumb-img">
+                                                    <img id="{{@index}}" src="{{.}}" class="img-thumbnail">
+                                                </div>
+                                            </div>
+                                        </td>
+                                    {{/each}}
+                                </tr>
+                            </table>
+                        </div>
+                    </li>
                     <BR>
-                    <table>
-                        <tr>
-                            {{#each slots}}
-                                <td>
-                                    <div id="{{../../_id}}" class="profile-thumb">
-                                        <div id="{{../_id}}" class="profile-thumb-img">
-                                            <img id="{{@index}}" src="{{.}}" class="img-thumbnail">
-                                        </div>
-                                    </div>
-                                </td>
-                            {{/each}}
-                        </tr>
-                    </table>
-                </li>
-                <BR>
-            {{/each}}
-        </ul>
-        <a class="pull-left" href="#">
-            {{> profileThumb _id=owner }} {{niceName User._id}}
-        </a>
+                {{/each}}
+            </ul>
+            <div class="media">
+                <a class="pull-left" href="#">
+                    <!--{{> avatar userId=owner shape="circle"}}-->
+                    {{> profileThumb _id=owner }}
+                </a>
+                <div class="media-body">
+                    {{#if $eq owner User._id}}
+                        <small>
+                            <!--{{#afModal title="Update item" omitFields="subtarefas.$._id,subtarefas.$.slots,subtarefas.$.estado,owner,estado,createdAt,timestamp,duracao" class="text-primary" collection="items" operation="update" doc=_id}}-->
+                                <!--<i class="fa fa-pencil" buttonContent="Edit post"></i> {{_ "edit_post"}}-->
+                            <!--{{/afModal}}-->
+                            {{#afModal title="Delete item" class="text-danger" collection="items" operation="remove" doc=_id}}
+                                <i class="fa fa-times" buttonContent="Apagar item"></i> {{_ "delete"}}
+                            {{/afModal}}
+                        </small>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        {{> favoriteButton _id=_id}}
+        <!--<p class="pull-left">-->
+        <!--Item Footer-->
+        <!--</p>-->
     </div>
 </template>
 

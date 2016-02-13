@@ -75,7 +75,7 @@ Schemas.subtarefas = new SimpleSchema
     optional: true
     autoValue: ->
       res = []
-      f = 0
+      f = 1
       while f <= @siblingField("duracao").value
         res.push "empty.png"
         f++

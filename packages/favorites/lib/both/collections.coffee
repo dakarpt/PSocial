@@ -19,11 +19,13 @@ FavoritesSchemas = new SimpleSchema
 
   title:
     type: String
+    optional: true
 
   route:
     type: String
-      autoValue: ->
-        if this.isInsert
-          "/report"
+    optional: true
+#      autoValue: ->
+#        if this.isInsert
+#          "/report"
 
 Favorites.attachSchema(FavoritesSchemas)

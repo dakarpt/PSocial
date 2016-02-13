@@ -184,7 +184,6 @@ Meteor.startup ->
       {
         data: '_id'
         title: 'Admin'
-# TODO: use `tmpl`
         createdCell: (node, cellData, rowData) ->
           $(node).html(Blaze.toHTMLWithData Template.adminUsersIsAdmin, {_id: cellData})
         width: '40px'
@@ -201,7 +200,6 @@ Meteor.startup ->
       {
         data: 'emails'
         title: 'Mail'
-# TODO: use `tmpl`
         createdCell: (node, cellData, rowData) ->
           $(node).html(Blaze.toHTMLWithData Template.adminUsersMailBtn, {emails: cellData})
         width: '40px'

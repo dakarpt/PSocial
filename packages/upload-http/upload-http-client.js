@@ -48,7 +48,6 @@ var _taskHandler = function (task, next) {
  */
 var _errorHandler = function (data, addTask, failures) {
   // If file upload fails
-  // TODO We should retry a few times and then emit error?
   // data.fileObj.emit("error", error);
 };
 
@@ -85,7 +84,6 @@ UploadTransferQueue = function (options) {
    * @param {FS.File} fileObj File to check if uploading
    * @returns {Boolean} True if the file is uploading
    *
-   * @todo Maybe have a similar function for accessing the file upload queue?
    */
   self.isUploadingFile = function (fileObj) {
     // Check if file is already in queue
@@ -94,7 +92,6 @@ UploadTransferQueue = function (options) {
 
   /** @method UploadTransferQueue.resumeUploadingFile
    * @param {FS.File} File to resume uploading
-   * @todo Not sure if this is the best way to handle resumes
    */
   self.resumeUploadingFile = function (fileObj) {
     // Make sure we are handed a FS.File
@@ -114,8 +111,6 @@ UploadTransferQueue = function (options) {
 
   /** @method UploadTransferQueue.uploadFile
    * @param {FS.File} File to upload
-   * @todo Check that a file can only be added once - maybe a visual helper on the FS.File?
-   * @todo Have an initial request to the server getting uploaded chunks for resume
    */
   self.uploadFile = function (fileObj) {
     FS.debug && console.log("HTTP uploadFile");
@@ -152,7 +147,6 @@ UploadTransferQueue = function (options) {
         return;
 
       // Update the filerecord
-      // TODO eventually we should be able to do this without storing any chunk info in the filerecord
       fileObj.update({
         $set: {
           chunkSize: fileObj.chunkSize,
@@ -194,7 +188,6 @@ UploadTransferQueue = function (options) {
         url += '/' + id;
       }
 
-      // TODO: Could we somehow figure out if the collection requires login?
       var authToken = '';
       if (typeof Accounts !== "undefined") {
         var authObject = {
@@ -256,7 +249,6 @@ FS.HTTP.uploadQueue = new UploadTransferQueue();
  * @method FS.File.prototype.resume
  * @public
  * @param {File|Blob|Buffer} ref
- * @todo WIP, Not yet implemented for server
  *
  * > This function is not yet implemented for server
  */

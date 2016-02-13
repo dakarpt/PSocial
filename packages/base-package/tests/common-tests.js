@@ -85,22 +85,18 @@ Tinytest.add('cfs-base-package - FS.Utility.defaultCallback', function (test) {
 
 Tinytest.add('cfs-base-package - FS.Utility.handleError', function (test) {
     test.isTrue(true);
-    // TODO
 });
 
 Tinytest.add('cfs-base-package - FS.Utility.binaryToBuffer', function (test) {
     test.isTrue(true);
-    // TODO
 });
 
 Tinytest.add('cfs-base-package - FS.Utility.bufferToBinary', function (test) {
     test.isTrue(true);
-    // TODO
 });
 
 Tinytest.add('cfs-base-package - FS.Utility.connectionLogin', function (test) {
     test.isTrue(true);
-    // TODO
 });
 
 Tinytest.add('cfs-base-package - FS.Utility.getFileName', function (test) {

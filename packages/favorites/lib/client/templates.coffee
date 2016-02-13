@@ -19,8 +19,8 @@ Template.favoriteButtonNotFavorited.events
     Favorites.insert
       doc: $(e.currentTarget).attr('doc')
       owner: Meteor.userId()
-      title: $(e.currentTarget).attr('title')
-      route: $(e.currentTarget).attr('route')
+#      title: $(e.currentTarget).attr('title')
+#      route: $(e.currentTarget).attr('route')
 
 Template.favoriteButtonFavorited.events
   'click .js-favorite-button': (e, t) ->

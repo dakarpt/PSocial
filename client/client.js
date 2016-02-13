@@ -50,4 +50,8 @@ GetSlots = function (itemId, subtarefaId) {
     }
     console.log("No slots found!");
 };
-// @TODO Melhorar a info do status, com min time e remover da entrada
+//NTH AR Melhorar a info do status, com min time e remover da entrada
+//FIXME AR Transformar o slot num objecto
+//TODO Complementar o profile com morada e telefone
+//TODO Resolver o issue do novo user sem profile
+
