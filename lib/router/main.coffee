@@ -14,14 +14,14 @@ Router.map ->
 #        Meteor.subscribe 'Processos'
 #        Meteor.subscribe 'LogMessages'
 #      ]
-    fastRender: true
+#    fastRender: true
   @route "createItem",
     path: "/createItem"
     waitOn: ->
       [
         Meteor.subscribe 'items'
       ]
-    fastRender: true
+#    fastRender: true
   @route "listItems",
     path: "/listItems"
     waitOn: ->
@@ -92,7 +92,7 @@ Router.map ->
         subs.subscribe 'notifications'
         subs.subscribe 'userData'
       ]
-    fastRender: true
+#    fastRender: true
   @route "/showNotification",
     path: "/showNotification/:_id"
     waitOn: ->

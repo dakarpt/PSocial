@@ -22,6 +22,6 @@ Template.showItem.events({
 
 Template.showSlot.events({
     'click .slot': function (e) {
-        console.log("Slot Item click", this, e);
+        //console.log("Slot Item click", this, e);
     }
 });

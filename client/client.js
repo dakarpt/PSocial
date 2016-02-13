@@ -44,7 +44,7 @@ GetSlots = function (itemId, subtarefaId) {
     var subtarefas = items.findOne({_id: itemId, subtarefas: {$elemMatch: {_id: subtarefaId}}})['subtarefas'];
     for (var f = 0; f < subtarefas.length; f++) {
         if (subtarefas[f]._id == subtarefaId) {
-            console.log("Found slots", subtarefas[f].slots);
+            //console.log("Found slots", subtarefas[f].slots);
             return subtarefas[f].slots;
         }
     }

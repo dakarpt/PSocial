@@ -49,7 +49,7 @@
         <B>Picture do item:</B> <BR>
         <p class="text-center">
             {{#with getDoc picture 'Attachments'}}
-                <img src="{{url}}" class="img-thumbnail img-rounded">
+                <img src="{{url}}" class="img-thumbnail">
             {{/with}}
         </p>
         <ul>
@@ -65,8 +65,8 @@
                         <tr>
                             {{#each slots}}
                                 <td>
-                                    <div id="{{../../_id}}">
-                                        <div id="{{../_id}}">
+                                    <div id="{{../../_id}}" class="profile-thumb">
+                                        <div id="{{../_id}}" class="profile-thumb-img">
                                             <img id="{{@index}}" src="{{.}}" class="img-thumbnail">
                                         </div>
                                     </div>
