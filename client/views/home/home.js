@@ -1,9 +1,9 @@
 /**
  * Created by aramos on 06-11-2015.
  */
-Meteor.startup(function () {
-    Status.setTemplate('bootstrap3', {classes: 'alert-danger'});
-});
+//Meteor.startup(function () {
+//    Status.setTemplate('bootstrap3', {classes: 'alert-danger'});
+//});
 
 //Template.Filtros.helpers({
 //    x: function () {

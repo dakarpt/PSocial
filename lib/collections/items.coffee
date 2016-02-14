@@ -77,6 +77,7 @@ Schemas.subtarefas = new SimpleSchema
       "Mão de obra"
       "Material"
       "Bens"
+      "Donativos"
       "Serviços"
     ]
 

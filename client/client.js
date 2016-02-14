@@ -50,8 +50,10 @@ GetSlots = function (itemId, subtarefaId) {
     }
     console.log("No slots found!");
 };
-//NTH AR Melhorar a info do status, com min time e remover da entrada
-//FIXME AR Transformar o slot num objecto
-//TODO Complementar o profile com morada e telefone
-//TODO Resolver o issue do novo user sem profile
+//Done Retirei o status / AR Melhorar a info do status, com min time e remover da entrada
+//FIXME Alterar para o owner em vez da url se for sem object no slot
+//FIXME Transformar o slot num objecto
+//TODO Complementar o profile com morada e telefone, depois do update sair para o listitems
+//TODO Resolver o issue do novo user sem profile, usa as iniciais de for o owner em vez de url
+//TODO lista de notificacoes com crud - rever o conceito
 
