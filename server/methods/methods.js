@@ -14,7 +14,7 @@ if (Meteor.isServer) Meteor.methods({
         cw("ServerSide: UpdateSlots: Updating...");
         items.update({
             _id: itemId,
-            subtarefas: {$elemMatch: {_id: subtarefaId}}
+            subtarefas: {$elemMatch: {ids: subtarefaId}}
         }, {$set: {"subtarefas.$.slots": slots}})
     },
     'GetSlots': function (itemId, subtarefaId) {
@@ -24,9 +24,9 @@ if (Meteor.isServer) Meteor.methods({
         check(itemId, String);
         check(subtarefaId, String);
         cw("ServerSide: GetSlots: Running...");
-        var subtarefas = items.findOne({_id: itemId, subtarefas: {$elemMatch: {_id: subtarefaId}}})['subtarefas'];
+        var subtarefas = items.findOne({_id: itemId, subtarefas: {$elemMatch: {ids: subtarefaId}}})['subtarefas'];
         for (var f = 0; f < subtarefas.length; f++) {
-            if (subtarefas[f]._id == subtarefaId) {
+            if (subtarefas[f].ids == subtarefaId) {
                 console.log("slots", subtarefas[f].slots);
                 return subtarefas[f].slots;
             }

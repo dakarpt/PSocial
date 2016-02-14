@@ -4,18 +4,25 @@
 
 Schemas.Myslots = new SimpleSchema
 
+  _id:
+    type: String
+    optional: true
+    regEx: SimpleSchema.RegEx.Id
+    autoValue: ->
+      if this.isInsert
+        Random.id()
+
   "owner":
     type: String
     optional: true
     autoValue: ->
       "empty"
 
-  "createAt":
+  "url":
+    type: String
     optional: true
-    type: Date
     autoValue: ->
-      if this.isInsert
-        new Date()
+      "empty.png"
 
   "timestamp":
     type: Date
@@ -28,13 +35,13 @@ Schemas.subtarefas = new SimpleSchema
 #  tarefa:
 #    type: String
 #    regEx: SimpleSchema.RegEx.Id
-  _id:
+  ids:
     type: String
-    optional: false
-    regEx: SimpleSchema.RegEx.Id
+    optional: true
+#    regEx: SimpleSchema.RegEx.Id
     autoValue: ->
-      if this.isInsert
-        Random.id()
+#      if this.isInsert
+      Random.id()
 
   nome:
     type: String
@@ -50,16 +57,17 @@ Schemas.subtarefas = new SimpleSchema
     allowedValues: [
       "Mão de obra"
       "Material"
+      "Bens"
       "Serviços"
     ]
 
   duracao:
     type: Number
-    optional: true
+    optional: false
 
   estado:
     type: String
-    optional: false
+    optional: true
     allowedValues: [
       "Inicial"
       "Em curso"
@@ -145,6 +153,7 @@ Schemas.items = new SimpleSchema
 
   picture:
     type: String
+    optional: false
     autoform:
       afFieldInput:
         type: 'fileUpload'
@@ -158,8 +167,8 @@ Schemas.items = new SimpleSchema
     type: String
     optional: true
     autoValue: ->
-      if this.isInsert
-        "incial"
+#      if this.isInsert
+      "incial"
 
   createdAt:
     type: Date
@@ -183,6 +192,9 @@ Schemas.items = new SimpleSchema
     type: Date
     label: "Data de início"
     optional: true
+    autoValue: ->
+      if this.isInsert
+        new Date()
 
   owner:
     type: String
@@ -199,7 +211,7 @@ Schemas.items = new SimpleSchema
 
   "subtarefas.$":
     type: Schemas.subtarefas
-    optional: false
+    optional: true
 
 #  "tarefas.$.nome":
 #    type: String

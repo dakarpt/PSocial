@@ -14,7 +14,7 @@
                             <h3 class="panel-title">Adicionar item</h3>
                         </div>
                         <div class="panel-body">
-                            {{> quickForm collection="items" id="insertItemForm" type="insert" omitFields="subtarefas.$._id,subtarefas.$.slots,subtarefas.$.estado,owner,estado,createdAt,timestamp,duracao"}}
+                            {{> quickForm collection="items" id="insertItemForm" type="insert" omitFields="subtarefas.$.ids,subtarefas.$.slots,subtarefas.$.estado,owner,estado,createdAt,timestamp,duracao"}}
                         </div>
                     </div>
                 </div>

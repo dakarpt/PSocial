@@ -71,9 +71,9 @@
                                 <tr>
                                     {{#each slots}}
                                         <td>
-                                            <div id="{{../../_id}}" class="profile-thumb">
-                                                <div id="{{../_id}}" class="profile-thumb-img">
-                                                    <img id="{{@index}}" src="{{.}}" class="img-thumbnail">
+                                            <div ids="{{../../_id}}" class="profile-thumb">
+                                                <div ids="{{../ids}}" class="profile-thumb-img">
+                                                    <img ids="{{@index}}" src="{{.}}" class="img-thumbnail">
                                                 </div>
                                             </div>
                                         </td>
@@ -93,9 +93,9 @@
                 <div class="media-body">
                     {{#if $eq owner User._id}}
                         <small>
-                            <!--{{#afModal title="Update item" omitFields="subtarefas.$._id,subtarefas.$.slots,subtarefas.$.estado,owner,estado,createdAt,timestamp,duracao" class="text-primary" collection="items" operation="update" doc=_id}}-->
-                                <!--<i class="fa fa-pencil" buttonContent="Edit post"></i> {{_ "edit_post"}}-->
-                            <!--{{/afModal}}-->
+                            {{#afModal title="Update item" omitFields="subtarefas.$.ids,subtarefas.$.slots,subtarefas.$.estado,owner,estado,createdAt,timestamp,duracao" class="text-primary" collection="items" operation="update" doc=_id}}
+                                <i class="fa fa-pencil" buttonContent="Edit post"></i> {{_ "edit_post"}}
+                            {{/afModal}}
                             {{#afModal title="Delete item" class="text-danger" collection="items" operation="remove" doc=_id}}
                                 <i class="fa fa-times" buttonContent="Apagar item"></i> {{_ "delete"}}
                             {{/afModal}}
