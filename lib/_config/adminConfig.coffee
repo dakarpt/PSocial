@@ -68,6 +68,6 @@
 #        {label: 'Mensagem', name: 'message'}
 #      ]
   dashboard:
-    homeUrl: '/dashboard'
+    homeUrl: '/listItems'
   autoForm:
     omitFields: ['createdAt', 'updatedAt']
