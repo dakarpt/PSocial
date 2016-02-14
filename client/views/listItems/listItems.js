@@ -5,6 +5,13 @@ Template.showItem.events({
     'click .detalhes': function (e) {
         console.log("Item click", this, e);
         //Router.go("/listItem/" + this._id);
+        //Session.set("subtarefa", subtarefaID);
+        Session.set("item", this._id);
+        //var Asubtarefas = this.subtarefas;
+        //for (var f=0; f<Asubtarefas.length; f++) {
+        //    Session.set("subtarefa:" + this._id + "|" + Asubtarefas.ids + "|estado", subtarefaID);
+        //}
+        //Session.set("slots", itemID);
         if (e.target.attributes.ids===undefined)
             return;
         console.log("Slot clicked=%s subtarefa= %s item=%s", e.target.attributes.ids.value, e.target.parentElement.attributes.ids.value, e.target.parentElement.parentElement.attributes.ids.value)

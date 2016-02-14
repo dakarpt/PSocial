@@ -4,25 +4,38 @@
 
 Schemas.Myslots = new SimpleSchema
 
-  _id:
+  ids:
     type: String
     optional: true
     regEx: SimpleSchema.RegEx.Id
     autoValue: ->
-      if this.isInsert
+      if @isInsert
         Random.id()
+      else if @isUpdate && (@isSet == false)
+        Random.id()
+    autoform:
+      type: 'hidden'
 
-  "owner":
+  owner:
     type: String
-    optional: true
+    optional: false
+    regEx: SimpleSchema.RegEx.Id
     autoValue: ->
-      "empty"
+      if this.isInsert
+        "empty"
+      else if @isUpdate
+        Meteor.userId()
+    autoform:
+      type: 'hidden'
 
   "url":
     type: String
     optional: true
     autoValue: ->
-      "empty.png"
+      if this.isInsert
+        "empty.png"
+    autoform:
+      type: 'hidden'
 
   "timestamp":
     type: Date
@@ -30,6 +43,8 @@ Schemas.Myslots = new SimpleSchema
     autoValue: ->
       if this.isUpdate || this.isInsert
         new Date()
+    autoform:
+      type: 'hidden'
 
 Schemas.subtarefas = new SimpleSchema
 #  tarefa:
@@ -38,10 +53,14 @@ Schemas.subtarefas = new SimpleSchema
   ids:
     type: String
     optional: true
-#    regEx: SimpleSchema.RegEx.Id
+    regEx: SimpleSchema.RegEx.Id
     autoValue: ->
-#      if this.isInsert
-      Random.id()
+      if @isInsert
+        Random.id()
+      else if @isUpdate && (@isSet == false)
+        Random.id()
+    autoform:
+      type: 'hidden'
 
   nome:
     type: String
@@ -77,18 +96,37 @@ Schemas.subtarefas = new SimpleSchema
     autoValue: ->
       if this.isInsert
         "Inicial"
+    autoform:
+      type: 'hidden'
 
   slots:
     type: [String]
     optional: true
     autoValue: ->
-      res = []
-      f = 1
-      while f <= @siblingField("duracao").value
-        res.push "empty.png"
-        f++
-      res
+      console.log "Slots", this
+      if @isInsert
+        console.log "Inserting"
+        res = []
+        f = 1
+        while f <= @siblingField("duracao").value
+          res.push "empty.png"
+          f++
+        res
+      else if @isUpdate && (@isSet == false)
+#        $set: ->
+        console.log "Upserting"
+        res = []
+        f = 1
+        while f <= @siblingField("duracao").value
+          res.push "empty.png"
+          f++
+#        $set: res
+        res
+    autoform:
+      type: 'hidden'
 
+#      else if @isUpsert
+#        $setOnInsert: "Inicial"
 #      ['empty', 'empty', 'empty', 'empty', 'empty']
 #      ["hello", owner: Meteor.userId() }]
 
@@ -143,6 +181,7 @@ Schemas.subtarefas = new SimpleSchema
 #tarefas.attachSchema(Schemas.tarefas)
 
 Schemas.items = new SimpleSchema
+
   nome:
     type: String
     optional: false
@@ -167,8 +206,10 @@ Schemas.items = new SimpleSchema
     type: String
     optional: true
     autoValue: ->
-#      if this.isInsert
-      "incial"
+      if @isInsert
+        "incial"
+    autoform:
+      type: 'hidden'
 
   createdAt:
     type: Date
@@ -176,6 +217,8 @@ Schemas.items = new SimpleSchema
     autoValue: ->
       if this.isInsert
         new Date()
+    autoform:
+      type: 'hidden'
 
   timestamp:
     type: Date
@@ -183,10 +226,14 @@ Schemas.items = new SimpleSchema
     autoValue: ->
       if this.isUpdate || this.isInsert
         new Date()
+    autoform:
+      type: 'hidden'
 
   duracao:
     type: Number
     optional: true
+    autoform:
+      type: 'hidden'
 
   datainicio:
     type: Date
@@ -203,6 +250,8 @@ Schemas.items = new SimpleSchema
     autoValue: ->
       if this.isInsert
         Meteor.userId()
+    autoform:
+      type: 'hidden'
 
   subtarefas:
     type: Array

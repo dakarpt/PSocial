@@ -3,12 +3,9 @@
         <div class="navbar">
             <div class="container close-navbar">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    <!--<a href="{{pathFor 'profile'}}" class="xs-mobile-cta">-->
-                    <!--<i class="fa fa-user"></i>-->
-                    <!--</a>-->
+                    <a href="#" class="navbar-brand slideout-menu-toggle">
+                    <i class="fa fa-bars"></i>
+                    </a>
                     <a class="navbar-brand"
                        href="{{#if User}}{{Config.dashboardRoute}}{{else}}{{Config.homeRoute}}{{/if}}">{{{Config.logo}}}</a>
                 </div>

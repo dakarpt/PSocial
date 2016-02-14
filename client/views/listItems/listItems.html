@@ -1,15 +1,20 @@
 <template name="listItems">
+    {{> slideMenu}}
     <div class="template-dashboard">
         <div class="container">
             <div class="row" id="champion-messages">
-                <div class="col-md-3">
-                    {{#if User}}
-                        {{> favoritesSidebar}}
-                        {{#if isInRole 'admin'}}
-                            <!--{{> addPost}}-->
-                        {{/if}}
-                    {{/if}}
-                </div>
+                <!--<div class="col-md-3">-->
+                    <!--{{#if User}}-->
+                <!--<button type="button" id="btnRespNav"-->
+                <!--class="btn-navbar navbar-toggle slideout-menu-toggle pull-left" data-toggle="collapse"-->
+                <!--data-target="#login-navbar-collapse"><i class="fa fa-user">xxxxxxx</i>-->
+                <!--</button>-->
+                <!--{{> favoritesSidebar}}-->
+                    <!--{{#if isInRole 'admin'}}-->
+                    <!--{{> addPost}}-->
+                        <!--{{/if}}-->
+                    <!--{{/if}}-->
+                <!--</div>-->
                 <div class="col-md-9">
                     {{> showAllItems}}
                 </div>
@@ -93,11 +98,11 @@
                 <div class="media-body">
                     {{#if $eq owner User._id}}
                         <small>
-                            {{#afModal title="Update item" omitFields="subtarefas.$.ids,subtarefas.$.slots,subtarefas.$.estado,owner,estado,createdAt,timestamp,duracao" class="text-primary" collection="items" operation="update" doc=_id}}
-                                <i class="fa fa-pencil" buttonContent="Edit post"></i> {{_ "edit_post"}}
+                            {{#afModal title="Update item" omitFields="" class="text-primary" collection="items" operation="update" doc=_id}}
+                                <i class="fa fa-pencil" buttonContent="Edit post"></i> Editar Item
                             {{/afModal}}
                             {{#afModal title="Delete item" class="text-danger" collection="items" operation="remove" doc=_id}}
-                                <i class="fa fa-times" buttonContent="Apagar item"></i> {{_ "delete"}}
+                                <i class="fa fa-times" buttonContent="Apagar item"></i> Apagar Item
                             {{/afModal}}
                         </small>
                     {{/if}}
@@ -115,5 +120,40 @@
 
 <template name="showSlot">
     <div id="Slot-{{@index}}" class="slot"><img src="/{{.}}.png" class="img-thumbnail"></div>
+</template>
 
+<template name="menuItems">
+    <div class="slideout-menu">
+        <h3>Menu <a href="#" class="slideout-menu-toggle">×</a></h3>
+        <ul>
+            {{#if currentUser}}
+                <li>
+                    <a href="{{pathFor 'listItems'}}">Listar Items <i class="fa fa-angle-right"></i></a>
+                </li>
+                <li>
+                    <a href="{{pathFor 'createItem'}}">Criar Item <i class="fa fa-angle-right"></i></a>
+                </li>
+                <li>
+                    <a href="{{pathFor 'MyNotifications'}}">Criar notificação <i class="fa fa-angle-right"></i></a>
+                </li>
+                <li>
+                    <a href="{{pathFor 'profile'}}">Profile <i class="fa fa-angle-right"></i></a>
+                </li>
+                <li>
+                    <a href="{{pathFor 'account'}}">Minha conta <i class="fa fa-angle-right"></i></a>
+                </li>
+                <li>
+                    <a href="/sign-out">Log Off <i class="fa fa-angle-right"></i></a>
+                </li>
+            {{/if}}
+            {{#if isInRole 'admin'}}
+                <li>
+                    <a href="/admin">Administração</a>
+                </li>
+            {{/if}}
+            <!--<li><a href="#">Home <i class="fa fa-angle-right"></i></a></li>-->
+            <!--<li><a href="#">Tour Information <i class="fa fa-angle-right"></i></a></li>-->
+        </ul>
+    </div>
+    <!--/.slideout-menu-->
 </template>

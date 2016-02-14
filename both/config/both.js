@@ -2,11 +2,11 @@
  * Created by aramos on 02-12-2015.
  */
 
-//if (Meteor.isClient)  {
-//    $.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
-//        options.async = true;
-//    });
-//}
+if (Meteor.isClient)  {
+    $.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
+        options.async = true;
+    });
+}
 
 isAdmin = function isAdmin(id) {
     return Roles.userIsInRole(id, "admin")
