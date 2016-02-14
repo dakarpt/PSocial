@@ -19,7 +19,7 @@ Template.showItem.events({
         var subtarefaID = e.target.parentElement.attributes.ids.value;
         var itemID = e.target.parentElement.parentElement.attributes.ids.value;
         var slots = GetSlots(itemID, subtarefaID);
-        if (slots[slotID] == "empty.png") {
+        if (slots[slotID].indexOf("empty.png") != -1) {
             var picID = ProfilePictures.findOne(Meteor.users.findOne(Meteor.userId())['profile']['picture']);
             //var picURL = picID.url();
             slots[slotID] = picID.url();

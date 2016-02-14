@@ -74,11 +74,10 @@ Schemas.subtarefas = new SimpleSchema
     type: String
     optional: false
     allowedValues: [
-      "Mão de obra"
+      "Mao_de_obra"
       "Material"
-      "Bens"
       "Donativos"
-      "Serviços"
+      "Servicos"
     ]
 
   duracao:
@@ -104,13 +103,13 @@ Schemas.subtarefas = new SimpleSchema
     type: [String]
     optional: true
     autoValue: ->
-      console.log "Slots", this
+#      console.log "Slots", this
       if @isInsert
         console.log "Inserting"
         res = []
         f = 1
         while f <= @siblingField("duracao").value
-          res.push "empty.png"
+          res.push @siblingField("tipo").value+"-empty.png"
           f++
         res
       else if @isUpdate && (@isSet == false)
@@ -119,7 +118,7 @@ Schemas.subtarefas = new SimpleSchema
         res = []
         f = 1
         while f <= @siblingField("duracao").value
-          res.push "empty.png"
+          res.push @siblingField("tipo").value+"-empty.png"
           f++
 #        $set: res
         res
