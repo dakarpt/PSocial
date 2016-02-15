@@ -130,7 +130,16 @@
                     <a href="{{pathFor 'createItem'}}">Criar Item <i class="fa fa-angle-right"></i></a>
                 </li>
                 <li>
-                    <a href="{{pathFor 'MyNotifications'}}">Criar notificação <i class="fa fa-angle-right"></i></a>
+                    <a href="{{pathFor 'MyNotifications'}}">Criar notificação</a>
+                </li>
+                <li>
+                    <a href="{{pathFor 'MyNotifications'}}">Notificações
+                        {{#if notificationCount}}
+                            <span class=".lang badge bg-success">{{notificationCount}}</span>
+                        {{else}}
+                            <i class=".lang fa fa-{{dropdownIconEmpty}}"></i>
+                        {{/if}}
+                    </a>
                 </li>
                 <li>
                     <a href="{{pathFor 'profile'}}">Profile <i class="fa fa-angle-right"></i></a>

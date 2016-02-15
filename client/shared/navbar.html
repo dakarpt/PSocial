@@ -1,11 +1,12 @@
 <template name="navbar">
     <div class="template-navbar">
-        <div class="navbar">
+        <div class="navbar navbar-fixed-top">
             <div class="container close-navbar">
                 <div class="navbar-header">
                     <!--<a href="#" class="navbar-brand slideout-menu-toggle">-->
-                    <a href="#" id="btnRespNav" class="navbar-brand slideout-menu-toggle pull-left needsclick" data-toggle="collapse" data-target="#login-navbar-collapse">
-                    <i class="fa fa-bars"></i>
+                    <a href="#" id="btnRespNav" class="navbar-brand slideout-menu-toggle pull-left needsclick"
+                       data-toggle="collapse" data-target="#login-navbar-collapse">
+                        <i class="fa fa-bars"></i>
                     </a>
                     <a class="navbar-brand"
                        href="{{#if User}}{{Config.dashboardRoute}}{{else}}{{Config.homeRoute}}{{/if}}">{{{Config.logo}}}</a>
@@ -47,9 +48,9 @@
             </div>
         </div>
     </div>
-<!--{{#if User}}-->
+        <!--{{#if User}}-->
     <!--{{> status}}-->
-<!--{{/if}}-->
+        <!--{{/if}}-->
 </template>
 
 <template name="languageSelection">
