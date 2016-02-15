@@ -94,7 +94,9 @@ Schemas.subtarefas = new SimpleSchema
       "Concluído"
     ]
     autoValue: ->
-      if this.isInsert
+      if @isInsert
+        "Inicial"
+      else if @isUpdate && (@isSet == false)
         "Inicial"
     autoform:
       type: 'hidden'

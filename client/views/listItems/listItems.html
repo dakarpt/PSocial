@@ -28,7 +28,7 @@
         {{#each  itemList}}
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Nome do item: {{nome}}
+                    <h3 class="panel-title">Nome do Projecto: {{nome}}
                         <span class="pull-right">
 							<i class="fa fa-thumbs-up"></i> {{#with favoritesByDoc _id}}{{count}}{{/with}}
                             <!--<i class="fa fa-comments"></i> {{commentCount _id}}-->
@@ -46,16 +46,16 @@
 <template name="showItem">
     <div class="panel-body">
         <div class="detalhes">
-            <B>Nome do item:</B> {{nome}} <BR>
-            <B>Descrição do item:</B> {{descricao}} <BR>
-            <B>owner do item:</B> {{owner}} <BR>
-            <B>Duração do item:</B> {{duracao}} <BR>
-            <B>createdAt do item:</B> {{createdAt}} <BR>
-            <B>timestamp do item:</B> {{timestamp}} <BR>
-            <B>Estado do item:</B> {{estado}} <BR>
-            <B>dataInicio do item:</B> {{datainicio}} <BR>
+            <B>Nome do Projecto:</B> {{nome}} <BR>
+            <B>Descrição do Projecto:</B> {{descricao}} <BR>
+            <!--<B>owner do item:</B> {{owner}} <BR>-->
+            <!--<B>Duração do item:</B> {{duracao}} <BR>-->
+            <!--<B>createdAt do item:</B> {{createdAt}} <BR>-->
+            <!--<B>timestamp do item:</B> {{timestamp}} <BR>-->
+            <B>Estado do Projecto:</B> {{estado}} <BR>
+            <B>dataInicio do Projecto:</B> {{datainicio}} <BR>
 
-            <B>Picture do item:</B> <BR>
+            <B>Picture do Projecto:</B> <BR>
             <p class="text-center">
                 {{#with getDoc picture 'Attachments'}}
                     <img src="{{url}}" class="img-thumbnail img-rounded">
@@ -66,7 +66,7 @@
                     <li>
                         <B>Nome da Tarefa:</B> {{nome}} <BR>
                         <B>Descrição da Tarefa:</B>
-                        <p class="word-wrap break-word">{{descricao}}</p> <BR>
+                        <p class="word-wrap break-word">{{descricao}}</p>
                         <B>Tipo:</B> {{tipo}} <BR>
                         <B>Duração:</B> {{duracao}} <BR>
                         <B>Estado:</B> {{estado}} <BR>
@@ -98,11 +98,11 @@
                 <div class="media-body">
                     {{#if $eq owner User._id}}
                         <small>
-                            {{#afModal title="Update item" omitFields="" class="text-primary" collection="items" operation="update" doc=_id}}
-                                <i class="fa fa-pencil" buttonContent="Edit post"></i> Editar Item
+                            {{#afModal buttonContent="Actualizar Projecto" title="Editar Projecto" omitFields="" class="text-primary" collection="items" operation="update" doc=_id}}
+                                <i class="fa fa-pencil" buttonContent="Editar Projecto"></i> Editar Projecto
                             {{/afModal}}
-                            {{#afModal title="Delete item" class="text-danger" collection="items" operation="remove" doc=_id}}
-                                <i class="fa fa-times" buttonContent="Apagar item"></i> Apagar Item
+                            {{#afModal buttonContent="Apagar Projecto" prompt="Tem a certeza?" title="Apagar Projecto" class="text-danger" collection="items" operation="remove" doc=_id}}
+                                <i class="fa fa-times"></i> Apagar Projecto
                             {{/afModal}}
                         </small>
                     {{/if}}
