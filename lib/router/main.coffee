@@ -105,6 +105,7 @@ Router.map ->
       ]
     data: ->
       Notifications.findOne({_id: this.params._id});
+    fastRender: true
 #  @route "chat",
 #    path: "/chat"
 #    waitOn: ->

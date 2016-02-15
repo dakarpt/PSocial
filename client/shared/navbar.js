@@ -10,7 +10,7 @@ toogleLanguage = function () {
 };
 
 Template.languageSelection.helpers({
-    helper: toogleLanguage
+    helper: toogleLanguage()
 });
 
 Template.languageSelection.events({
@@ -21,6 +21,8 @@ Template.languageSelection.events({
         TAPi18n.setLanguage(nextLang);
         T9n.setLanguage(nextLang);
         Session.set("language", nextLang);
-        return true;
+        event.preventDefault();
+        event.stopPropagation();
+        return false;
     }
 });
