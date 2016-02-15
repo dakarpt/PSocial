@@ -18,4 +18,4 @@ Template.profile.events
   'change form#updatePicture input': (e, t) ->
     Meteor.setTimeout ->
       $('form#updatePicture').submit()
-    , 1000
+    , 2000

@@ -4,11 +4,12 @@ Schemas.UserProfile = new SimpleSchema(
     optional: true
     label: ->
       TAPi18n.__("p_Imagem")
-
     autoform:
       afFieldInput:
         type: 'fileUpload'
         collection: 'ProfilePictures'
+        selectFileBtnTemplate: 'mySelectFileBtn'
+        removeFileBtnTemplate: 'myRemoveFileBtn'
         label: ->
           TAPi18n.__("p_choose_file")
 #        onBeforeInsert: ->

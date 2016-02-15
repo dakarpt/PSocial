@@ -199,6 +199,8 @@ Schemas.items = new SimpleSchema
       afFieldInput:
         type: 'fileUpload'
         collection: 'Attachments'
+        selectFileBtnTemplate: 'mySelectFileBtn'
+        removeFileBtnTemplate: 'myRemoveFileBtn'
         onAfterInsert: ->
           (err, fileObj) ->
             if err

@@ -21,5 +21,6 @@ Template.languageSelection.events({
         TAPi18n.setLanguage(nextLang);
         T9n.setLanguage(nextLang);
         Session.set("language", nextLang);
+        return true;
     }
 });
