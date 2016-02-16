@@ -26,14 +26,23 @@
     </div>
 </template>
 
+<template name="showIcon">
+    <a href="#" class="btn btn-default btn-xs"><i class="fa fa-{{icon}}"></i></a>
+</template>
+
 <template name="EditNotification">
     <a href="/showNotification/{{_id}}" class="hidden-xs btn btn-xs btn-primary"><i class="fa fa-pencil"></i></a>
-    <!--<button type="button" class="btn btn-xs check-out">Check Out</button>-->
+    <a href="/showNotification/{{_id}}" class="visible-xs btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Edit</a>
 </template>
-<template name="showIcon">
-    <a href="#" class="hidden-xs btn btn-xs btn-primary"><i class="fa fa-{{icon}}"></i></a>
-    <!--<button type="button" class="btn btn-xs check-out">Check Out</button>-->
-</template>
+
+<!--<template name="EditNotification">-->
+    <!--<a href="/showNotification/{{_id}}" class="hidden-xs btn btn-xs btn-primary"><i class="fa fa-pencil"></i></a>-->
+    <!--&lt;!&ndash;<button type="button" class="btn btn-xs check-out">Check Out</button>&ndash;&gt;-->
+<!--</template>-->
+<!--<template name="showIcon">-->
+    <!--<a href="#" class="hidden-xs btn btn-xs btn-primary"><i class="fa fa-{{icon}}"></i></a>-->
+    <!--&lt;!&ndash;<button type="button" class="btn btn-xs check-out">Check Out</button>&ndash;&gt;-->
+<!--</template>-->
 <template name="deleteNotification">
     <a data-toggle="modal" doc="{{_id}}" href='#delete-modal'
        class="hidden-xs btn btn-xs btn-danger btn-delete"><i class="fa fa-times" doc="{{_id}}"></i></a>
