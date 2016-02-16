@@ -5,23 +5,58 @@
             <!--<div class="col-md-4">-->
             <!--<div class="col-md-4">-->
                 <!--{{#if User}}-->
-                    <!--{{> favoritesSidebar}}-->
+            <!--{{> favoritesSidebar}}-->
                 <!--{{/if}}-->
             <!--</div>-->
             <!--</div>-->
             <div class="col-md-8">
-
-                <div class="template-favorites-sidebar">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">{{_ "Add_Notification"}}</h3>
-                        </div>
-                        <div class="panel-body">
-                            {{> quickForm collection="Notifications" id="insertNotificationForm" type="insert" omitFields="link,date,owner,read,class"}}
-                        </div>
-                    </div>
-                </div>
+                {{> tabular table=TabularTables.Notifications class="table table-condensed"}}
+                <!--<div class="template-favorites-sidebar">-->
+                <!--<div class="panel panel-default">-->
+                <!--<div class="panel-heading">-->
+                <!--<h3 class="panel-title">{{_ "Add_Notification"}}</h3>-->
+                <!--</div>-->
+                <!--<div class="panel-body">-->
+                <!--{{> quickForm collection="Notifications" id="insertNotificationForm" type="insert" omitFields="link,date,owner,read,class"}}-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
             </div>
         </div>
     </div>
+</template>
+
+<template name="EditNotification">
+    <a href="/showNotification/{{_id}}" class="hidden-xs btn btn-xs btn-primary"><i class="fa fa-pencil"></i></a>
+    <!--<button type="button" class="btn btn-xs check-out">Check Out</button>-->
+</template>
+<template name="showIcon">
+    <a href="#" class="hidden-xs btn btn-xs btn-primary"><i class="fa fa-{{icon}}"></i></a>
+    <!--<button type="button" class="btn btn-xs check-out">Check Out</button>-->
+</template>
+<template name="deleteNotification">
+    <a data-toggle="modal" doc="{{_id}}" href='#delete-modal'
+       class="hidden-xs btn btn-xs btn-danger btn-delete"><i class="fa fa-times" doc="{{_id}}"></i></a>
+    <a data-toggle="modal" doc="{{_id}}" href='#delete-modal' class="visible-xs btn btn-sm btn-danger btn-delete"><i
+            class="fa fa-times" doc="{{_id}}"></i> Delete</a>
+</template>
+
+<template name="DeleteModal">
+    <div class="modal fade" id="delete-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Confirm delete</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="confirm-delete" class="btn btn-danger">Delete</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 </template>

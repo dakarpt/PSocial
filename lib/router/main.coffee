@@ -95,6 +95,13 @@ Router.map ->
         subs.subscribe 'notifications'
         subs.subscribe 'userData'
       ]
+  @route "createNotification",
+    path: "/createNotification"
+    waitOn: ->
+      [
+        subs.subscribe 'notifications'
+        subs.subscribe 'userData'
+      ]
 #    fastRender: true
   @route "/showNotification",
     path: "/showNotification/:_id"

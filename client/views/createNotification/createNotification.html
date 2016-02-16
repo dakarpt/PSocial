@@ -1,0 +1,27 @@
+<template name="createNotification">
+    {{> slideMenu}}
+    <div class="container">
+        <div class="row" id="champion-messages">
+            <!--<div class="col-md-4">-->
+            <!--<div class="col-md-4">-->
+                <!--{{#if User}}-->
+            <!--{{> favoritesSidebar}}-->
+                <!--{{/if}}-->
+            <!--</div>-->
+            <!--</div>-->
+            <div class="col-md-8">
+                <!--{{> tabular table=TabularTables.Notifications class="table table-condensed"}}-->
+                <!--<div class="template-favorites-sidebar">-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{_ "Add_Notification"}}</h3>
+                    </div>
+                    <div class="panel-body">
+                        {{> quickForm collection="Notifications" id="insertNotificationForm" type="insert" omitFields="link,date,owner,read,class"}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--</div>-->
+</template>

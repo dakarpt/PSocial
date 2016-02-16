@@ -20,6 +20,16 @@ NotificationsSchema = new SimpleSchema
       if this.isInsert
         Meteor.userId()
 
+  from:
+    type: String
+    optional: false
+    regEx: SimpleSchema.RegEx.Email
+    autoValue: ->
+      if this.isInsert
+        Meteor.users.findOne(Meteor.userId()).emails[0].address
+    autoform:
+      type: 'hidden'
+
   title:
     type: String
     label: ->
