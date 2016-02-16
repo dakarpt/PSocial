@@ -1,4 +1,6 @@
 Meteor.subscribe('userPresence');
+
+
 #@Instalacoes = new Meteor.Collection('Instalacoes');
 #@Messages = new Meteor.Collection('messages');
 #@LogMessages = new Meteor.Collection('LogMessages');

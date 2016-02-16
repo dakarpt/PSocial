@@ -87,7 +87,8 @@ TabularTables.Notifications = new Tabular.Table({
     extraFields: ['date', '_id'],
     order: [[ 0, 'desc' ]],
     columnDefs: [
-        { className: "col_center", targets: [ 0,1,3,4, 5 ] }
+        { className: "col_center", targets: [ 0,1,3,4, 5 ] },
+        { className: "col_left", targets: [ 3 ] }
     ],
     stateSave: true
 });

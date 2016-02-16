@@ -55,7 +55,7 @@ Notifications.allow
   update: (userId, doc, fields, modifier) ->
     isUser(userId)
   remove: (userId, doc) ->
-    userId == doc.owner || userId == doc.to
+    userId == doc.owner || userId == doc.to || isAdmin(userId)
 
 #LogMessages.allow
 #	insert: (userId, doc) ->

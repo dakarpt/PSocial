@@ -1,10 +1,10 @@
-<template name="showNotification">
+<template name="editNotification">
     {{> slideMenu}}
     <div class="container">
         <div class="row" id="champion-messages">
             <!--<div class="col-md-4">-->
                 <!--{{#if User}}-->
-                    <!--{{> favoritesSidebar}}-->
+            <!--{{> favoritesSidebar}}-->
                 <!--{{/if}}-->
             <!--</div>-->
             <div class="col-md-8">
@@ -15,8 +15,7 @@
                             <h3 class="panel-title">Detalhes da Notification</h3>
                         </div>
                         <div class="panel-body">
-                            {{ nome }}
-                            {{> quickForm id="showNotificationForm" type="readonly" collection="Notifications" doc=selectedDoc omitFields="link,date,owner,read,class"}}
+                            {{> quickForm id="editNotificationForm" type="readonly" collection="Notifications" doc="{{_id}}" omitFields="link,date,owner,read,class"}}
                         </div>
                     </div>
                 </div>

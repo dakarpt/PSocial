@@ -1,2 +1,2 @@
-Deps.autorun ->
-  Meteor.subscribe('notifications')
+#Deps.autorun ->
+#  Meteor.subscribe('notifications')

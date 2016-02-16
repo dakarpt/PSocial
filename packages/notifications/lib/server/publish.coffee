@@ -1,2 +1,2 @@
-Meteor.publish 'notifications', ->
-  Notifications.find()
+#Meteor.publish 'Notifications', ->
+#  Notifications.find()

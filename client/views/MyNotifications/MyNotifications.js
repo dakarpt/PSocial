@@ -8,15 +8,21 @@ Template.DeleteModal.events({
     }
 });
 
-//Template.MyNotifications.events({
-//    'click tbody > tr': function (event) {
-//        var dataTable = $(event.target).closest('table').DataTable();
-//        var rowData = dataTable.row(event.currentTarget).data();
-//        //var ID = Notifications.findOne({ name: rowData._id });
-//        console.log("Routing to /showNotification/" + rowData._id);
-//        Router.go("/showNotification/" + rowData._id);
-//    }
-//});
+Template.MyNotifications.events({
+    'click tbody > tr > td': function (event) {
+        console.log("this", this);
+        var dataTable = $(event.target).closest('table').DataTable();
+        var rowData = dataTable.row(this).data();
+        var colData = dataTable.cell(this).data();
+        //var ID = Notifications.findOne({ name: rowData._id });
+        var element = event.toElement;
+
+        if ((element.toString().indexOf("pencil") == -1) && (element.toString().indexOf("times") == -1)) {
+            console.log("Routing to /showNotification/" + rowData._id, rowData, colData, event.toElement);
+            Router.go("/showNotification/" + rowData._id);
+        }
+    }
+});
 
 Template.registerHelper("iconOptions", function () {
     return [
