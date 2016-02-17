@@ -1,2 +1,2 @@
 #Meteor.publish 'Notifications', ->
-#  Notifications.find()
+#  Notifications.find( { to: this.userId })

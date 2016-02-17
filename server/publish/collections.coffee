@@ -50,5 +50,6 @@ Meteor.publish 'items', ->
 Meteor.publish 'userPresence', ->
   Presences.find({userId: {$exists: true}}, {fields: {state: true, userId: true}});
 
-Meteor.publish 'Notifications', ->
-  Notifications.find()
+#Meteor.publish 'Notifications', ->
+#  Notifications.find()
+#  Notifications.find({to: this.userId }, {limit: 20})

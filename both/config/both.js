@@ -27,13 +27,23 @@ Meteor.isClient && Template.registerHelper('TabularTables', TabularTables);
 TabularTables.Notifications = new Tabular.Table({
     name: "Notification Messages",
     collection: Notifications,
-    //createdRow: function( row, data, dataIndex ) {
-    //    $('td', row).addClass(data.newstatus);
-    //},
+    responsive: true,
+    autoWidth: false,
+    paging: false,
+    limit: 10,
+    searching: false,
+    createdRow: function( row, data, dataIndex ) {
+        //$('td', row).addClass(data.newstatus);
+        console.log("row:", data);
+        if (data.owner == Meteor.userId()) {
+            console.log("Bad self not");
+            $('td', row).remove();
+        }
+    },
     columns: [
         {
             data: 'icon',
-            title: 'Icon',
+            //title: 'Icon',
             createdCell: function (node, cellData, rowData) {
                 $(node).html(Blaze.toHTMLWithData(Template.showIcon, {icon: cellData}),
                     {
@@ -47,7 +57,7 @@ TabularTables.Notifications = new Tabular.Table({
             title: "Data",
             render: function (val, type, doc) {
                 if (val instanceof Date) {
-                    return moment(val).calendar();
+                    return  moment(val).format('D/M/YYYY HH:MM')
                 } else {
                     return "Never";
                 }
@@ -60,21 +70,21 @@ TabularTables.Notifications = new Tabular.Table({
                 $(node).html(Blaze.toHTMLWithData(Template.UsersMailBtn, { email: cellData}),
                     {
                         //width: '40px',
-                        orderable: false
+                        orderable: true
                     })
             }
         },
-        {
-            data: 'to',
-            title: 'Para',
-            createdCell: function (node, cellData, rowData) {
-                $(node).html(Blaze.toHTMLWithData(Template.UsersMailBtn, { email: cellData}),
-                    {
-                        //width: '40px',
-                        orderable: false
-                    })
-            }
-        },
+        //{
+        //    data: 'to',
+        //    title: 'Para',
+        //    createdCell: function (node, cellData, rowData) {
+        //        $(node).html(Blaze.toHTMLWithData(Template.UsersMailBtn, { email: cellData}),
+        //            {
+        //                //width: '40px',
+        //                orderable: false
+        //            })
+        //    }
+        //},
         //{data: "from_email", title: "De:"},
         {data: "title", title: "Titulo"},
         //{data: "message", title: "Mensagem"},
@@ -83,35 +93,35 @@ TabularTables.Notifications = new Tabular.Table({
         //    title: "Editar",
         //    tmpl: Meteor.isClient && Template.EditNotification
         //},
-        {
-            data: '_id',
-            title: 'Reply',
-            createdCell: function (node, cellData, rowData) {
-                $(node).html(Blaze.toHTMLWithData(Template.replyNotification, {_id: cellData}),
-                    {
-                        width: '40px',
-                        orderable: false
-                    })
-            }
-        },
-        {
-            data: '_id',
-            title: 'Delete',
-            createdCell: function (node, cellData, rowData) {
-                $(node).html(Blaze.toHTMLWithData(Template.deleteNotification, {_id: cellData}),
-                    {
-                        width: '40px',
-                        orderable: false
-                    })
-            }
-        }
+        //{
+        //    data: '_id',
+        //    title: 'Reply',
+        //    createdCell: function (node, cellData, rowData) {
+        //        $(node).html(Blaze.toHTMLWithData(Template.replyNotification, {_id: cellData}),
+        //            {
+        //                width: '40px',
+        //                orderable: false
+        //            })
+        //    }
+        //},
+        //{
+        //    data: '_id',
+        //    title: 'Delete',
+        //    createdCell: function (node, cellData, rowData) {
+        //        $(node).html(Blaze.toHTMLWithData(Template.deleteNotification, {_id: cellData}),
+        //            {
+        //                //width: '40px',
+        //                orderable: false
+        //            })
+        //    }
+        //}
     ],
-    extraFields: ['date', '_id'],
-    order: [[ 0, 'desc' ]],
+    extraFields: ['date', '_id', 'owner'],
+    order: [[ 1, 'desc' ]],
     columnDefs: [
-        { className: "col_center", targets: [ 0,1,4, 5 ] },
+        { className: "col_center", targets: [ 0,1 ] },
         { className: "col_left", targets: [ 3 ] },
         //{ className: "label label-default", targets: [ 2 ] }
     ],
-    stateSave: true
+    //stateSave: true
 });

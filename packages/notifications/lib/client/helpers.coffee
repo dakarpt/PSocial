@@ -7,11 +7,11 @@ Template.registerHelper 'Notifications', (options) ->
       limit = 0
       order = {date: -1}
 
-    Notifications.find({to: Meteor.user().emails[0].address, read: false}, {limit: limit, sort: order}).fetch()
+    Notifications.find({to: Meteor.user()._id, read: false}, {limit: limit, sort: order}).fetch()
 
 Template.registerHelper 'notificationCount', ->
   if typeof window['Notifications'] != 'undefined'
-    Notifications.find({to: Meteor.user().emails[0].address, read: false}).count()
+    Notifications.find({to: Meteor.user()._id, read: false}).count()
 
 Template.registerHelper 'hasNotifications', ->
-  Notifications.find({to: Meteor.user().emails[0].address, read: false}).count() > 0
+  Notifications.find({to: Meteor.user()._id, read: false}).count() > 0

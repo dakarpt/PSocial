@@ -10,20 +10,46 @@
             <!--</div>-->
             <!--</div>-->
             <div class="col-md-8">
-                {{> tabular table=TabularTables.Notifications class="table dataTable no-footer"}}
+                <!--{{> tabular table=TabularTables.Notifications class="table table-condensed"}}-->
                 <!--<div class="template-favorites-sidebar">-->
-                <!--<div class="panel panel-default">-->
-                <!--<div class="panel-heading">-->
-                <!--<h3 class="panel-title">{{_ "Add_Notification"}}</h3>-->
-                <!--</div>-->
-                <!--<div class="panel-body">-->
-                <!--{{> quickForm collection="Notifications" id="insertNotificationForm" type="insert" omitFields="link,date,owner,read,class"}}-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Notificações</h3>
+                    </div>
+                    <div class="panel-body">
+                        {{> tabular table=TabularTables.Notifications class="table table-condensed dataTable form-inline dt-bootstrap no-footer"}}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <!--{{> slideMenu}}-->
+    <!--<div class="container">-->
+        <!--&lt;!&ndash;<div class="row" id="champion-messages">&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="col-md-4">&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="col-md-4">&ndash;&gt;-->
+                <!--&lt;!&ndash;{{#if User}}&ndash;&gt;-->
+            <!--&lt;!&ndash;{{> favoritesSidebar}}&ndash;&gt;-->
+                <!--&lt;!&ndash;{{/if}}&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="col-md-8">&ndash;&gt;-->
+            <!--<section class="container">-->
+                <!--{{> tabular table=TabularTables.Notifications class="table dataTable dataTables_wrapper form-inline dt-bootstrap no-footer"}}-->
+                <!--&lt;!&ndash;<div class="template-favorites-sidebar">&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="panel panel-default">&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="panel-heading">&ndash;&gt;-->
+                <!--&lt;!&ndash;<h3 class="panel-title">{{_ "Add_Notification"}}</h3>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="panel-body">&ndash;&gt;-->
+                <!--&lt;!&ndash;{{> quickForm collection="Notifications" id="insertNotificationForm" type="insert" omitFields="link,date,owner,read,class"}}&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--</section>-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--</div>-->
 </template>
 
 <template name="showIcon">

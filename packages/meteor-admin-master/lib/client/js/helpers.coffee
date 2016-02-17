@@ -111,3 +111,13 @@ UI.registerHelper 'adminUserEmail', (user) ->
     user.services.facebook.email
   else if user && user.services && user.services.google && user.services.google.email
     user.services.google.email
+
+UI.registerHelper 'UserEmail', (userID) ->
+  console.log("helper useremail", userID);
+  user = Meteor.users.findOne(userID);
+  if user && user.emails && user.emails[0] && user.emails[0].address
+    user.emails[0].address
+  else if user && user.services && user.services.facebook && user.services.facebook.email
+    user.services.facebook.email
+  else if user && user.services && user.services.google && user.services.google.email
+    user.services.google.email

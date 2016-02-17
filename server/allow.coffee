@@ -49,13 +49,13 @@ Meteor.users.allow
     else
       false
 
-Notifications.allow
-  insert: (userId, doc) ->
-    userId == doc.owner
-  update: (userId, doc, fields, modifier) ->
-    true
-  remove: (userId, doc) ->
-    true
+#Notifications.allow
+#  insert: (userId, doc) ->
+#    userId == doc.owner
+#  update: (userId, doc, fields, modifier) ->
+#    true
+#  remove: (userId, doc) ->
+#    true
 #    userId == doc.owner || userId == doc.to || isAdmin(userId)
 
 #LogMessages.allow

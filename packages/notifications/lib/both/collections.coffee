@@ -84,6 +84,6 @@ NotificationsSchema = new SimpleSchema
       options: ->
         _.map Meteor.users.find().fetch(), (user)->
           label: user.emails[0].address
-          value: user.emails[0].address
+          value: user._id
 
 Notifications.attachSchema(NotificationsSchema)

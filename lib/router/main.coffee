@@ -92,8 +92,9 @@ Router.map ->
     path: "/MyNotifications"
     waitOn: ->
       [
-        Meteor.subscribe 'Notifications'
+#        Meteor.subscribe 'Notifications'
         Meteor.subscribe 'userData'
+        Meteor.subscribe 'Notifications'
       ]
 #    fastRender: true
   @route "createNotification",
@@ -113,7 +114,7 @@ Router.map ->
       ]
     data: ->
       Notifications.findOne({_id: this.params._id});
-    fastRender: true
+#    fastRender: true
   @route "editNotification",
     path: "/editNotification/:_id"
     waitOn: ->
