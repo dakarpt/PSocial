@@ -53,7 +53,29 @@ TabularTables.Notifications = new Tabular.Table({
                 }
             }
         },
-        {data: "from", title: "De:"},
+        {
+            data: 'from_email',
+            title: 'De:',
+            createdCell: function (node, cellData, rowData) {
+                $(node).html(Blaze.toHTMLWithData(Template.UsersMailBtn, { email: cellData}),
+                    {
+                        //width: '40px',
+                        orderable: false
+                    })
+            }
+        },
+        {
+            data: 'to',
+            title: 'Para',
+            createdCell: function (node, cellData, rowData) {
+                $(node).html(Blaze.toHTMLWithData(Template.UsersMailBtn, { email: cellData}),
+                    {
+                        //width: '40px',
+                        orderable: false
+                    })
+            }
+        },
+        //{data: "from_email", title: "De:"},
         {data: "title", title: "Titulo"},
         //{data: "message", title: "Mensagem"},
         //{data: "read", title: "Leitura"},
@@ -63,9 +85,9 @@ TabularTables.Notifications = new Tabular.Table({
         //},
         {
             data: '_id',
-            title: 'Editar',
+            title: 'Reply',
             createdCell: function (node, cellData, rowData) {
-                $(node).html(Blaze.toHTMLWithData(Template.EditNotification, {_id: cellData}),
+                $(node).html(Blaze.toHTMLWithData(Template.replyNotification, {_id: cellData}),
                     {
                         width: '40px',
                         orderable: false
@@ -87,8 +109,9 @@ TabularTables.Notifications = new Tabular.Table({
     extraFields: ['date', '_id'],
     order: [[ 0, 'desc' ]],
     columnDefs: [
-        { className: "col_center", targets: [ 0,1,3,4, 5 ] },
-        { className: "col_left", targets: [ 3 ] }
+        { className: "col_center", targets: [ 0,1,4, 5 ] },
+        { className: "col_left", targets: [ 3 ] },
+        //{ className: "label label-default", targets: [ 2 ] }
     ],
     stateSave: true
 });

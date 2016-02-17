@@ -15,8 +15,7 @@
                             <h3 class="panel-title">Detalhes da Notification</h3>
                         </div>
                         <div class="panel-body">
-                            {{ nome }}
-                            {{> quickForm id="showNotificationForm" type="readonly" collection="Notifications" doc=selectedDoc omitFields="link,date,owner,read,class"}}
+                            {{> quickForm id="showNotificationForm" type="readonly" collection="Notifications" doc=this omitFields="link,date,owner,read,class"}}
                         </div>
                     </div>
                 </div>

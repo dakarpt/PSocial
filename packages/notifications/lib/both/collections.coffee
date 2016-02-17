@@ -1,34 +1,35 @@
-@Notifications = new Meteor.Collection 'Notifications'
+@Notifications = new Meteor.Collection 'notifications'
 
-#Notifications.new = (doc) ->
-#  if typeof doc.owner == 'undefined'
-#    doc.owner = Meteor.userId()
-#
-#  Notifications.insert(doc)
-#
-#Notifications.readAll = ->
-#  Meteor.call 'readAllNotifications'
-#
-#Notifications.read = (_id) ->
-#  Notifications.update _id, {$set: {read: true}}
+Notifications.new = (doc) ->
+  if typeof doc.owner == 'undefined'
+    doc.owner = Meteor.userId()
+
+  Notifications.insert(doc)
+
+Notifications.readAll = ->
+  Meteor.call 'readAllNotifications'
+
+Notifications.read = (_id) ->
+  Notifications.update _id, {$set: {read: true}}
 
 NotificationsSchema = new SimpleSchema
   owner:
     type: String
     regEx: SimpleSchema.RegEx.Id
+    optional: false
     autoValue: ->
       if this.isInsert
         Meteor.userId()
+    autoform:
+      type: 'hidden'
 
-  from:
+  from_email:
     type: String
     optional: false
     regEx: SimpleSchema.RegEx.Email
     autoValue: ->
-      if this.isInsert
+      if this.isInsert || this.isUpdate
         Meteor.users.findOne(Meteor.userId()).emails[0].address
-#    autoform:
-#      type: 'hidden'
 
   title:
     type: String
@@ -37,7 +38,7 @@ NotificationsSchema = new SimpleSchema
 
   message:
     type: String
-    optional: true
+    optional: false
 
   link:
     type: String
@@ -83,6 +84,6 @@ NotificationsSchema = new SimpleSchema
       options: ->
         _.map Meteor.users.find().fetch(), (user)->
           label: user.emails[0].address
-          value: user._id
+          value: user.emails[0].address
 
 Notifications.attachSchema(NotificationsSchema)

@@ -10,7 +10,7 @@
             <!--</div>-->
             <!--</div>-->
             <div class="col-md-8">
-                {{> tabular table=TabularTables.Notifications class="table table-condensed"}}
+                {{> tabular table=TabularTables.Notifications class="table dataTable no-footer"}}
                 <!--<div class="template-favorites-sidebar">-->
                 <!--<div class="panel panel-default">-->
                 <!--<div class="panel-heading">-->
@@ -27,12 +27,12 @@
 </template>
 
 <template name="showIcon">
-    <a id="icon" href="#" class="btn btn-default btn-xs"><i class="fa fa-{{icon}}"></i></a>
+    <a id="icon" href="#" class="btn btn-default btn-xs btn-info"><i class="fa fa-{{icon}}"></i></a>
 </template>
 
-<template name="EditNotification">
-    <a id="edit" href="/editNotification/{{_id}}" class="hidden-xs btn btn-xs btn-primary"><i doc="{{_id}}" class="fa fa-pencil"></i></a>
-    <a id="edit" href="/editNotification/{{_id}}" class="visible-xs btn btn-sm btn-primary"><i doc="{{_id}}" class="fa fa-pencil"></i> Edit</a>
+<template name="replyNotification">
+    <a id="reply" href="#" class="hidden-xs btn btn-xs btn-primary"><i id="reply" class="fa fa-pencil"></i></a>
+    <a id="reply" href="#" class="visible-xs btn btn-sm btn-primary"><i id="reply" class="fa fa-pencil"></i></a>
 </template>
 
 <!--<template name="EditNotification">-->
@@ -45,9 +45,13 @@
 <!--</template>-->
 <template name="deleteNotification">
     <a id="delete" data-toggle="modal" doc="{{_id}}" href='#delete-modal'
-       class="hidden-xs btn btn-xs btn-danger btn-delete"><i class="fa fa-times" doc="{{_id}}"></i></a>
+       class="hidden-xs btn btn-xs btn-danger btn-delete"><i id="delete" class="fa fa-times" doc="{{_id}}"></i></a>
     <a id="delete" data-toggle="modal" doc="{{_id}}" href='#delete-modal' class="visible-xs btn btn-sm btn-danger btn-delete"><i
-            class="fa fa-times" doc="{{_id}}"></i> Delete</a>
+            class="fa fa-times" doc="{{_id}}" id="delete"></i></a>
+</template>
+
+<template name="UsersMailBtn">
+    <a href="#" class="label label-default">{{email}}</a>
 </template>
 
 <template name="DeleteModal">

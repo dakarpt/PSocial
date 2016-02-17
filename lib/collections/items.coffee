@@ -83,6 +83,7 @@ Schemas.subtarefas = new SimpleSchema
   duracao:
     type: Number
     optional: false
+    label: "Quantidade"
 
   estado:
     type: String

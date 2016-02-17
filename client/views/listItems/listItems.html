@@ -64,7 +64,7 @@
                         <B>Descrição da Tarefa:</B>
                         <p class="word-wrap break-word">{{descricao}}</p>
                         <B>Tipo:</B> {{tipo}} <BR>
-                        <B>Duração:</B> {{duracao}} <BR>
+                        <B>Quantidade:</B> {{duracao}} <BR>
                         <B>Estado:</B> {{estado}} <BR>
                         <BR>
                         <div class="table-responsive">
@@ -130,7 +130,7 @@
                     <a href="{{pathFor 'createItem'}}">Criar Item <i class="fa fa-angle-right"></i></a>
                 </li>
                 <li>
-                    <a href="{{pathFor 'createNotification'}}">Criar notificação</a>
+                    <a href="{{pathFor 'createNotification'}}">Criar notificação <i class="fa fa-angle-right"></i></a>
                 </li>
                 <li>
                     <a href="{{pathFor 'MyNotifications'}}">Notificações
@@ -139,6 +139,7 @@
                         {{else}}
                             <i class=".lang fa fa-{{dropdownIconEmpty}}"></i>
                         {{/if}}
+                        <i class="fa fa-angle-right"></i>
                     </a>
                 </li>
                 <li>
