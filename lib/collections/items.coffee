@@ -112,7 +112,7 @@ Schemas.subtarefas = new SimpleSchema
         res = []
         f = 1
         while f <= @siblingField("duracao").value
-          res.push @siblingField("tipo").value+"-empty.png"
+          res.push "/" + @siblingField("tipo").value+"-empty.png"
           f++
         res
       else if @isUpdate && (@isSet == false)
@@ -121,7 +121,7 @@ Schemas.subtarefas = new SimpleSchema
         res = []
         f = 1
         while f <= @siblingField("duracao").value
-          res.push @siblingField("tipo").value+"-empty.png"
+          res.push "/" + @siblingField("tipo").value+"-empty.png"
           f++
 #        $set: res
         res

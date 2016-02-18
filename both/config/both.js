@@ -68,6 +68,7 @@ TabularTables.Notifications = new Tabular.Table({
         {
             data: 'from_email',
             title: 'De:',
+            width: "10%",
             createdCell: function (node, cellData, rowData) {
                 $(node).html(Blaze.toHTMLWithData(Template.UsersMailBtn, {email: cellData, _id: rowData._id}),
                     {
@@ -125,5 +126,9 @@ TabularTables.Notifications = new Tabular.Table({
         {className: "col_left", targets: [3]},
         //{ className: "label label-default", targets: [ 2 ] }
     ],
+    //aoColumnDefs: [
+    //    { "bSortable": false, "sClass": "indexLeft", "aTargets": [ 0 ] },
+    //    { "bSortable": false, "sClass": "indexRight", "aTargets": [ -1 ] }
+    //],
     //stateSave: true
 });

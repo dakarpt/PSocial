@@ -15,3 +15,15 @@ Template.registerHelper 'notificationCount', ->
 
 Template.registerHelper 'hasNotifications', ->
   Notifications.find({to: Meteor.user()._id, read: false}).count() > 0
+
+Template.registerHelper 'tarefasCount', (itemID) ->
+  console.log "Tarefas count com id:", itemID
+#  if typeof window['items'] != 'undefined'
+  item = items.findOne(itemID)
+  console.log "# de tarefas ", item.subtarefas.length
+  item.subtarefas.length
+
+Template.registerHelper 'hasTarefas', ->
+  if typeof window['items'] != 'undefined'
+    item = items.findOne(itemID)
+    item.subtarefas.length > 0

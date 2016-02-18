@@ -1,0 +1,49 @@
+<template name="menuItems">
+    <div class="slideout-menu">
+        <h3>Menu <a href="#" class="slideout-menu-toggle">×</a></h3>
+        <ul>
+            {{#if currentUser}}
+                <li>
+                    <a href="{{pathFor 'listItems'}}">Listar Projetos <i class="fa fa-angle-right"></i></a>
+                </li>
+                <li>
+                    <a href="{{pathFor 'createItem'}}">Criar Projeto <i class="fa fa-angle-right"></i></a>
+                </li>
+                <li>
+                    <a href="{{pathFor 'createNotification'}}">Criar notificação <i class="fa fa-angle-right"></i></a>
+                </li>
+                <li>
+                    <a href="{{pathFor 'MyNotifications'}}">Notificações
+                        {{#if notificationCount}}
+                            <span class=".lang badge bg-success">{{notificationCount}}</span>
+                        {{else}}
+                            <i class=".lang fa fa-{{dropdownIconEmpty}}"></i>
+                        {{/if}}
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{pathFor 'profile'}}">Perfil <i class="fa fa-angle-right"></i></a>
+                </li>
+                <li>
+                    <a href="{{pathFor 'account'}}">Minha conta <i class="fa fa-angle-right"></i></a>
+                </li>
+                <li>
+                    <a href="/sign-out">Log Off <i class="fa fa-angle-right"></i></a>
+                </li>
+            {{else}}
+                <li>
+                    <a href="{{pathFor 'listItems'}}">Entrar<i class="fa fa-angle-right"></i></a>
+                </li>
+            {{/if}}
+            {{#if isInRole 'admin'}}
+                <li>
+                    <a href="/admin">Administração</a>
+                </li>
+            {{/if}}
+            <!--<li><a href="#">Home <i class="fa fa-angle-right"></i></a></li>-->
+            <!--<li><a href="#">Tour Information <i class="fa fa-angle-right"></i></a></li>-->
+        </ul>
+    </div>
+    <!--/.slideout-menu-->
+</template>
