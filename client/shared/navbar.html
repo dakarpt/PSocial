@@ -14,8 +14,8 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         {{#if User}}
-                            {{> languageSelection}}
-                            {{> notificationsDropdown}}
+                            <!--{{> languageSelection}}-->
+                            <!--{{> notificationsDropdown}}-->
                             {{#if isInRole 'admin'}}
                                 <li class=".lang"><a class=".lang" href="{{pathFor 'adminDashboard'}}">{{_ "admin"}}</a>
                                 </li>

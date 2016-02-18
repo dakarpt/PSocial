@@ -53,13 +53,13 @@ Template.registerHelper("iconOptions", function () {
 //        console.log("Click tabular show", this._id);
 //    }
 //});
-Template.replyNotification.events({
-    'click .reply': function () {
-        console.log("Click tabular edit", this._id);
-    }
-});
-Template.deleteNotification.events({
-    'click .btn-delete': function () {
-        console.log("Click tabular delete", this._id);
-    }
-});
+//Template.replyNotification.events({
+//    'click .reply': function () {
+//        console.log("Click tabular edit", this._id);
+//    }
+//});
+//Template.deleteNotification.events({
+//    'click .btn-delete': function () {
+//        console.log("Click tabular delete", this._id);
+//    }
+//});

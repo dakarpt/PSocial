@@ -34,18 +34,22 @@ Presence.state = function () {
     };
 };
 
-GetSlots = function (itemId, subtarefaId) {
-    if (!isAdmin(Meteor.userId())) {
-        throw new Meteor.Error("not-authorized");
-    }
+GetSlots = function (itemId, subtarefaId, TIPO) {
+    //if (!isAdmin(Meteor.userId())) {
+    //    throw new Meteor.Error("not-authorized");
+    //}
     check(itemId, String);
     check(subtarefaId, String);
+    check(TIPO, Boolean);
     cw("ClientSide: GetSlots: Running...");
     var subtarefas = items.findOne({_id: itemId, subtarefas: {$elemMatch: {ids: subtarefaId}}})['subtarefas'];
     for (var f = 0; f < subtarefas.length; f++) {
         if (subtarefas[f].ids == subtarefaId) {
             //console.log("Found slots", subtarefas[f].slots);
-            return subtarefas[f].slots;
+            if (!TIPO)
+                return subtarefas[f].slots;
+            else
+                return subtarefas[f].tipo;
         }
     }
     console.log("No slots found!");

@@ -31,8 +31,10 @@ TabularTables.Notifications = new Tabular.Table({
     autoWidth: false,
     paging: false,
     limit: 10,
+    bInfo: false,
+    //deferRender: true,
     searching: false,
-    createdRow: function( row, data, dataIndex ) {
+    createdRow: function (row, data, dataIndex) {
         //$('td', row).addClass(data.newstatus);
         console.log("row:", data);
         if (data.owner == Meteor.userId()) {
@@ -45,7 +47,7 @@ TabularTables.Notifications = new Tabular.Table({
             data: 'icon',
             //title: 'Icon',
             createdCell: function (node, cellData, rowData) {
-                $(node).html(Blaze.toHTMLWithData(Template.showIcon, {icon: cellData}),
+                $(node).html(Blaze.toHTMLWithData(Template.showIcon, {icon: cellData, _id: rowData._id}),
                     {
                         width: '40px',
                         orderable: false
@@ -57,7 +59,7 @@ TabularTables.Notifications = new Tabular.Table({
             title: "Data",
             render: function (val, type, doc) {
                 if (val instanceof Date) {
-                    return  moment(val).format('D/M/YYYY HH:MM')
+                    return moment(val).format('D/M/YYYY HH:MM')
                 } else {
                     return "Never";
                 }
@@ -67,7 +69,7 @@ TabularTables.Notifications = new Tabular.Table({
             data: 'from_email',
             title: 'De:',
             createdCell: function (node, cellData, rowData) {
-                $(node).html(Blaze.toHTMLWithData(Template.UsersMailBtn, { email: cellData}),
+                $(node).html(Blaze.toHTMLWithData(Template.UsersMailBtn, {email: cellData, _id: rowData._id}),
                     {
                         //width: '40px',
                         orderable: true
@@ -117,10 +119,10 @@ TabularTables.Notifications = new Tabular.Table({
         //}
     ],
     extraFields: ['date', '_id', 'owner'],
-    order: [[ 1, 'desc' ]],
+    order: [[1, 'desc']],
     columnDefs: [
-        { className: "col_center", targets: [ 0,1 ] },
-        { className: "col_left", targets: [ 3 ] },
+        {className: "col_center", targets: [0, 1]},
+        {className: "col_left", targets: [3]},
         //{ className: "label label-default", targets: [ 2 ] }
     ],
     //stateSave: true

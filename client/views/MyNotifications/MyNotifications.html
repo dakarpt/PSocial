@@ -53,7 +53,7 @@
 </template>
 
 <template name="showIcon">
-    <a id="icon" href="#" class="btn btn-default btn-xs btn-info"><i class="fa fa-{{icon}}"></i></a>
+    <a id="icon" href="/showNotification/{{_id}}" class="btn btn-default btn-xs btn-info"><i class="fa fa-{{icon}}"></i></a>
 </template>
 
 <template name="replyNotification">
@@ -77,7 +77,7 @@
 </template>
 
 <template name="UsersMailBtn">
-    <a href="#" class="label label-default">{{email}}</a>
+    <a href="/showNotification/{{_id}}" class="label label-default">{{email}}</a>
 </template>
 
 <template name="DeleteModal">

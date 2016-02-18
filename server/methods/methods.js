@@ -1,12 +1,24 @@
 /**
  * Created by aramos on 01-12-2015.
  */
+//if (Meteor.isServer)
+//    Accounts.onCreateUser(function (options, user) {
+//        var d6 = function () {
+//            return Math.floor(Random.fraction() * 6) + 1;
+//        };
+//        user.dexterity = d6() + d6() + d6();
+//        // We still want the default hook's 'profile' behavior.
+//        if (options.profile)
+//            user.profile = options.profile;
+//        //else user.profile = { }
+//        return user;
+//    });
 
 //Roles.addUsersToRoles('hJZzwmr8kv9CeWymK', 'admin');
 if (Meteor.isServer) Meteor.methods({
     'UpdateSlots': function (itemId, subtarefaId, slots) {
-        if (!isAdmin(Meteor.userId())) {
-            throw new Meteor.Error("not-authorized");
+        if (!isUser(Meteor.userId())) {
+            throw new Meteor.Error("not logged in");
         }
         check(itemId, String);
         check(subtarefaId, String);
@@ -17,21 +29,21 @@ if (Meteor.isServer) Meteor.methods({
             subtarefas: {$elemMatch: {ids: subtarefaId}}
         }, {$set: {"subtarefas.$.slots": slots}})
     },
-    'GetSlots': function (itemId, subtarefaId) {
-        if (!isAdmin(Meteor.userId())) {
-            throw new Meteor.Error("not-authorized");
-        }
-        check(itemId, String);
-        check(subtarefaId, String);
-        cw("ServerSide: GetSlots: Running...");
-        var subtarefas = items.findOne({_id: itemId, subtarefas: {$elemMatch: {ids: subtarefaId}}})['subtarefas'];
-        for (var f = 0; f < subtarefas.length; f++) {
-            if (subtarefas[f].ids == subtarefaId) {
-                console.log("slots", subtarefas[f].slots);
-                return subtarefas[f].slots;
-            }
-        }
-    }
+    //'GetSlots': function (itemId, subtarefaId) {
+    //    if (!isUser(Meteor.userId())) {
+    //        throw new Meteor.Error("not logged in");
+    //    }
+    //    check(itemId, String);
+    //    check(subtarefaId, String);
+    //    cw("ServerSide: GetSlots: Running...");
+    //    var subtarefas = items.findOne({_id: itemId, subtarefas: {$elemMatch: {ids: subtarefaId}}})['subtarefas'];
+    //    for (var f = 0; f < subtarefas.length; f++) {
+    //        if (subtarefas[f].ids == subtarefaId) {
+    //            console.log("slots", subtarefas[f].slots);
+    //            return subtarefas[f].slots;
+    //        }
+    //    }
+    //}
 });
 //    Processos.after.update(function (userId, doc, fieldNames, modifier, options) {
 //        cw("ServerSide: Changed Processo: " + this.previous._id);
