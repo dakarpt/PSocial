@@ -38,7 +38,7 @@ Router.map ->
       ]
     data: ->
       itemList: items.find({_id: this.params._id}).fetch();
-#    fastRender: true
+    fastRender: true
   @route "MyNotifications",
     path: "/MyNotifications"
     waitOn: ->
@@ -64,4 +64,4 @@ Router.map ->
       ]
     data: ->
       Notifications.findOne({_id: this.params._id});
-#    fastRender: true
+    fastRender: true
