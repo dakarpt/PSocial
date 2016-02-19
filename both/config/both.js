@@ -37,7 +37,7 @@ TabularTables.Notifications = new Tabular.Table({
     createdRow: function (row, data, dataIndex) {
         //$('td', row).addClass(data.newstatus);
         console.log("row:", data);
-        if (data.owner == Meteor.userId()) {
+        if (data.to != Meteor.userId()) {
             console.log("Bad self not");
             $('td', row).remove();
         }
@@ -45,11 +45,11 @@ TabularTables.Notifications = new Tabular.Table({
     columns: [
         {
             data: 'icon',
-            //title: 'Icon',
+            title: 'Lida',
             createdCell: function (node, cellData, rowData) {
                 $(node).html(Blaze.toHTMLWithData(Template.showIcon, {icon: cellData, _id: rowData._id}),
                     {
-                        width: '40px',
+                        //width: '40px',
                         orderable: false
                     })
             }
@@ -70,9 +70,9 @@ TabularTables.Notifications = new Tabular.Table({
             title: 'De:',
             width: "10%",
             createdCell: function (node, cellData, rowData) {
-                $(node).html(Blaze.toHTMLWithData(Template.UsersMailBtn, {email: cellData, _id: rowData._id}),
+                $(node).html(Blaze.toHTMLWithData(Template.profileThumb, { _id: rowData.owner}),
                     {
-                        //width: '40px',
+                        //width: '40',
                         orderable: true
                     })
             }
@@ -119,12 +119,12 @@ TabularTables.Notifications = new Tabular.Table({
         //    }
         //}
     ],
-    extraFields: ['date', '_id', 'owner'],
+    extraFields: ['date', '_id', 'owner', 'to'],
     order: [[1, 'desc']],
     columnDefs: [
-        {className: "col_center", targets: [0, 1]},
+        {className: "col_center", targets: [0, 1, 2]},
         {className: "col_left", targets: [3]},
-        //{ className: "label label-default", targets: [ 2 ] }
+        { className: "dt[-head|-body]-center", targets: [ 0,1,2,3 ] }
     ],
     //aoColumnDefs: [
     //    { "bSortable": false, "sClass": "indexLeft", "aTargets": [ 0 ] },

@@ -68,11 +68,11 @@ Meteor.users.allow
 
 items.allow
   insert: (userId, doc) ->
-    isAdmin(userId)
+    isUser(userId) && doc.owner
   update: (userId, doc, fieldNames, modifier) ->
-    isUser(userId)
-  remove: (userId)->
-    isAdmin(userId)
+    isUser(userId) && doc.owner == userId
+  remove: (userId, doc)->
+    isUser(userId) && doc.owner == userId
 
 #tarefas.allow
 #	insert: (userId, doc) ->
@@ -89,3 +89,13 @@ items.allow
 #		true
 #  remove: (userId)->
 #		true
+
+Notifications.allow
+  insert: (userId, doc) ->
+    doc.owner == userId
+  update: (userId, doc, fieldNames, modifier) ->
+    true
+#    doc.owner == userId && fieldNames.length == 1 && fieldNames[0] == 'read'
+  remove: (userId, doc) ->
+    true
+#    doc.owner == userId

@@ -16,7 +16,7 @@
         {{#each  itemList}}
             <div class="panel panel-default panel-info">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Nome do Projecto: {{nome}}
+                    <h3 class="panel-title" align="center">Projeto: {{nome}}
                         <span class="pull-right">
 							<i class="fa fa-thumbs-up"></i> {{#with favoritesByDoc _id}}{{count}}{{/with}}
                             <!--<i class="fa fa-comments"></i> {{commentCount _id}}-->
@@ -34,16 +34,17 @@
 <template name="showSmallItem">
     <div class="panel-body">
         <div class="detalhes">
-            <B>Nome do Projecto:</B> {{nome}} <BR>
-            <B>Descrição do Projecto:</B> {{descricao}} <BR>
+            <!--<B>Nome do Projecto:</B> {{nome}} <BR>-->
+            <p align="center"><h4><B><i>Descrição do Projeto</i></B></h4></p>
+            <p align="justify">{{descricao}}</P> <BR>
             <!--<B>owner do item:</B> {{owner}} <BR>-->
             <!--<B>Duração do item:</B> {{duracao}} <BR>-->
             <!--<B>createdAt do item:</B> {{createdAt}} <BR>-->
             <!--<B>timestamp do item:</B> {{timestamp}} <BR>-->
-            <B>Estado do Projecto:</B> {{estado}} <BR>
-            <B>dataInicio do Projecto:</B> {{datainicio}} <BR>
+            <!--<B>Estado do Projecto:</B> {{estado}} <BR>-->
+            <!--<B>dataInicio do Projecto:</B> {{datainicio}} <BR>-->
 
-            <B>Picture do Projecto:</B> <BR>
+            <!--<B>Picture do Projecto:</B> <BR>-->
             <p class="text-center">
                 {{#with getDoc picture 'Attachments'}}
                     <img src="{{url}}" class="img-thumbnail img-rounded">
@@ -51,60 +52,66 @@
             </p>
             <!--<ul>-->
                 <!--{{#each subtarefas}}-->
-                    <!--<li>-->
-                        <!--<B>Nome da Tarefa:</B> {{nome}} <BR>-->
-                        <!--<B>Descrição da Tarefa:</B>-->
-                        <!--<p class="word-wrap break-word">{{descricao}}</p>-->
-                        <!--<B>Tipo:</B> {{tipo}} <BR>-->
-                        <!--<B>Quantidade:</B> {{duracao}} <BR>-->
-                        <!--<B>Estado:</B> {{estado}} <BR>-->
-                        <!--<BR>-->
-                        <!--<div class="table-responsive">-->
-                            <!--<table>-->
-                                <!--<tr>-->
-                                    <!--{{#each slots}}-->
-                                        <!--<td>-->
-                                            <!--<div ids="{{../../_id}}" class="profile-thumb">-->
-                                                <!--<div ids="{{../ids}}" class="profile-thumb-img">-->
-                                                    <!--<img ids="{{@index}}" src="{{.}}" class="img-thumbnail">-->
-                                                <!--</div>-->
-                                            <!--</div>-->
-                                        <!--</td>-->
-                                    <!--{{/each}}-->
-                                <!--</tr>-->
-                            <!--</table>-->
-                        <!--</div>-->
-                    <!--</li>-->
-                    <!--<BR>-->
+            <!--<li>-->
+            <!--<B>Nome da Tarefa:</B> {{nome}} <BR>-->
+            <!--<B>Descrição da Tarefa:</B>-->
+            <!--<p class="word-wrap break-word">{{descricao}}</p>-->
+            <!--<B>Tipo:</B> {{tipo}} <BR>-->
+            <!--<B>Quantidade:</B> {{duracao}} <BR>-->
+            <!--<B>Estado:</B> {{estado}} <BR>-->
+            <!--<BR>-->
+            <!--<div class="table-responsive">-->
+            <!--<table>-->
+            <!--<tr>-->
+                <!--{{#each slots}}-->
+                <!--<td>-->
+                <!--<div ids="{{../../_id}}" class="profile-thumb">-->
+                <!--<div ids="{{../ids}}" class="profile-thumb-img">-->
+                <!--<img ids="{{@index}}" src="{{.}}" class="img-thumbnail">-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</td>-->
+                    <!--{{/each}}-->
+            <!--</tr>-->
+            <!--</table>-->
+            <!--</div>-->
+            <!--</li>-->
+            <!--<BR>-->
                 <!--{{/each}}-->
             <!--</ul>-->
             <div class="media">
-                <div class="pull-left media-left media-middle" align="left">
-                <a class="btn" href="#">
-                    <!--{{> avatar userId=owner shape="circle"}}-->
-                    {{> profileThumb _id=owner }}
-                </a>
-                </div>
-                <div class="pull-right media-right media-middle" align="right">
-                <!--<div class="media-body">-->
-                    <a class="btn btn-info" href="#">Tarefas
-                        <!--{{#if tarefasCount _id}}-->
-                            <span class=".lang badge bg-success">{{tarefasCount _id}}</span>
-                        <!--{{else}}-->
-                            <!--<i class=".lang fa fa-bell-o"></i>-->
-                        <!--{{/if}}-->
+                <!--<div class="pull-left media-left media-middle" align="left">-->
+                    <a class="media-left" href="#">
+                        <!--{{> avatar userId=owner shape="circle"}}-->
+                        {{> profileThumb _id=owner }}
                     </a>
-</div>
+                <div class="media-body">
+                    {{niceName owner}}<br>
+                    <a class="btn label label-default" href="#">
+                        <!--{{> avatar userId=owner shape="circle"}}-->
+                        {{UserEmail owner}}
+                    </a>
+                </div>
+                <!--<div class="pull-right media-right media-middle" align="right">-->
+                <!--&lt;!&ndash;<div class="media-body">&ndash;&gt;-->
+                <!--<a class="btn btn-info" href="#">Tarefas-->
+                <!--{{#if tarefasCount _id}}-->
+                    <!--<span class=".lang badge bg-success">{{tarefasCount _id}}</span>-->
+                <!--{{else}}-->
+                    <!--&lt;!&ndash;<i class=".lang fa fa-bell-o"></i>&ndash;&gt;-->
+                <!--{{/if}}-->
+                <!--</a>-->
+                <!--</div>-->
 
                     <!--{{#if $eq owner User._id}}-->
-                        <!--<small>-->
-                            <!--{{#afModal buttonContent="Actualizar Projecto" title="Editar Projecto" omitFields="" class="text-primary" collection="items" operation="update" doc=_id}}-->
-                                <!--<i class="fa fa-pencil" buttonContent="Editar Projecto"></i> Editar Projecto-->
-                            <!--{{/afModal}}-->
-                            <!--{{#afModal buttonContent="Apagar Projecto" prompt="Tem a certeza?" title="Apagar Projecto" class="text-danger" collection="items" operation="remove" doc=_id}}-->
-                                <!--<i class="fa fa-times"></i> Apagar Projecto-->
-                            <!--{{/afModal}}-->
-                        <!--</small>-->
+                <!--<small>-->
+                    <!--{{#afModal buttonContent="Actualizar Projecto" title="Editar Projecto" omitFields="" class="text-primary" collection="items" operation="update" doc=_id}}-->
+                    <!--<i class="fa fa-pencil" buttonContent="Editar Projecto"></i> Editar Projecto-->
+                        <!--{{/afModal}}-->
+                    <!--{{#afModal buttonContent="Apagar Projecto" prompt="Tem a certeza?" title="Apagar Projecto" class="text-danger" collection="items" operation="remove" doc=_id}}-->
+                    <!--<i class="fa fa-times"></i> Apagar Projecto-->
+                        <!--{{/afModal}}-->
+                <!--</small>-->
                     <!--{{/if}}-->
                 <!--</div>-->
             </div>
@@ -112,13 +119,30 @@
     </div>
     <div class="panel-footer">
         {{> favoriteButton _id=_id}}
+        <a class="btn btn-info" href="/listItem/{{_id}}">Tarefas
+                <!--{{#if tarefasCount _id}}-->
+                <span class=".lang badge bg-success">{{tarefasCount _id}}</span>
+                    <!--{{else}}-->
+                <!--<i class=".lang fa fa-bell-o"></i>-->
+                    <!--{{/if}}-->
+        </a>
     </div>
 </template>
 
 <template name="noDataItems">
-    <div class="template-no-data">
-        <h3 class="text-center">
-            Sem projectos
-        </h3>
+    <div>
+        <div class="alert alert-info">
+            <p>Sem Projetos</p>
+            <p><a href="/createItem" class="btn btn-primary"><i class="fa fa-plus"></i> Criar Projeto</a></p>
+        </div>
+    </div>
+</template>
+
+<template name="noNotifications">
+    <div>
+        <div class="alert alert-info">
+            <p>Sem Notificações</p>
+            <p><a href="/createNotification" class="btn btn-primary"><i class="fa fa-plus"></i> Criar Notificação</a></p>
+        </div>
     </div>
 </template>

@@ -9,6 +9,7 @@ Template.showSmallItem.events({
         Session.set("item-clicked", this._id);
         console.log("/listItem/" + this._id);
         Router.go("/listItem/" + this._id);
+        e.preventDefault();
         //var Asubtarefas = this.subtarefas;
         //for (var f=0; f<Asubtarefas.length; f++) {
         //    Session.set("subtarefa:" + this._id + "|" + Asubtarefas.ids + "|estado", subtarefaID);

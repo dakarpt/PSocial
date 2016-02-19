@@ -6,7 +6,7 @@ Router.map ->
 #        Meteor.subscribe 'Processos'
 #        Meteor.subscribe 'LogMessages'
 #      ]
-    fastRender: true
+#    fastRender: true
   @route "createItem",
     path: "/createItem"
     waitOn: ->
@@ -22,6 +22,7 @@ Router.map ->
         Meteor.subscribe 'attachments'
         Meteor.subscribe 'userData'
         Meteor.subscribe 'ProfilePictures'
+        Meteor.subscribe 'Notifications'
       ]
     data: ->
       itemList: items.find().fetch()
@@ -37,15 +38,16 @@ Router.map ->
       ]
     data: ->
       itemList: items.find({_id: this.params._id}).fetch();
-    fastRender: true
+#    fastRender: true
   @route "MyNotifications",
     path: "/MyNotifications"
     waitOn: ->
       [
         Meteor.subscribe 'userData'
+        Meteor.subscribe 'ProfilePictures'
         Meteor.subscribe 'Notifications'
       ]
-    fastRender: true
+#    fastRender: true
   @route "createNotification",
     path: "/createNotification"
     waitOn: ->
@@ -62,4 +64,4 @@ Router.map ->
       ]
     data: ->
       Notifications.findOne({_id: this.params._id});
-    fastRender: true
+#    fastRender: true

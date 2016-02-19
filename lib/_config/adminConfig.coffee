@@ -32,10 +32,12 @@
     Notifications:
       color: 'blue'
       icon: 'pencil'
-      extraFields: ['owner']
+      extraFields: ['doc','owner','from']
       tableColumns: [
         {label: 'Title', name: 'title'}
+        {label: 'From', name: 'from'}
         {label: 'To', name: 'to'}
+        {label: 'Msg', name: 'message'}
       ]
 #    Messages:
 #      color: 'yellow'
