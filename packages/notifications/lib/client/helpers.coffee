@@ -27,3 +27,16 @@ Template.registerHelper 'hasTarefas', ->
   if typeof window['items'] != 'undefined'
     item = items.findOne(itemID)
     item.subtarefas.length > 0
+
+Template.registerHelper 'isTR', (i)->
+  breakon = 4;
+  if (i>0)
+    index = i + 1
+    res= (index/breakon)
+    console.log "isTR:", index, (index/breakon),  res == Math.round(index/breakon);
+    res == Math.round(index/breakon)
+#  else
+#    console.log "isTR:", i, true
+#    true
+
+Template.registerHelper 'TR_ON', ->
