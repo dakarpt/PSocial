@@ -23,13 +23,13 @@ Avatar.setOptions
   fallbackType: "initials"
   defaultImageUrl: "img/default-avatar.png"
 
-Meteor.startup ->
-  if Meteor.isClient
-
-    Session.set("showLoadingIndicator", true)
-    if (Session.get("language"))
-      T9n.setLanguage(Session.get("language"))
-    else
-      T9n.setLanguage('pt')
-      Session.set("language", 'pt')
+#Meteor.startup ->
+#  if Meteor.isClient
+#
+#    Session.set("showLoadingIndicator", true)
+#    if (Session.get("language"))
+#      T9n.setLanguage(Session.get("language"))
+#    else
+#      T9n.setLanguage('pt')
+#      Session.set("language", 'pt')
 
