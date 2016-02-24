@@ -84,7 +84,7 @@
         <div class="media-body">
             {{#if $eq owner User._id}}
                 <small>
-                    {{#afModal buttonContent="Actualizar Projeto" title="Editar Projeto" omitFields="" class="text-primary" collection="items" operation="update" doc=_id}}
+                    {{#afModal buttonContent="Actualizar Projeto" title="Editar Projeto" omitFields="subtarefas.$.slots" class="text-primary" collection="items" operation="update" doc=_id}}
                         <i class="fa fa-pencil" buttonContent="Editar Projeto"></i> Editar Projeto
                     {{/afModal}}
                     {{#afModal buttonContent="Apagar Projeto" prompt="Tem a certeza?" title="Apagar Projeto" class="text-danger modal-sm navbarpadding" collection="items" operation="remove" doc=_id}}
@@ -192,17 +192,19 @@
             <div class="media-body">
                 {{#each slots}}
 
-                    <!--<td>-->
+                    <!--&lt;!&ndash;<td>&ndash;&gt;-->
                     <div ids="{{../../_id}}" class="profile-thumb pull-left">
                         <div ids="{{../ids}}" class="profile-thumb-img">
-                            <img ids="{{@index}}" src="{{.}}" class="img-thumbnail">
+                            <!--<img ids="{{num}}" src="{{owner}}" class="img-thumbnail">-->
+                            <img ids="{{num}}" src="{{owner}}" class="img-thumbnail">
+                            <!--{{num}} <BR>  {{owner}} <BR> {{ids}} <BR> {{timestamp}}-->
                         </div>
                     </div>
-                    <!--</td>-->
-                    <!--{{#if isTR @index}}-->
-                        <!--&lt;!&ndash;<BR>&ndash;&gt;-->
-                    <!--{{else}}-->
-                    <!--{{/if}}-->
+                    <!--&lt;!&ndash;</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;{{#if isTR @index}}&ndash;&gt;-->
+                        <!--&lt;!&ndash;&lt;!&ndash;<BR>&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;{{else}}&ndash;&gt;-->
+                    <!--&lt;!&ndash;{{/if}}&ndash;&gt;-->
 
                 {{/each}}
             </div>

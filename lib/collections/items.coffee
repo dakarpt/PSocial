@@ -1,4 +1,5 @@
 @items = new Meteor.Collection('items');
+
 #@tarefas = new Meteor.Collection('tarefas');
 #@subtarefas = new Meteor.Collection('subtarefas');
 
@@ -7,44 +8,47 @@ Schemas.Myslots = new SimpleSchema
   ids:
     type: String
     optional: true
-    regEx: SimpleSchema.RegEx.Id
-    autoValue: ->
-      if @isInsert
-        Random.id()
-      else if @isUpdate && (@isSet == false)
-        Random.id()
-    autoform:
-      type: 'hidden'
+#    regEx: SimpleSchema.RegEx.Id
+#    autoValue: ->
+#      if @isInsert
+#        Random.id()
+#      else if @isUpdate && (@isSet == false)
+#        Random.id()
+#    autoform:
+#      type: 'hidden'
+  num:
+    type: Number
+    optional: true
 
   owner:
     type: String
-    optional: false
-    regEx: SimpleSchema.RegEx.Id
-    autoValue: ->
-      if this.isInsert
-        "empty"
-      else if @isUpdate
-        Meteor.userId()
-    autoform:
-      type: 'hidden'
-
-  "url":
-    type: String
     optional: true
-    autoValue: ->
-      if this.isInsert
-        "empty.png"
-    autoform:
-      type: 'hidden'
+#    regEx: SimpleSchema.RegEx.Id
+#    autoValue: ->
+#      if this.isInsert
+#        "empty"
+#      else if @isUpdate
+#        Meteor.userId()
+#    autoform:
+#      type: 'hidden'
 
-  "timestamp":
-    type: Date
-    optional: true
-    autoValue: ->
-      if this.isUpdate || this.isInsert
-        new Date()
-    autoform:
-      type: 'hidden'
+#  "url":
+#    type: String
+#    optional: true
+#    autoValue: ->
+#      if this.isInsert
+#        "empty.png"
+#    autoform:
+#      type: 'hidden'
+
+#  "timestamp":
+#    type: Date
+#    optional: true
+#    autoValue: ->
+#      if this.isUpdate || this.isInsert
+#        new Date()
+#    autoform:
+#      type: 'hidden'
 
 Schemas.subtarefas = new SimpleSchema
 #  tarefa:
@@ -69,7 +73,9 @@ Schemas.subtarefas = new SimpleSchema
   descricao:
     type: String
     optional: false
-
+    autoform: {
+      rows: 5
+    }
   tipo:
     type: String
     optional: false
@@ -103,30 +109,72 @@ Schemas.subtarefas = new SimpleSchema
       type: 'hidden'
 
   slots:
-    type: [String]
-    optional: true
-    autoValue: ->
-#      console.log "Slots", this
-      if @isInsert
-        console.log "Inserting"
-        res = []
-        f = 1
-        while f <= @siblingField("duracao").value
-          res.push "/" + @siblingField("tipo").value+"-empty.png"
-          f++
-        res
-      else if @isUpdate && (@isSet == false)
-#        $set: ->
-        console.log "Upserting"
-        res = []
-        f = 1
-        while f <= @siblingField("duracao").value
-          res.push "/" + @siblingField("tipo").value+"-empty.png"
-          f++
-#        $set: res
-        res
+    type: Array
+    optional: false
+    label: "Slots"
     autoform:
       type: 'hidden'
+
+  "slots.$":
+    type: Schemas.Myslots
+    optional: true
+    autoform:
+      type: 'hidden'
+#
+#  slots:
+#    type: [Object]
+#    optional: true
+#    label: "Slots"
+##      autoValue: ->
+##        console.log "Slots", this
+#    autoform:
+#      type: 'hidden'
+#
+#  "slots.$":
+#    type: Object
+#    optional: true
+#
+#  "slots.$.num":
+#    type: Number
+#    optional: true
+#
+#  "slots.$.ids":
+#    type: String
+#    optional: true
+#
+#  "slots.$.owner":
+#    type: String
+#    optional: true
+#
+#  "slots.$.timestamp":
+#    type: Date
+#    optional: true
+
+#  slots:
+#    type: [String]
+#    optional: true
+#    autoValue: ->
+##      console.log "Slots", this
+#      if @isInsert
+#        console.log "Inserting"
+#        res = []
+#        f = 1
+#        while f <= @siblingField("duracao").value
+#          res.push "/" + @siblingField("tipo").value+"-empty.png"
+#          f++
+#        res
+#      else if @isUpdate && (@isSet == false)
+##        $set: ->
+#        console.log "Upserting"
+#        res = []
+#        f = 1
+#        while f <= @siblingField("duracao").value
+#          res.push "/" + @siblingField("tipo").value+"-empty.png"
+#          f++
+##        $set: res
+#        res
+#    autoform:
+#      type: 'hidden'
 
 #      else if @isUpsert
 #        $setOnInsert: "Inicial"
@@ -192,6 +240,9 @@ Schemas.items = new SimpleSchema
   descricao:
     type: String
     optional: false
+    autoform: {
+      rows: 5
+    }
 
   picture:
     type: String

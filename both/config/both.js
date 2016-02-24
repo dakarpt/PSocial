@@ -8,6 +8,8 @@
 //    });
 //}
 
+//AutoForm.debug();
+
 isAdmin = function isAdmin(id) {
     return Roles.userIsInRole(id, "admin")
 };

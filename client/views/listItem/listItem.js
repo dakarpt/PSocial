@@ -21,14 +21,14 @@ Template.showItem.events({
         var subtarefaID = e.target.parentElement.attributes.ids.value;
         var itemID = e.target.parentElement.parentElement.attributes.ids.value;
         var slots = GetSlots(itemID, subtarefaID, false);
-        if (slots[slotID].indexOf("empty.png") != -1) {
+        if (slots[slotID].owner.indexOf("empty.png") != -1) {
             var user = Meteor.users.findOne(Meteor.userId());
             if ((user.profile) && (user.profile.picture)) {
                 var picID = ProfilePictures.findOne(user.profile.picture);
                 //var picURL = picID.url();
-                slots[slotID] = picID.url();
+                slots[slotID].owner = picID.url();
             } else
-                slots[slotID] = "/default-profile.png";
+                slots[slotID].owner = "/default-profile.png";
             Meteor.call('UpdateSlots', itemID, subtarefaID, slots);
         } else {
             console.log("Slot not empty");
@@ -36,9 +36,9 @@ Template.showItem.events({
             if ((user.profile) && (user.profile.picture)) {
                 picID = ProfilePictures.findOne(user.profile.picture);
                 //var picURL = picID.url();
-                console.log("Pc do slot: %s", slots[slotID]);
+                console.log("Pc do slot: %s", slots[slotID].owner);
                 console.log("Pc do user: %s", picID.url());
-                var slotPic = slots[slotID];
+                var slotPic = slots[slotID].owner;
                 var userpic = picID.url();
                 var RslotPic = slotPic.split("?");
                 var Ruserpic = userpic.split("?");
@@ -80,7 +80,7 @@ Template.confirmModal.events({
         var slots = GetSlots(itemID, subtarefaID, false);
         var tipo = GetSlots(itemID, subtarefaID, true);
         cw("Tipo de slot:", tipo);
-        slots[slotID] = "/" + tipo + "-empty.png";
+        slots[slotID].owner = "/" + tipo + "-empty.png";
         //var picID = ProfilePictures.findOne(Meteor.users.findOne(Meteor.userId())['profile']['picture']);
         //var picURL = picID.url();
         //slots[slotID] = picID.url();

@@ -1,3 +1,6 @@
+AutoForm.debug();
+
+
 goodName = function (id) {
     if (!id) return "A user";
 
@@ -46,10 +49,13 @@ GetSlots = function (itemId, subtarefaId, TIPO) {
     for (var f = 0; f < subtarefas.length; f++) {
         if (subtarefas[f].ids == subtarefaId) {
             //console.log("Found slots", subtarefas[f].slots);
-            if (!TIPO)
+            if (!TIPO) {
+                console.log("returning slots: ", subtarefas[f].slots);
                 return subtarefas[f].slots;
-            else
+            } else {
+                console.log("returning tipo: ", subtarefas[f].tipo);
                 return subtarefas[f].tipo;
+            }
         }
     }
     console.log("No slots found!");
