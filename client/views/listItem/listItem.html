@@ -104,56 +104,6 @@
     </div>
 </template>
 
-<!--<template name="showSlot">-->
-<!--<div id="Slot-{{@index}}" class="slot"><img src="/{{.}}.png" class="img-thumbnail"></div>-->
-<!--</template>-->
-
-<!--<template name="menuItems">-->
-<!--<div class="slideout-menu">-->
-<!--<h3>Menu <a href="#" class="slideout-menu-toggle">×</a></h3>-->
-<!--<ul>-->
-        <!--{{#if currentUser}}-->
-<!--<li>-->
-<!--<a href="{{pathFor 'listItems'}}">Listar Items <i class="fa fa-angle-right"></i></a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<a href="{{pathFor 'createItem'}}">Criar Item <i class="fa fa-angle-right"></i></a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<a href="{{pathFor 'createNotification'}}">Criar notificação <i class="fa fa-angle-right"></i></a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<a href="{{pathFor 'MyNotifications'}}">Notificações-->
-        <!--{{#if notificationCount}}-->
-<!--<span class=".lang badge bg-success">{{notificationCount}}</span>-->
-        <!--{{else}}-->
-<!--<i class=".lang fa fa-{{dropdownIconEmpty}}"></i>-->
-        <!--{{/if}}-->
-<!--<i class="fa fa-angle-right"></i>-->
-<!--</a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<a href="{{pathFor 'profile'}}">Profile <i class="fa fa-angle-right"></i></a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<a href="{{pathFor 'account'}}">Minha conta <i class="fa fa-angle-right"></i></a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<a href="/sign-out">Log Off <i class="fa fa-angle-right"></i></a>-->
-<!--</li>-->
-        <!--{{/if}}-->
-        <!--{{#if isInRole 'admin'}}-->
-<!--<li>-->
-<!--<a href="/admin">Administração</a>-->
-<!--</li>-->
-        <!--{{/if}}-->
-<!--&lt;!&ndash;<li><a href="#">Home <i class="fa fa-angle-right"></i></a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;<li><a href="#">Tour Information <i class="fa fa-angle-right"></i></a></li>&ndash;&gt;-->
-<!--</ul>-->
-<!--</div>-->
-<!--&lt;!&ndash;/.slideout-menu&ndash;&gt;-->
-<!--</template>-->
-
 <template name="confirmModal">
     <div class="modal modal-warning fade">
         <div class="modal-dialog modal-sm navbarpadding">
@@ -185,34 +135,49 @@
 
 <template name="table_slots">
     <!--<div class="table-responsive">-->
-    <div class="col-sm-5 col-md-10">
+    <div class="container-fluid">
+    <div class="row">
         <div class="media">
             <!--<table>-->
             <!--<tr>-->
-            <div class="media-body">
+            <div class="media-body col-sm-6 col-md-10">
+                <table><tr><td>
                 {{#each slots}}
-
+<!--<span>owner: {{owner}}</span>-->
+<!--<span>slotOwner: {{slots.owner}}</span>-->
                     <!--&lt;!&ndash;<td>&ndash;&gt;-->
-                    <div ids="{{../../_id}}" class="profile-thumb pull-left">
-                        <div ids="{{../ids}}" class="profile-thumb-img">
+
+                    <div ids="{{../../_id}}" class="img-responsive profile-thumb pull-left media-left">
+                        <div ids="{{../ids}}" class="img-responsive profile-thumb-img media-left pull-left">
                             <!--<img ids="{{num}}" src="{{owner}}" class="img-thumbnail">-->
-                            <img ids="{{num}}" src="{{owner}}" class="img-thumbnail">
-                            <!--{{num}} <BR>  {{owner}} <BR> {{ids}} <BR> {{timestamp}}-->
+                            <!--<div ids="{{num}}">-->
+                            {{#if profileThumbSrc owner}}
+                                <img ids="{{num}}" src="{{profileThumbSrc owner}}" class="img-thumbnail media-left pull-left fixed_width">
+                                <!--{{num}} <BR>  {{owner}} <BR> {{ids}} <BR> {{timestamp}}-->
+                                <!--{{> profileThumb _id=owner }}-->
+                            {{else}}
+                                <img ids="{{num}}" src="{{owner}}" class="img-thumbnail media-left pull-left">
+                            {{/if}}
+                            <!--</div>-->
                         </div>
                     </div>
+
                     <!--&lt;!&ndash;</td>&ndash;&gt;-->
-                    <!--&lt;!&ndash;{{#if isTR @index}}&ndash;&gt;-->
-                        <!--&lt;!&ndash;&lt;!&ndash;<BR>&ndash;&gt;&ndash;&gt;-->
-                    <!--&lt;!&ndash;{{else}}&ndash;&gt;-->
-                    <!--&lt;!&ndash;{{/if}}&ndash;&gt;-->
+                    <!--{{#if isTR @index}}-->
+                        <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<BR>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+                    <!--{{else}}&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;{{/if}}-->
 
                 {{/each}}
+                </td></tr>
+                </table>
+            <!--</div>-->
             </div>
             <!--</tr>-->
             <!--</table>-->
 
         </div>
-    </div>
+    </div></div>
 </template>
 
 <!--<template name="TR_ON">-->

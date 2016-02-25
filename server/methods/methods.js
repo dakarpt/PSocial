@@ -22,9 +22,9 @@ if (Meteor.isServer) Meteor.methods({
         }
         check(itemId, String);
         check(subtarefaId, String);
-        check(slots, Array);
+        check(slots, Match.Any);
         cw("ServerSide: UpdateSlots: Updating...");
-        console.log(slots);
+        console.log("Slots", slots);
         items.update({
             _id: itemId,
             subtarefas: {$elemMatch: {ids: subtarefaId}}
