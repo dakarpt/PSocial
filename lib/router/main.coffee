@@ -23,7 +23,6 @@ Router.map ->
         Meteor.subscribe 'userData'
         Meteor.subscribe 'ProfilePictures'
         Meteor.subscribe 'Notifications'
-        Meteor.subscribe 'smsinfo'
       ]
     data: ->
       itemList: items.find().fetch()
@@ -36,7 +35,6 @@ Router.map ->
         Meteor.subscribe 'attachments'
         Meteor.subscribe 'userData'
         Meteor.subscribe 'ProfilePictures'
-        Meteor.subscribe 'smsinfo'
       ]
     data: ->
       itemList: items.find({_id: this.params._id}).fetch();
@@ -70,12 +68,13 @@ Router.map ->
 
   @route "smsfrontend",
     path: "/smsfrontend/:smsinfo"
+    layoutTemplate: ""
     waitOn: ->
       [
         Meteor.subscribe 'smsinfo'
         Meteor.subscribe 'userData'
       ]
     data: ->
-      process_smsinfo({ link: this.params.smsinfo })
+      link: this.params.smsinfo
 #      console.log(this.params.smsinfo)
 #      process_smsinfo({ link: this.params.smsinfo })

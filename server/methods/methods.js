@@ -1,27 +1,66 @@
 /**
  * Created by aramos on 01-12-2015.
  */
-//if (Meteor.isServer)
-//    Accounts.onCreateUser(function (options, user) {
-//        var d6 = function () {
-//            return Math.floor(Random.fraction() * 6) + 1;
-//        };
-//        user.dexterity = d6() + d6() + d6();
-//        // We still want the default hook's 'profile' behavior.
-//        if (options.profile)
-//            user.profile = options.profile;
-//        //else user.profile = { }
-//        return user;
-//    });
+if (Meteor.isServer)
+    Accounts.onCreateUser(function (options, user) {
+        var d6 = function () {
+            return Math.floor(Random.fraction() * 6) + 1;
+        };
+        user.dexterity = d6() + d6() + d6();
+        // We still want the default hook's 'profile' behavior.
+        if (options.profile)
+            user.profile = options.profile;
+        else
+            user.profile = { picture: '/default-profile.png' };
+
+        return user;
+    });
 
 process_Server_smsinfo= function(info) {
+    check(info, Match.Any);
     console.log("SERVER: Call process smsinfo:", info);
-    var user=Meteor.users.findOne({ "profile.mobile": "966598860" });
-    info.slot = Number(info.slot);
+    var user=Meteor.users.findOne({ "profile.mobile": info.mobile });
+    if (!user) {
+        console.log("Unknown account: SMS from %s", info.mobile);
+        return;
+    }
+    info.slot = Number(info.slot) || -1;
     console.log("Found user:", user);
-    console.log("Updating with:", { _id: info.item, subtarefas: {$elemMatch: {tipo:"Donativos",slots: {$elemMatch: { num:info.slot } }}}}, {$set: {"slots.$.owner": user._id}});
+    console.log("Updating with:", info);
+    var item = items.findOne({ _id: info.item });
+    if (!item) {
+        console.log("Unknown item:%s SMS from %s", info.item, info.mobile);
+        return;
+    }
 
-    //items.update({ _id: info.item, subtarefas: {$elemMatch: {tipo:"Donativos",slots: {$elemMatch: { num:info.slot } }}}}, {$set: {"slots.$.owner": user._id}}, function (err) {
+    var subtarefas = item.subtarefas;
+    var f;
+    for ( f = 0; f < subtarefas.length; f++) {
+        if (subtarefas[f].tipo == "Donativos") {
+            for (var j=0; j<subtarefas[f].slots.length;j++) {
+                if ((subtarefas[f].slots[j].num == info.slot)&& subtarefas[f].slots[j].owner.indexOf("empty.png") != -1 ) {
+                    subtarefas[f].slots[j].owner = user._id;
+                    Meteor.call('UpdateSlots', item._id, subtarefas[f].ids, subtarefas[f].slots);
+                    return;
+                }
+            }
+        }
+    }
+    // nao achou
+    for ( f = 0; f < subtarefas.length; f++) {
+        if (subtarefas[f].tipo == "Donativos") {
+            for (var j=0; j<=subtarefas[f].slots.length;j++) {
+                if (subtarefas[f].slots[j].owner.indexOf("empty.png") != -1) {
+                    subtarefas[f].slots[j].owner = user._id;
+                    Meteor.call('UpdateSlots', item._id, subtarefas[f].ids, subtarefas[f].slots);
+                    return;
+                }
+            }
+        }
+    }
+
+    //Meteor.call('UpdateSlots', itemID, subtarefaID, slots);
+            //items.update({ _id: info.item, subtarefas: {$elemMatch: {tipo:"Donativos",slots: {$elemMatch: { num:info.slot } }}}}, {$set: {"slots.$.owner": user._id}}, function (err) {
     //    if (err)
     //        console.log("ERRO no UPdate", err);
     //});
@@ -32,6 +71,8 @@ if (Meteor.isServer) Meteor.methods({
     'insertSms': function (info) {
         check(info, Match.Any);
         console.log("SERVER: insertSms: params: ", info);
+        if (!info.slot)
+            info.slot = -1;
         if (!smsinfo.findOne(info)) {
             smsinfo.insert(info);
             console.log("Server: Inserting ", info);

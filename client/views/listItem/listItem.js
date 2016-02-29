@@ -41,11 +41,11 @@ Template.showItem.events({
                 console.log("Pc do slot: %s", slots[slotID].owner);
                 console.log("Pc do user: %s", Meteor.userId());
                 var slotPic = slots[slotID].owner;
-                var userpic = picID.url();
-                var RslotPic = slotPic.split("?");
-                var Ruserpic = userpic.split("?");
-                console.log("Pc do slotn: %s", RslotPic[0]);
-                console.log("Pc do usern: %s", Ruserpic[0]);
+                //var userpic = picID.url();
+                //var RslotPic = slotPic.split("?");
+                //var Ruserpic = userpic.split("?");
+                //console.log("Pc do slotn: %s", RslotPic[0]);
+                //console.log("Pc do usern: %s", Ruserpic[0]);
                 /// comp
                 //if (RslotPic[0] != Ruserpic[0]) {
                 if (slots[slotID].owner != Meteor.userId()) {

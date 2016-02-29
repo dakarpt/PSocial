@@ -69,7 +69,7 @@ process_smsinfo = function (info) {
         return;
     }
     var item= getQueryVariable(info.link, "item");
-    var slot= getQueryVariable(info.link, "slot");
+    var slot= Number(getQueryVariable(info.link, "slot")) || -1;
     var smsText= getQueryVariable(info.link, "smsText");
     var dateadded= getQueryVariable(info.link, "dateadded");
     console.log("Mobile: %s, item: %s, slot: %s, Text: %s ", mobile, item, slot, smsText);
@@ -78,7 +78,7 @@ process_smsinfo = function (info) {
         //smsinfo.insert({ mobile: mobile, item: item, slot: slot});
         Meteor.call("insertSms", { mobile: mobile, item: item, slot: slot, smsText: smsText, dateadded: dateadded} );
     }
-    return info
+    return info;
 };
 
 getQueryVariable = function (link, variable) {

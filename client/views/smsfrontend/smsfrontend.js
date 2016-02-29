@@ -3,6 +3,8 @@
  */
 Template.smsfrontend.onRendered(
     function () {
-        Router.go("/listItems");
+        //console.log(this);
+        process_smsinfo({ link: this.data.link });
+        //Router.go("/listItems");
     }
 );

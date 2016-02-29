@@ -55,7 +55,7 @@
 
 #Routes
   homeRoute: '/'
-  publicRoutes: ['/']
+  publicRoutes: ['/','/smsfrontend']
   dashboardRoute: '/listItems'
   ReportRoute: '/report'
   MyNotificationsRoute: '/MyNotifications'
