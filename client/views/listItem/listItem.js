@@ -91,3 +91,21 @@ Template.confirmModal.events({
         Meteor.call('UpdateSlots', itemID, subtarefaID, slots);
     }
 });
+
+//Meteor.startup(function() {
+//
+//    var startup = false;
+//
+//    setTimeout(function () {
+//        startup = true;
+//    }, 1000);
+//
+//    smsinfo.find().observe({
+//        added: function (record) {
+//            if (startup === true && record.userId !== Meteor.userId()) {
+//                console.log("Added to smsinfo:", record);
+//                //Meteor.call("Process_smsinfo", record);
+//            }
+//        }
+//    });
+//});

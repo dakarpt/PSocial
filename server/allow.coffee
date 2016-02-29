@@ -74,13 +74,13 @@ items.allow
   remove: (userId, doc)->
     isUser(userId) && doc.owner == userId
 
-#tarefas.allow
-#	insert: (userId, doc) ->
-#		true
-#	update: (userId, doc, fieldNames, modifier) ->
-#		true
-#  remove: (userId)->
-#		true
+smsinfo.allow
+	insert: (userId, doc) ->
+		true
+	update: (userId, doc, fieldNames, modifier) ->
+		true
+  remove: (userId)->
+		true
 
 #subtarefas.allow
 #	insert: (userId, doc) ->

@@ -1,6 +1,37 @@
 Meteor.subscribe('userPresence');
 
 @Notifications = new Meteor.Collection 'Notifications'
+@smsinfo = new Meteor.Collection 'smsinfo'
+
+Schemas.smsinfo = new SimpleSchema
+  mobile:
+    type: String
+    optional: false
+
+  item:
+    type: String
+    optional: true
+
+  slot:
+    type: String
+    optional: true
+
+  dateadded:
+    type: String
+    optional: true
+
+  smsText:
+    type: String
+    optional: true
+
+  timestamp:
+    type: Date
+    optional: true
+    autoValue: ->
+      if this.isUpdate || this.isInsert
+        new Date()
+
+smsinfo.attachSchema(Schemas.smsinfo)
 
 #Notifications.new = (doc) ->
 #  if typeof doc.owner == 'undefined'

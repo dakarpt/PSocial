@@ -1,4 +1,5 @@
 Schemas.UserProfile = new SimpleSchema(
+
   picture:
     type: String
     optional: true
@@ -33,6 +34,10 @@ Schemas.UserProfile = new SimpleSchema(
     optional: true
     label: ->
       TAPi18n.__("p_Last_Name")
+
+  mobile:
+    type: String
+    optional: true
 
   birthday:
     type: Date

@@ -82,7 +82,7 @@ Schemas.subtarefas = new SimpleSchema
     type: String
     optional: false
     allowedValues: [
-      "Mao_de_obra"
+      "Mao-de-obra"
       "Material"
       "Donativos"
       "Servicos"

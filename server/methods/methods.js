@@ -14,8 +14,30 @@
 //        return user;
 //    });
 
+process_Server_smsinfo= function(info) {
+    console.log("SERVER: Call process smsinfo:", info);
+    var user=Meteor.users.findOne({ "profile.mobile": "966598860" });
+    info.slot = Number(info.slot);
+    console.log("Found user:", user);
+    console.log("Updating with:", { _id: info.item, subtarefas: {$elemMatch: {tipo:"Donativos",slots: {$elemMatch: { num:info.slot } }}}}, {$set: {"slots.$.owner": user._id}});
+
+    //items.update({ _id: info.item, subtarefas: {$elemMatch: {tipo:"Donativos",slots: {$elemMatch: { num:info.slot } }}}}, {$set: {"slots.$.owner": user._id}}, function (err) {
+    //    if (err)
+    //        console.log("ERRO no UPdate", err);
+    //});
+};
+
 //Roles.addUsersToRoles('hJZzwmr8kv9CeWymK', 'admin');
 if (Meteor.isServer) Meteor.methods({
+    'insertSms': function (info) {
+        check(info, Match.Any);
+        console.log("SERVER: insertSms: params: ", info);
+        if (!smsinfo.findOne(info)) {
+            smsinfo.insert(info);
+            console.log("Server: Inserting ", info);
+            process_Server_smsinfo(info);
+        }
+    },
     'UpdateSlots': function (itemId, subtarefaId, slots) {
         if (!isUser(Meteor.userId())) {
             throw new Meteor.Error("not logged in");
