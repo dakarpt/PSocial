@@ -8,14 +8,14 @@ Schemas.Myslots = new SimpleSchema
   ids:
     type: String
     optional: true
-    regEx: SimpleSchema.RegEx.Id
-    autoValue: ->
-      if @isInsert
-        Random.id()
-      else if @isUpdate && (@isSet == false)
-        Random.id()
-    autoform:
-      type: 'hidden'
+#    regEx: SimpleSchema.RegEx.Id
+#    autoValue: ->
+#      if @isInsert
+#        Random.id()
+#      else if @isUpdate && (@isSet == false)
+#        Random.id()
+#    autoform:
+#      type: 'hidden'
   num:
     type: Number
     optional: true
@@ -41,18 +41,14 @@ Schemas.Myslots = new SimpleSchema
 #    autoform:
 #      type: 'hidden'
 
-  "timestamp":
-    type: Date
-    optional: true
+#  "timestamp":
+#    type: Date
+#    optional: true
 #    autoValue: ->
-#      if @isInsert
+#      if this.isUpdate || this.isInsert
 #        new Date()
-#      else if @isUpdate && (@isSet == false)
-#        new Date()
-#      else
-#        this.unset()
-    autoform:
-      type: 'hidden'
+#    autoform:
+#      type: 'hidden'
 
 Schemas.subtarefas = new SimpleSchema
 #  tarefa:

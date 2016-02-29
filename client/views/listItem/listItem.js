@@ -26,11 +26,9 @@ Template.showItem.events({
             if ((user.profile) && (user.profile.picture)) {
                 var picID = ProfilePictures.findOne(user.profile.picture);
                 //var picURL = picID.url();
-                slots[slotID].owner = Meteor.userId();
-                slots[slotID].timestamp = new Date();
+                slots[slotID].owner = picID.url();
             } else
                 slots[slotID].owner = "/default-profile.png";
-            slots[slotID].timestamp = new Date();
             Meteor.call('UpdateSlots', itemID, subtarefaID, slots);
         } else {
             console.log("Slot not empty");
@@ -39,7 +37,7 @@ Template.showItem.events({
                 picID = ProfilePictures.findOne(user.profile.picture);
                 //var picURL = picID.url();
                 console.log("Pc do slot: %s", slots[slotID].owner);
-                console.log("Pc do user: %s", Meteor.userId());
+                console.log("Pc do user: %s", picID.url());
                 var slotPic = slots[slotID].owner;
                 var userpic = picID.url();
                 var RslotPic = slotPic.split("?");
@@ -47,8 +45,7 @@ Template.showItem.events({
                 console.log("Pc do slotn: %s", RslotPic[0]);
                 console.log("Pc do usern: %s", Ruserpic[0]);
                 /// comp
-                //if (RslotPic[0] != Ruserpic[0]) {
-                if (slots[slotID].owner != Meteor.userId()) {
+                if (RslotPic[0] != Ruserpic[0]) {
                     return
                 }
             } else if (slots[slotID] != "/default-profile.png") {
@@ -84,7 +81,6 @@ Template.confirmModal.events({
         var tipo = GetSlots(itemID, subtarefaID, true);
         cw("Tipo de slot:", tipo);
         slots[slotID].owner = "/" + tipo + "-empty.png";
-        slots[slotID].timestamp = new Date();
         //var picID = ProfilePictures.findOne(Meteor.users.findOne(Meteor.userId())['profile']['picture']);
         //var picURL = picID.url();
         //slots[slotID] = picID.url();
