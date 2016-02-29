@@ -1,3 +1,8 @@
 .navbarpadding {
     padding-top: 51px;
 }
+
+.fixed_width {
+    height: 40px;
+    width: 50px;
+}
