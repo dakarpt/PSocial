@@ -72,7 +72,9 @@ Schemas.subtarefas = new SimpleSchema
 
   nome:
     type: String
-    optional: false
+    optional: true
+    autoform:
+      type: 'hidden'
 
   descricao:
     type: String
@@ -84,7 +86,7 @@ Schemas.subtarefas = new SimpleSchema
     type: String
     optional: false
     allowedValues: [
-      "Mao_de_obra"
+      "Mao-de-obra"
       "Material"
       "Donativos"
       "Servicos"
