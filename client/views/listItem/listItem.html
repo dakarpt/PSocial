@@ -11,7 +11,7 @@
                         <!--{{/if}}-->
                     <!--{{/if}}-->
                 <!--</div>-->
-                <div class="col-md-9">
+                <div class="">
                     <!--</div>-->
                     <!--<div class="col-xs-4">-->
                     {{> showAllItems}}
@@ -135,28 +135,28 @@
 
 <template name="table_slots">
     <!--<div class="table-responsive">-->
-    <div class="container-fluid">
-    <div class="row">
+    <!--<div class="">-->
+    <!--<div class="">-->
         <div class="media">
             <!--<table>-->
             <!--<tr>-->
-            <div class="media-body col-sm-6 col-md-10">
-                <table><tr><td>
+            <div class="media-body">
+                <!--<table><tr><td>-->
                 {{#each slots}}
 <!--<span>owner: {{owner}}</span>-->
 <!--<span>slotOwner: {{slots.owner}}</span>-->
                     <!--&lt;!&ndash;<td>&ndash;&gt;-->
 
-                    <div ids="{{../../_id}}" class="img-responsive profile-thumb pull-left media-left">
-                        <div ids="{{../ids}}" class="img-responsive profile-thumb-img media-left pull-left">
+                    <div ids="{{../../_id}}" class="img-responsive profile-thumb pull-left">
+                        <div ids="{{../ids}}" class="img-responsive profile-thumb-img pull-left">
                             <!--<img ids="{{num}}" src="{{owner}}" class="img-thumbnail">-->
                             <!--<div ids="{{num}}">-->
                             {{#if profileThumbSrc owner}}
-                                <img ids="{{num}}" src="{{profileThumbSrc owner}}" class="img-thumbnail media-left pull-left fixed_width">
+                                <img ids="{{num}}" src="{{profileThumbSrc owner}}" class="img-thumbnail pull-left fixed_width">
                                 <!--{{num}} <BR>  {{owner}} <BR> {{ids}} <BR> {{timestamp}}-->
                                 <!--{{> profileThumb _id=owner }}-->
                             {{else}}
-                                <img ids="{{num}}" src="{{owner}}" class="img-thumbnail media-left pull-left">
+                                <img ids="{{num}}" src="{{owner}}" class="img-thumbnail pull-left fixed_width">
                             {{/if}}
                             <!--</div>-->
                         </div>
@@ -169,15 +169,15 @@
                     <!--&lt;!&ndash;&lt;!&ndash;{{/if}}-->
 
                 {{/each}}
-                </td></tr>
-                </table>
+                <!--</td></tr>-->
+                <!--</table>-->
             <!--</div>-->
             </div>
             <!--</tr>-->
             <!--</table>-->
 
         </div>
-    </div></div>
+    <!--</div></div>-->
 </template>
 
 <!--<template name="TR_ON">-->

@@ -7,7 +7,7 @@ Schemas.Myslots = new SimpleSchema
 
   ids:
     type: String
-    optional: true
+    optional: false
     regEx: SimpleSchema.RegEx.Id
     autoValue: ->
       if @isInsert
@@ -18,11 +18,11 @@ Schemas.Myslots = new SimpleSchema
       type: 'hidden'
   num:
     type: Number
-    optional: true
+    optional: false
 
   owner:
     type: String
-    optional: true
+    optional: false
 #    regEx: SimpleSchema.RegEx.Id
 #    autoValue: ->
 #      if this.isInsert
@@ -41,16 +41,12 @@ Schemas.Myslots = new SimpleSchema
 #    autoform:
 #      type: 'hidden'
 
-  "timestamp":
+  timestamp:
     type: Date
-    optional: true
+    optional: false
 #    autoValue: ->
-#      if @isInsert
+#      if this.isUpdate || this.isInsert
 #        new Date()
-#      else if @isUpdate && (@isSet == false)
-#        new Date()
-#      else
-#        this.unset()
     autoform:
       type: 'hidden'
 
@@ -72,7 +68,9 @@ Schemas.subtarefas = new SimpleSchema
 
   nome:
     type: String
-    optional: false
+    optional: true
+    autoform:
+      type: 'hidden'
 
   descricao:
     type: String
@@ -107,8 +105,8 @@ Schemas.subtarefas = new SimpleSchema
     autoValue: ->
       if @isInsert
         "Inicial"
-      else if @isUpdate && (@isSet == false)
-        "Inicial"
+#      else if @isUpdate && (@isSet == false)
+#        "Inicial"
     autoform:
       type: 'hidden'
 
@@ -122,6 +120,24 @@ Schemas.subtarefas = new SimpleSchema
   "slots.$":
     type: Schemas.Myslots
     optional: true
+    autoform:
+      type: 'hidden'
+
+  createdAt:
+    type: Date
+    optional: true
+    autoValue: ->
+      if this.isInsert
+        new Date()
+    autoform:
+      type: 'hidden'
+
+  timestamp:
+    type: Date
+    optional: true
+    autoValue: ->
+      if this.isUpdate || this.isInsert
+        new Date()
     autoform:
       type: 'hidden'
 #
@@ -320,7 +336,7 @@ Schemas.items = new SimpleSchema
 
   "subtarefas.$":
     type: Schemas.subtarefas
-    optional: true
+    optional: false
 
 #  "tarefas.$.nome":
 #    type: String
