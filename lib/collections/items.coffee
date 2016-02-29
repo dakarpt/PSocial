@@ -41,7 +41,7 @@ Schemas.Myslots = new SimpleSchema
 #    autoform:
 #      type: 'hidden'
 
-  "timestamp":
+  timestamp:
     type: Date
     optional: true
 #    autoValue: ->
