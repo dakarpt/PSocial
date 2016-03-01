@@ -36,3 +36,4 @@ Template.registerHelper 'profileThumbSrc', (_id) ->
             picture = ProfilePictures.findOne picture
             console.log("Returning picture: url", picture.url({store: 'thumbs'}))
             picture.url({store: 'thumbs'})
+

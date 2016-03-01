@@ -39,6 +39,14 @@ Schemas.UserProfile = new SimpleSchema(
     type: String
     optional: true
 
+  ranking:
+    type: Number
+    optional: true
+    min: 0
+    max: 5
+    autoform:
+      type: 'hidden'
+
   morada:
     type: String
     optional: true

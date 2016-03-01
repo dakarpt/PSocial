@@ -1,4 +1,7 @@
 @Utils =
+  getRanking: (nome)->
+    console.log("Requesting ranking for %s", nome)
+    1
   prettyDate: (date)->
     if date
       if Config.dateFormat

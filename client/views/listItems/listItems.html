@@ -16,7 +16,12 @@
         {{#each  itemList}}
             <div class="panel panel-default panel-info">
                 <div class="panel-heading">
-                    <h3 class="panel-title" align="center">Projeto: {{nome}}
+                    <h3 class="panel-title" align="center">
+                        <span class="pull-left">
+							<i class="fa fa-star"></i> {{getRanking owner}}
+                            <!--<i class="fa fa-comments"></i> {{commentCount _id}}-->
+						</span>
+                        Projeto: {{nome}}
                         <span class="pull-right">
 							<i class="fa fa-thumbs-up"></i> {{#with favoritesByDoc _id}}{{count}}{{/with}}
                             <!--<i class="fa fa-comments"></i> {{commentCount _id}}-->

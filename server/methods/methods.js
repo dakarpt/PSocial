@@ -2,6 +2,10 @@
  * Created by aramos on 01-12-2015.
  */
 if (Meteor.isServer)
+    //getRanking = function () {
+    //    return 0;
+    //};
+
     Accounts.onCreateUser(function (options, user) {
         var d6 = function () {
             return Math.floor(Random.fraction() * 6) + 1;

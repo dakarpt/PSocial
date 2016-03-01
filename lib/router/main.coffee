@@ -47,7 +47,7 @@ Router.map ->
         Meteor.subscribe 'ProfilePictures'
         Meteor.subscribe 'Notifications'
       ]
-#    fastRender: true
+    fastRender: true
   @route "createNotification",
     path: "/createNotification"
     waitOn: ->

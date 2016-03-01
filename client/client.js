@@ -101,6 +101,7 @@ getQueryVariable = function (link, variable) {
 //TODO lista de notificacoes com crud - rever o conceito
 //done limites min e max das quantidades
 //TODO diminuir as colunas dos forms, tipo quantidade
-//TODO onsubmit dos forms voltar ao incio, o do delete do project tb
+//TODO onsubmit dos forms voltar ao inicio, o do delete do project tb
+//done ranking na lista de projetos com autoupdate on save profile
 //done por o footer dos panels blue info
 

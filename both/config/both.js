@@ -34,7 +34,7 @@ TabularTables.Notifications = new Tabular.Table({
     paging: false,
     limit: 10,
     bInfo: false,
-    //deferRender: true,
+    deferRender: true,
     searching: false,
     createdRow: function (row, data, dataIndex) {
         //$('td', row).addClass(data.newstatus);
