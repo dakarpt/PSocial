@@ -1,14 +1,18 @@
 AutoForm.hooks
   updateProfile:
     onSuccess: (operation, result, template) ->
-      sAlert.success 'Profile updated'
+      sAlert.success 'Perfil atualizado!',
+        timeout: 2000,
+        onClose: ()->
+          history.back()
+
     onError: (operation, error, template) ->
       sAlert.error error
 
   updatePicture:
     onSuccess: (operation, result, template) ->
-      console.log 'Picture Updated'
-      sAlert.success 'Picture Updated'
+      console.log 'Imagem atualizada'
+      sAlert.success 'Imagem atualizada'
     onError: (operation, error, template) ->
       sAlert.error error
 

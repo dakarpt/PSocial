@@ -92,6 +92,16 @@ Schemas.subtarefas = new SimpleSchema
     type: Number
     optional: false
     label: "Quantidade"
+    min: 1
+    max: 50
+    autoform: {
+      cols: 1
+    }
+
+  unidade:
+    type: String
+    optional: true
+    label: "Unidade (ex. 1 euro)"
 
   estado:
     type: String

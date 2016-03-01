@@ -96,11 +96,11 @@ getQueryVariable = function (link, variable) {
 //Done Retirei o status / AR Melhorar a info do status, com min time e remover da entrada
 //FIXME Alterar para o owner em vez da url se for sem object no slot - ongoing
 //FIXME Transformar o slot num objecto - ongoing
-//TODO Complementar o profile com morada e telefone, depois do update sair para o listitems
-//TODO Resolver o issue do novo user sem profile, usa as iniciais de for o owner em vez de url
+//Done Complementar o profile com morada e telefone, depois do update sair para o listitems
+//done Resolver o issue do novo user sem profile, usa as iniciais de for o owner em vez de url
 //TODO lista de notificacoes com crud - rever o conceito
-//TODO limites min e max das quantidades
-//TODO onsubmit dos forms voltar ao incio, om odelete do project tb
-//TODO por o footer dos panels blue info
+//done limites min e max das quantidades
 //TODO diminuir as colunas dos forms, tipo quantidade
+//TODO onsubmit dos forms voltar ao incio, o do delete do project tb
+//done por o footer dos panels blue info
 

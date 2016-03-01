@@ -39,6 +39,13 @@ Schemas.UserProfile = new SimpleSchema(
     type: String
     optional: true
 
+  morada:
+    type: String
+    optional: true
+    autoform: {
+      rows: 2
+    }
+
   birthday:
     type: Date
     optional: true
