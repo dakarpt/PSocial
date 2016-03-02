@@ -20,6 +20,44 @@ if (Meteor.isServer)
         return user;
     });
 
+getQueryVariable = function (link, variable) {
+    var query = link;
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+        }
+    }
+    console.log('Query variable %s not found', variable);
+};
+
+
+pre_process_sms = function (link) {
+    console.log("SERVER: pre process sms:", link);
+    var mobile= getQueryVariable(link, "mobile");
+    if (!mobile) {
+        console.log("Cant find mobile in link");
+        return "ERROR: Cant find mobile in link";
+    }
+    var item= getQueryVariable(link, "item");
+    var slot= Number(getQueryVariable(link, "slot")) || -1;
+    var smsText= getQueryVariable(link, "smsText");
+    var dateadded= getQueryVariable(link, "dateadded");
+    console.log("SERVER: Pre Processing sms: Mobile: %s, item: %s, slot: %s, Text: %s ", mobile, item, slot, smsText);
+    if (!smsinfo.findOne({ mobile: mobile, item: item, slot: slot, dateadded: dateadded})) {
+        console.log("inserting: ", { mobile: mobile, item: item, slot: slot, smsText: smsText, dateadded: dateadded} );
+        //smsinfo.insert({ mobile: mobile, item: item, slot: slot});
+        Meteor.call("insertSms", { mobile: mobile, item: item, slot: slot, smsText: smsText, dateadded: dateadded}, function (err) {
+            if (!err)
+                return "SUCCESS"
+            else
+                return "FAIL"
+        } );
+    }
+    return "SUCCESS"
+};
+
 process_Server_smsinfo= function(info) {
     check(info, Match.Any);
     console.log("SERVER: Call process smsinfo:", info);
@@ -91,7 +129,7 @@ if (Meteor.isServer) Meteor.methods({
         check(subtarefaId, String);
         check(slots, Match.Any);
         cw("ServerSide: UpdateSlots: Updating...");
-        console.log("Slots", slots);
+        //console.log("Slots", slots);
         items.update({
             _id: itemId,
             subtarefas: {$elemMatch: {ids: subtarefaId}}

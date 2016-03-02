@@ -69,6 +69,8 @@ Router.map ->
   @route "smsfrontend",
     path: "/smsfrontend/:smsinfo"
     layoutTemplate: ""
+    template: ""
+    where: "server"
     waitOn: ->
       [
         Meteor.subscribe 'smsinfo'
@@ -77,4 +79,15 @@ Router.map ->
     data: ->
       link: this.params.smsinfo
 #      console.log(this.params.smsinfo)
-#      process_smsinfo({ link: this.params.smsinfo })
+    action: ()->
+#      req = this.request
+      res = this.response
+      res.end(pre_process_sms(this.params.smsinfo));
+      console.log("ACTION Ended")
+#  @route "smsinfo",
+#    layoutTemplate: ""
+#    template: ""
+#    path: "/smsinfo"
+#    where: "server"
+#    action: ()->
+#      console.log(this)
