@@ -2,7 +2,7 @@ Meteor.startup ->
   if Meteor.isClient
     sAlert.config
       effect: "stackslide"
-      position: "top-right"
+      position: "bottom-right"
       timeout: 3000
-      offset: '51px'
+#      offset: '51px'
       html: false

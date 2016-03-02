@@ -38,6 +38,7 @@ Schemas.UserProfile = new SimpleSchema(
   mobile:
     type: String
     optional: true
+    label: "Telemóvel"
 
   ranking:
     type: Number

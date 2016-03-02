@@ -3,7 +3,9 @@
     <div class="template-dashboard">
         <div class="container">
             <div class="row" id="champion-messages">
-                <div class="">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-10">
                     {{> showShortItems}}
                 </div>
             </div>
@@ -146,8 +148,8 @@
 <template name="noNotifications">
     <div>
         <div class="alert alert-info">
-            <p>Sem Notificações</p>
-            <p><a href="/createNotification" class="btn btn-primary"><i class="fa fa-plus"></i> Criar Notificação</a></p>
+            <!--<p>Sem Notificações</p>-->
+            <p><a href="/createNotification" class="btn btn-primary"><i class="fa fa-plus"></i> Criar Mensagem</a></p>
         </div>
     </div>
 </template>

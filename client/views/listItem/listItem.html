@@ -11,9 +11,12 @@
                         <!--{{/if}}-->
                     <!--{{/if}}-->
                 <!--</div>-->
-                <div>
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-10">
                     <!--</div>-->
                     <!--<div class="col-xs-4">-->
+
                     {{> showAllItems}}
                     <!--</div>-->
                 </div>
@@ -27,6 +30,10 @@
         {{#each  itemList}}
             <div class="panel panel-default panel-info">
                 <div class="panel-heading">
+                    <span class="pull-left">
+							<i class="fa fa-star"></i> {{getRanking owner}}
+                        <!--<i class="fa fa-comments"></i> {{commentCount _id}}-->
+						</span>
                     <h3 class="panel-title" align="center">Projeto: {{nome}}                        <span
                             class="pull-right">
 							<i class="fa fa-thumbs-up"></i> {{#with favoritesByDoc _id}}{{count}}{{/with}}
@@ -63,12 +70,12 @@
         <!--<ul>-->
         {{#each subtarefas}}
             <p>
-                <B>Nome da Tarefa:</B> {{nome}} <BR>
-                <B>Descrição da Tarefa:</B>
+                <!--<B>Nome da Tarefa:</B> {{nome}} <BR>-->
+                <h5><i><b>Descrição da Tarefa:</b></i></h5>
             <p class="word-wrap break-word">{{descricao}}</p>
-            <B>Tipo:</B> {{tipo}} <BR>
-            <B>Quantidade:</B> {{duracao}} <BR>
-            <B>Estado:</B> {{estado}} <BR>
+            <B><i>Tipo:</i></B> {{tipo}} <BR>
+            <B><i>Total:</i></B> {{duracao}} <BR>
+            <B><i>Unidade:</i></B> {{unidade}} <BR>
             <BR>
             {{> table_slots}}
             </p>

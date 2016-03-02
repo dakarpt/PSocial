@@ -8,19 +8,21 @@
             <!--{{> favoritesSidebar}}-->
                 <!--{{/if}}-->
             <!--</div>-->
-            <!--</div>-->
+            <div class="col-md-2">
+            </div>
             <div class="col-md-8">
+                {{> noNotifications}}
                 <!--{{> tabular table=TabularTables.Notifications class="table table-condensed"}}-->
                 <!--<div class="template-favorites-sidebar">-->
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Notificações</h3>
+                        <h3 class="panel-title">Mensagens</h3>
                     </div>
                     <div class="panel-body">
                         {{#if notificationCount}}
                             {{> tabular table=TabularTables.Notifications class="table table-condensed dataTable form-inline dt-bootstrap no-footer"}}
                         {{else}}
-                            {{> noNotifications}}
+                            <!--{{> noNotifications}}-->
                         {{/if}}
                     </div>
                 </div>
