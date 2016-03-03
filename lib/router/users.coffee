@@ -1,11 +1,8 @@
-getPics = ->
-  Meteor.subscribe 'ProfilePictures'
-
 Router.map ->
   @route "profile",
     path: "/profile"
     waitOn: ->
-      getPics
+      Meteor.subscribe 'ProfilePictures'
 
   @route "account",
     path: "/account"
@@ -14,7 +11,7 @@ Router.map ->
     path: "/setUserName"
     onBeforeAction: ->
       if not Config.username or (Meteor.userId() and Meteor.user().username)
-        @redirect '/dashboard'
+        @redirect '/'
       @next()
 
   @route 'signOut',

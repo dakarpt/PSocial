@@ -52,4 +52,3 @@ Meteor.publish 'userPresence', ->
 
 Meteor.publish 'smsinfo', ->
   smsinfo.find()
-#  Notifications.find({to: this.userId }, {limit: 20})

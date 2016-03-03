@@ -24,7 +24,7 @@
 
 # Localisation
   defaultLanguage: 'pt'
-  dateFormat: 'D/M/YYYY'
+  dateFormat: 'DD/MM/YYYY'
 
 # Meta / Extenrnal content
   privacyUrl: 'http://meteorfactory.io'

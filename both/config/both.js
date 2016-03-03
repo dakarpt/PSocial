@@ -82,47 +82,7 @@ TabularTables.Notifications = new Tabular.Table({
                     })
             }
         },
-        //{
-        //    data: 'to',
-        //    title: 'Para',
-        //    createdCell: function (node, cellData, rowData) {
-        //        $(node).html(Blaze.toHTMLWithData(Template.UsersMailBtn, { email: cellData}),
-        //            {
-        //                //width: '40px',
-        //                orderable: false
-        //            })
-        //    }
-        //},
-        //{data: "from_email", title: "De:"},
         {data: "title", title: "Titulo"},
-        //{data: "message", title: "Mensagem"},
-        //{data: "read", title: "Leitura"},
-        //{
-        //    title: "Editar",
-        //    tmpl: Meteor.isClient && Template.EditNotification
-        //},
-        //{
-        //    data: '_id',
-        //    title: 'Reply',
-        //    createdCell: function (node, cellData, rowData) {
-        //        $(node).html(Blaze.toHTMLWithData(Template.replyNotification, {_id: cellData}),
-        //            {
-        //                width: '40px',
-        //                orderable: false
-        //            })
-        //    }
-        //},
-        //{
-        //    data: '_id',
-        //    title: 'Delete',
-        //    createdCell: function (node, cellData, rowData) {
-        //        $(node).html(Blaze.toHTMLWithData(Template.deleteNotification, {_id: cellData}),
-        //            {
-        //                //width: '40px',
-        //                orderable: false
-        //            })
-        //    }
-        //}
     ],
     extraFields: ['date', '_id', 'owner', 'to'],
     order: [[1, 'desc']],
@@ -130,10 +90,5 @@ TabularTables.Notifications = new Tabular.Table({
         {className: "col_center", targets: [0, 1, 2]},
         {className: "col_left", targets: [3]},
         { className: "dt[-head|-body]-center", targets: [ 0,1,2,3 ] }
-    ],
-    //aoColumnDefs: [
-    //    { "bSortable": false, "sClass": "indexLeft", "aTargets": [ 0 ] },
-    //    { "bSortable": false, "sClass": "indexRight", "aTargets": [ -1 ] }
-    //],
-    //stateSave: true
+    ]
 });

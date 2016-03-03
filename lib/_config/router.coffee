@@ -12,11 +12,10 @@ Router.configure
       @redirect '/setUserName'
     @next()
 
-
 Router.waitOn ->
-  subs.subscribe 'user'
-  subs.subscribe 'attachments'
-  subs.subscribe 'favorites'
+  subs.subscribe 'Notifications'
+#  subs.subscribe 'attachments'
+#  subs.subscribe 'favorites'
 
 onAfterAction = ->
   if Meteor.isClient

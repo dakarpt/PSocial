@@ -11,7 +11,6 @@ if (Meteor.isServer)
             return Math.floor(Random.fraction() * 6) + 1;
         };
         user.dexterity = d6() + d6() + d6();
-        // We still want the default hook's 'profile' behavior.
         if (options.profile)
             user.profile = options.profile;
         else
@@ -100,15 +99,10 @@ process_Server_smsinfo= function(info) {
             }
         }
     }
-
-    //Meteor.call('UpdateSlots', itemID, subtarefaID, slots);
-            //items.update({ _id: info.item, subtarefas: {$elemMatch: {tipo:"Donativos",slots: {$elemMatch: { num:info.slot } }}}}, {$set: {"slots.$.owner": user._id}}, function (err) {
-    //    if (err)
-    //        console.log("ERRO no UPdate", err);
-    //});
 };
 
 //Roles.addUsersToRoles('hJZzwmr8kv9CeWymK', 'admin');
+
 if (Meteor.isServer) Meteor.methods({
     'insertSms': function (info) {
         check(info, Match.Any);
@@ -151,27 +145,3 @@ if (Meteor.isServer) Meteor.methods({
     //    }
     //}
 });
-//    Processos.after.update(function (userId, doc, fieldNames, modifier, options) {
-//        cw("ServerSide: Changed Processo: " + this.previous._id);
-//        //cw(this.previous);
-//        //cw(doc);
-//        if (doc.status != this.previous.status) {
-//            var obj = {
-//                oldstatus: this.previous.status,
-//                newstatus: doc.status,
-//                tipo: "AUTO",
-//                processoOwner: this.previous._id,
-//                processo: this.previous.name,
-//                message: "Status changed from " + this.previous.status + " to " + doc.status
-//            };
-//            //cw(obj);
-//            cw("IsUser:" + isUser(Meteor.userId()));
-//            cw("IsAdmin:" + isAdmin(Meteor.userId()));
-//            if (isAdmin(Meteor.userId()))
-//                Meteor.call("InsertLog", obj);
-//            else
-//                cw("Not admin, ignored InsertLog");
-//        }
-//    }, {fetchPrevious: true});
-//}
-

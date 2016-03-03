@@ -6,13 +6,13 @@ Template.favoriteButton.helpers
 
 Template.favoriteButtonFavorited.helpers
   docTitle: (_id) ->
-    Posts.findOne(_id)?.title
+    items.findOne(_id)?.nome
 
 Template.favoriteButtonNotFavorited.helpers
   docTitle: (_id) ->
-    Posts.findOne(_id)?.title
+    items.findOne(_id)?.nome
   docRoute: (_id) ->
-    Posts.findOne(_id)?.route
+#    Posts.findOne(_id)?.route
 
 Template.favoriteButtonNotFavorited.events
   'click .js-favorite-button': (e, t) ->
