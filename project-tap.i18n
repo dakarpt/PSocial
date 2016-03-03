@@ -4,5 +4,5 @@
     "i18n_files_route": "/i18n",
     "file_path": "/i18n",
     "cdn_path": "/i18n",
-    "preloaded_langs": ["*"]
+    "preloaded_langs": ["pt"]
 }

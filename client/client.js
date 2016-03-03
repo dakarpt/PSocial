@@ -20,7 +20,7 @@ goodName = function (id) {
     return "A user";
 };
 
-Blaze._allowJavascriptUrls();
+//Blaze._allowJavascriptUrls();
 
 Presence.state = function () {
 

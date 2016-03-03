@@ -8,22 +8,6 @@ ProfilePictures.allow
   remove: (userId, doc)->
       userId == doc.owner
 
-#Processos.allow
-#	insert: (userId, nome, status, timestamp, estado) ->
-#    isAdmin(userId)
-#	update: (userId, nome, status, timestamp, estado)->
-#    isAdmin(userId)
-#	remove: (userId)->
-#    isAdmin(userId)
-#
-#Instalacoes.allow
-#	insert: (ano, instalacoes, timestamp) ->
-#    isAdmin(userId)
-#	update: (userId, ano, instalacoes, timestamp) ->
-#    isAdmin(userId)
-#	remove: (userId, doc) ->
-#    isAdmin(userId)
-
 Posts.allow
   insert: (userId, doc) ->
     userId == doc.owner
@@ -49,23 +33,6 @@ Meteor.users.allow
     else
       false
 
-#Notifications.allow
-#  insert: (userId, doc) ->
-#    userId == doc.owner
-#  update: (userId, doc, fields, modifier) ->
-#    true
-#  remove: (userId, doc) ->
-#    true
-#    userId == doc.owner || userId == doc.to || isAdmin(userId)
-
-#LogMessages.allow
-#	insert: (userId, doc) ->
-#    isAdmin(userId)
-#	update: (userId, doc) ->
-#    isAdmin(userId)
-#	remove: (userId, doc) ->
-#    isAdmin(userId)
-
 items.allow
   insert: (userId, doc) ->
     isUser(userId) && doc.owner
@@ -81,14 +48,6 @@ smsinfo.allow
 		true
   remove: (userId)->
 		true
-
-#subtarefas.allow
-#	insert: (userId, doc) ->
-#		true
-#	update: (userId, doc, fieldNames, modifier) ->
-#		true
-#  remove: (userId)->
-#		true
 
 Notifications.allow
   insert: (userId, doc) ->

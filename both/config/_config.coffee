@@ -21,7 +21,7 @@
 
 Avatar.setOptions
   fallbackType: "initials"
-  defaultImageUrl: "img/default-avatar.png"
+  defaultImageUrl: "/default-profile.png"
 
 #Meteor.startup ->
 #  if Meteor.isClient

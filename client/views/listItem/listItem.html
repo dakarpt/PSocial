@@ -3,22 +3,10 @@
     <div class="template-dashboard">
         <div class="container">
             <div class="row" id="champion-messages">
-                <!--<div class="col-md-3">-->
-                    <!--{{#if User}}-->
-                <!--{{> favoritesSidebar}}-->
-                    <!--{{#if isInRole 'admin'}}-->
-                    <!--{{> addPost}}-->
-                        <!--{{/if}}-->
-                    <!--{{/if}}-->
-                <!--</div>-->
                 <div class="col-md-1">
                 </div>
                 <div class="col-md-10">
-                    <!--</div>-->
-                    <!--<div class="col-xs-4">-->
-
                     {{> showAllItems}}
-                    <!--</div>-->
                 </div>
             </div>
         </div>
@@ -37,7 +25,6 @@
                     <h3 class="panel-title" align="center">Projeto: {{nome}}                        <span
                             class="pull-right">
 							<i class="fa fa-thumbs-up"></i> {{#with favoritesByDoc _id}}{{count}}{{/with}}
-                        <!--<i class="fa fa-comments"></i> {{commentCount _id}}-->
 						</span>
                     </h3>
                 </div>
@@ -51,27 +38,16 @@
 
 <template name="showItem">
     <div class="panel-body detalhes">
-        <!--<div class="">-->
         <p align="center"><h4><B><i>Descrição do Projeto</i></B></h4></p>
         <p align="justify">{{descricao}}</P> <BR>
-        <!--<B>owner do item:</B> {{owner}} <BR>-->
-        <!--<B>Duração do item:</B> {{duracao}} <BR>-->
-        <!--<B>createdAt do item:</B> {{createdAt}} <BR>-->
-        <!--<B>timestamp do item:</B> {{timestamp}} <BR>-->
-        <!--<B>Estado do Projecto:</B> {{estado}} <BR>-->
-        <!--<B>dataInicio do Projecto:</B> {{datainicio}} <BR>-->
-
-        <!--<B>Picture do Projecto:</B> <BR>-->
         <p class="text-center">
             {{#with getDoc picture 'Attachments'}}
                 <img src="{{url}}" class="img-thumbnail img-rounded">
             {{/with}}
         </p>
-        <!--<ul>-->
         {{#each subtarefas}}
             <p>
-                <!--<B>Nome da Tarefa:</B> {{nome}} <BR>-->
-                <h5><i><b>Descrição da Tarefa:</b></i></h5>
+            <h5><i><b>Descrição da Tarefa:</b></i></h5>
             <p class="word-wrap break-word">{{descricao}}</p>
             <B><i>Tipo:</i></B> {{tipo}} <BR>
             <B><i>Total:</i></B> {{duracao}} <BR>
@@ -79,13 +55,10 @@
             <BR>
             {{> table_slots}}
             </p>
-            <!--<BR>-->
         {{/each}}
-        <!--</ul>-->
     </div>
     <div class="media media-left">
         <a class="pull-left" href="#">
-            <!--{{> avatar userId=owner shape="circle"}}-->
             {{> profileThumb _id=owner }}
         </a>
         <div class="media-body">
@@ -101,13 +74,8 @@
             {{/if}}
         </div>
     </div>
-    <!--</div>-->
-    <!--</div>-->
     <div class="panel-footer panel-info">
         {{> favoriteButton _id=_id}}
-        <!--<p class="pull-left">-->
-        <!--Item Footer-->
-        <!--</p>-->
     </div>
 </template>
 
@@ -117,17 +85,11 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
                     <h4 class="modal-title">
                         <p align="center">Quer retirar a sua contribuição a esta tarefa?
                         </p>
                     </h4>
                 </div>
-
-                <!--<div class="modal-body">-->
-                <!--<p>A modal example.</p>-->
-                <!--</div>-->
-
                 <div class="modal-footer">
                     <p align="center">
                         <button id="delete" type="button" class="btn btn-danger">Sim, Quero</button>
@@ -141,56 +103,31 @@
 </template>
 
 <template name="table_slots">
-    <!--<div class="table-responsive">-->
     <div class="container-fluid">
-    <div class="row">
-        <div class="media">
-            <!--<table>-->
-            <!--<tr>-->
-            <div class="media-body">
-                <table><tr><td>
-                {{#each slots}}
-<!--<span>owner: {{owner}}</span>-->
-<!--<span>slotOwner: {{slots.owner}}</span>-->
-                    <!--&lt;!&ndash;<td>&ndash;&gt;-->
-
-                    <div ids="{{../../_id}}" class="img-responsive profile-thumb pull-left">
-                        <div ids="{{../ids}}" class="img-responsive profile-thumb-img pull-left">
-                            <!--<img ids="{{num}}" src="{{owner}}" class="img-thumbnail">-->
-                            <!--<div ids="{{num}}">-->
-                            {{#if profileThumbSrc owner}}
-                                <img ids="{{num}}" src="{{profileThumbSrc owner}}" class="img-thumbnail pull-left fixed_width">
-                                <!--{{num}} <BR>  {{owner}} <BR> {{ids}} <BR> {{timestamp}}-->
-                                <!--{{> profileThumb _id=owner }}-->
-                            {{else}}
-                                <img ids="{{num}}" src="{{owner}}" class="img-thumbnail pull-left fixed_width">
-                            {{/if}}
-                            <!--</div>-->
-                        </div>
-                    </div>
-
-                    <!--&lt;!&ndash;</td>&ndash;&gt;-->
-                    <!--{{#if isTR @index}}-->
-                        <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;<BR>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-                    <!--{{else}}&ndash;&gt;&ndash;&gt;-->
-                    <!--&lt;!&ndash;&lt;!&ndash;{{/if}}-->
-
-                {{/each}}
-                </td></tr>
-                </table>
-            <!--</div>-->
+        <div class="row">
+            <div class="media">
+                <div class="media-body">
+                    <table>
+                        <tr>
+                            <td>
+                                {{#each slots}}
+                                    <div ids="{{../../_id}}" class="img-responsive profile-thumb pull-left">
+                                        <div ids="{{../ids}}" class="img-responsive profile-thumb-img pull-left">
+                                            {{#if profileThumbSrc owner}}
+                                                <img ids="{{num}}" src="{{profileThumbSrc owner}}"
+                                                     class="img-thumbnail pull-left fixed_width">
+                                            {{else}}
+                                                <img ids="{{num}}" src="{{owner}}"
+                                                     class="img-thumbnail pull-left fixed_width">
+                                            {{/if}}
+                                        </div>
+                                    </div>
+                                {{/each}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-            <!--</tr>-->
-            <!--</table>-->
-
         </div>
-    </div></div>
+    </div>
 </template>
-
-<!--<template name="TR_ON">-->
-<!--<TR>-->
-<!--</template>-->
-
-<!--<template name="TR_OFF">-->
-<!--</TR>-->
-<!--</template>-->

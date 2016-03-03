@@ -1,7 +1,7 @@
 /**
  * Created by aramos on 02-12-2015.
  */
-
+//
 //if (Meteor.isClient)  {
 //    $.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
 //        options.async = true;
@@ -36,14 +36,17 @@ TabularTables.Notifications = new Tabular.Table({
     bInfo: false,
     deferRender: true,
     searching: false,
-    createdRow: function (row, data, dataIndex) {
-        //$('td', row).addClass(data.newstatus);
-        console.log("row:", data);
-        if (data.to != Meteor.userId()) {
-            console.log("Bad self not");
-            $('td', row).remove();
-        }
+    selector: function (userId) {
+        return {to: userId };
     },
+    //createdRow: function (row, data, dataIndex) {
+    //    //$('td', row).addClass(data.newstatus);
+    //    console.log("row:", data);
+    //    if (data.to != Meteor.userId()) {
+    //        console.log("Bad self not");
+    //        $('td', row).remove();
+    //    }
+    //},
     columns: [
         {
             data: 'icon',

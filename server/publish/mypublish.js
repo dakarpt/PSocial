@@ -9,6 +9,6 @@
 //    return Notifications.find({ to: ID });
 //});
 Meteor.publish("Notifications", function () {
-    return Notifications.find({ to: this.userId })
+    return Notifications.find()
     });
 //});

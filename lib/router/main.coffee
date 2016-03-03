@@ -1,11 +1,6 @@
 Router.map ->
   @route "home",
     path: "/"
-#    waitOn: ->
-#      [
-#        Meteor.subscribe 'Processos'
-#        Meteor.subscribe 'LogMessages'
-#      ]
 #    fastRender: true
   @route "createItem",
     path: "/createItem"
@@ -65,7 +60,6 @@ Router.map ->
     data: ->
       Notifications.findOne({_id: this.params._id});
     fastRender: true
-
   @route "smsfrontend",
     path: "/smsfrontend/:smsinfo"
     layoutTemplate: ""
@@ -78,16 +72,8 @@ Router.map ->
       ]
     data: ->
       link: this.params.smsinfo
-#      console.log(this.params.smsinfo)
     action: ()->
 #      req = this.request
       res = this.response
       res.end(pre_process_sms(this.params.smsinfo));
       console.log("ACTION Ended")
-#  @route "smsinfo",
-#    layoutTemplate: ""
-#    template: ""
-#    path: "/smsinfo"
-#    where: "server"
-#    action: ()->
-#      console.log(this)
