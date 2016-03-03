@@ -83,7 +83,6 @@
     <div class="modal modal-warning fade">
         <div class="modal-dialog modal-sm navbarpadding">
             <div class="modal-content">
-
                 <div class="modal-header">
                     <h4 class="modal-title">
                         <p align="center">Quer retirar a sua contribuição a esta tarefa?
@@ -107,25 +106,19 @@
         <div class="row">
             <div class="media">
                 <div class="media-body">
-                    <table>
-                        <tr>
-                            <td>
-                                {{#each slots}}
-                                    <div ids="{{../../_id}}" class="img-responsive profile-thumb pull-left">
-                                        <div ids="{{../ids}}" class="img-responsive profile-thumb-img pull-left">
-                                            {{#if profileThumbSrc owner}}
-                                                <img ids="{{num}}" src="{{profileThumbSrc owner}}"
-                                                     class="img-thumbnail pull-left fixed_width">
-                                            {{else}}
-                                                <img ids="{{num}}" src="{{owner}}"
-                                                     class="img-thumbnail pull-left fixed_width">
-                                            {{/if}}
-                                        </div>
-                                    </div>
-                                {{/each}}
-                            </td>
-                        </tr>
-                    </table>
+                    {{#each slots}}
+                        <div ids="{{../../_id}}" class="img-responsive profile-thumb pull-left">
+                            <div ids="{{../ids}}" class="img-responsive profile-thumb-img pull-left">
+                                {{#if profileThumbSrc owner}}
+                                    <img ids="{{num}}" src="{{profileThumbSrc owner}}"
+                                         class="img-thumbnail pull-left fixed_width">
+                                {{else}}
+                                    <img ids="{{num}}" src="{{owner}}"
+                                         class="img-thumbnail pull-left fixed_width">
+                                {{/if}}
+                            </div>
+                        </div>
+                    {{/each}}
                 </div>
             </div>
         </div>
