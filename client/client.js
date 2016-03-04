@@ -81,11 +81,11 @@ GetSlots = function (itemId, subtarefaId) {
 //Must Have
 //TODO onsubmit dos forms voltar ao inicio, delete do project
 //done altera o processo de selecao para todos os tipos, confirmação no slot
-//TODO altera o processo de selecao para donativos, confirmação no slot
+//TODO altera o processo de selecao para donativos, confirmação no slot - ongoing
 //TODO update slot, confirmar as alterações por causa da modal
-//TODO pensar nas Alterações das tarefas, quantidade
 
 //Nice to have
+//TODO pensar nas Alterações das tarefas, quantidade
 //TODO show profile, mini info
 //TODO onhover nos slots - info do participante com link para mini profile
 //TODO onsuccess show notification marcar como lida.

@@ -7,6 +7,7 @@ Router.map ->
     waitOn: ->
       [
         Meteor.subscribe 'items'
+        Meteor.subscribe 'attachments'
       ]
 #    fastRender: true
   @route "listItems",

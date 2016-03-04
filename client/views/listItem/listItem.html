@@ -67,7 +67,7 @@
                     {{#afModal buttonContent="Actualizar Projeto" title="Editar Projeto" omitFields="subtarefas.$.slots" class="text-primary" collection="items" operation="update" doc=_id}}
                         <i class="fa fa-pencil" buttonContent="Editar Projeto"></i> Editar Projeto
                     {{/afModal}}
-                    {{#afModal buttonClasses="" dialogClass="modal-dialog modal-sm navbarpadding" closeButtonContent="Não" buttonContent="Sim, quero" prompt="Esta operação é irreversível" title=getTitle class="text-danger modal-sm navbarpadding" collection="items" operation="remove" doc=_id}}
+                    {{#afModal buttonClasses="" formId="deleteProject" dialogClass="modal-dialog modal-sm navbarpadding" closeButtonContent="Não" buttonContent="Sim, quero" prompt="Esta operação é irreversível" title=getTitle class="text-danger modal-sm navbarpadding" collection="items" operation="remove" doc=_id}}
                         <i class="fa fa-times"></i> Apagar Projeto
                     {{/afModal}}
                 </small>
@@ -140,8 +140,9 @@
 
                     {{#unless Utils.isMobile}}
                         <div class="modal-body">
-                            <p align="center">{{Config.smsengineInfo}}</p>
-                            <img src="/img/qrcode_contribuir.png" class="thumbnail">
+                            <p align="center">{{Config.smsengineInfo}}
+                                <img src="/img/qrcode_contribuir.png" class="img-thumbnail">
+                            </p>
                         </div>
                     {{/unless}}
                     {{#if Utils.isMobile}}
@@ -155,15 +156,15 @@
                 {{#unless Utils.isMobile}}
                     <div class="modal-footer">
                         <p align="center">
-                            <button id="confirm" type="button" class="btn btn-success">Sim, Quero</button>
-                            <button type="button" class="btn btn-info" data-dismiss="modal">Não</button>
+                            <!--<button id="confirm" type="button" class="btn btn-success">Sim, Quero</button>-->
+                            <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
                         </p>
                     </div>
                 {{/unless}}
                 {{#if Utils.isMobile}}
                     <div class="modal-footer">
                         <p align="center">
-                            <a id="confirm" href="sms:+3511967958021?body=Contribuir" class="btn btn-success">
+                            <a id="wish" href="sms:+3511967958021?body=Contribuir" data-dismiss="modal" class="btn btn-success">
                                 Contribuir Agora!
                             </a>
                             <!--<button id="confirm" type="button" class="btn btn-info">Depois envio o SMS</button>-->

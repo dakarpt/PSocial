@@ -134,3 +134,19 @@ Template.showItem.helpers({
         return "Quer apagar o Projeto: " + this.nome;
     }
 });
+
+//
+//AutoForm.hooks({
+//    deleteProject: {
+//        onSubmit: function (insertDoc, updateDoc, currentDoc) {
+//            //if (customHandler(insertDoc)) {
+//            //    this.done();
+//            //} else {
+//            //    this.done(new Error("Submission failed"));
+//            console.log("Calling onSubmit deleteProject");
+//            Router.go("/listItems");
+//            this.done();
+//            return true;
+//        }
+//    }
+//});
