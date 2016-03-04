@@ -67,7 +67,7 @@
                     {{#afModal buttonContent="Actualizar Projeto" title="Editar Projeto" omitFields="subtarefas.$.slots" class="text-primary" collection="items" operation="update" doc=_id}}
                         <i class="fa fa-pencil" buttonContent="Editar Projeto"></i> Editar Projeto
                     {{/afModal}}
-                    {{#afModal buttonContent="Apagar Projeto" prompt="Tem a certeza?" title="Apagar Projeto" class="text-danger modal-sm navbarpadding" collection="items" operation="remove" doc=_id}}
+                    {{#afModal buttonClasses="" dialogClass="modal-dialog modal-sm navbarpadding" closeButtonContent="Não" buttonContent="Sim, quero" prompt="Esta operação é irreversível" title=getTitle class="text-danger modal-sm navbarpadding" collection="items" operation="remove" doc=_id}}
                         <i class="fa fa-times"></i> Apagar Projeto
                     {{/afModal}}
                 </small>
@@ -92,7 +92,7 @@
                 <div class="modal-footer">
                     <p align="center">
                         <button id="delete" type="button" class="btn btn-danger">Sim, Quero</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+                        <button type="button" class="btn btn-info" data-dismiss="modal">Não</button>
                     </p>
                 </div>
 
@@ -111,13 +111,66 @@
                         </p>
                     </h4>
                 </div>
+                <div class="modal-body">
+                    <p align="center">{{Config.normalInfo}}</p>
+                </div>
                 <div class="modal-footer">
                     <p align="center">
                         <button id="confirm" type="button" class="btn btn-success">Sim, Quero</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+                        <button type="button" class="btn btn-info" data-dismiss="modal">Não</button>
                     </p>
                 </div>
 
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="confirmModalSlotDonativos">
+    <div class="modal modal-warning fade">
+        <div class="modal-dialog modal-sm navbarpadding">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <p align="center">Quer contribuir com <b>{{unidade}}</b>, para a esta tarefa?
+                        </p>
+                    </h4>
+                </div>
+                {{#if smsengine}}
+
+                    {{#unless Utils.isMobile}}
+                        <div class="modal-body">
+                            <p align="center">{{Config.smsengineInfo}}</p>
+                            <img src="/img/qrcode_contribuir.png" class="thumbnail">
+                        </div>
+                    {{/unless}}
+                    {{#if Utils.isMobile}}
+                        <p align="center">{{Config.mobileInfo}}</p>
+                    {{/if}}
+                {{else}}
+                    <div class="modal-body">
+                        <p align="center">{{Config.normalInfo}}</p>
+                    </div>
+                {{/if}}
+                {{#unless Utils.isMobile}}
+                    <div class="modal-footer">
+                        <p align="center">
+                            <button id="confirm" type="button" class="btn btn-success">Sim, Quero</button>
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Não</button>
+                        </p>
+                    </div>
+                {{/unless}}
+                {{#if Utils.isMobile}}
+                    <div class="modal-footer">
+                        <p align="center">
+                            <a id="confirm" href="sms:+3511967958021?body=Contribuir" class="btn btn-success">
+                                Contribuir Agora!
+                            </a>
+                            <!--<button id="confirm" type="button" class="btn btn-info">Depois envio o SMS</button>-->
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Agora não</button>
+                        </p>
+                    </div>
+                {{/if}}
             </div>
         </div>
     </div>

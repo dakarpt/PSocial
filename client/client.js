@@ -50,20 +50,9 @@ GetSlots = function (itemId, subtarefaId) {
             return {
                 slots: subtarefas[f].slots,
                 tipo: subtarefas[f].tipo,
-                unidade: subtarefas[f].unidade
+                unidade: subtarefas[f].unidade,
+                smsengine: subtarefas[f].smsengine
             }
-            //if (TIPO==0) {
-            //    console.log("returning slots: ", subtarefas[f].slots);
-            //    return subtarefas[f].slots;
-            //}
-            //if (TIPO==1) {
-            //    console.log("returning tipo: ", subtarefas[f].tipo);
-            //    return subtarefas[f].tipo;
-            //}
-            //if (TIPO==2) {
-            //    console.log("returning tipo: ", subtarefas[f].tipo);
-            //    return subtarefas[f].unidade;
-            //}
         }
     }
     console.log("No slots found!");
@@ -90,7 +79,7 @@ GetSlots = function (itemId, subtarefaId) {
 //TODO crop do avatar, multicrop das pics
 
 //Must Have
-//TODO onsubmit dos forms voltar ao inicio, o do create, delete do project tb
+//TODO onsubmit dos forms voltar ao inicio, delete do project
 //done altera o processo de selecao para todos os tipos, confirmação no slot
 //TODO altera o processo de selecao para donativos, confirmação no slot
 //TODO update slot, confirmar as alterações por causa da modal

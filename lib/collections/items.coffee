@@ -103,6 +103,12 @@ Schemas.subtarefas = new SimpleSchema
     optional: true
     label: "Unidade (ex. um euro)"
 
+  smsengine:
+    type: Number
+    optional: true
+    autoform:
+      type: 'hidden'
+
   estado:
     type: String
     optional: true
