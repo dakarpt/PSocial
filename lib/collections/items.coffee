@@ -101,7 +101,7 @@ Schemas.subtarefas = new SimpleSchema
   unidade:
     type: String
     optional: true
-    label: "Unidade (ex. 1 euro)"
+    label: "Unidade (ex. um euro)"
 
   estado:
     type: String

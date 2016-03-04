@@ -101,6 +101,28 @@
     </div>
 </template>
 
+<template name="confirmModalSlot">
+    <div class="modal modal-warning fade">
+        <div class="modal-dialog modal-sm navbarpadding">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <p align="center">Quer contribuir com <b>{{unidade}}</b>, para a esta tarefa?
+                        </p>
+                    </h4>
+                </div>
+                <div class="modal-footer">
+                    <p align="center">
+                        <button id="confirm" type="button" class="btn btn-success">Sim, Quero</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</template>
+
 <template name="table_slots">
     <div class="container-fluid">
         <div class="row">
