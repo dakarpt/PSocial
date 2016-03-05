@@ -39,12 +39,6 @@ smsinfo.attachSchema(Schemas.smsinfo)
 #
 #  Notifications.insert(doc)
 
-Notifications.readAll = ->
-  Meteor.call 'readAllNotifications'
-
-Notifications.read = (_id) ->
-  Notifications.update _id, {$set: {read: true}}
-
 Schemas.NotificationsSchema = new SimpleSchema
   owner:
     type: String
@@ -60,6 +54,7 @@ Schemas.NotificationsSchema = new SimpleSchema
     type: String
     optional: false
     regEx: SimpleSchema.RegEx.Email
+    label: "De"
     autoValue: ->
       if this.isInsert || this.isUpdate
         Meteor.users.findOne(Meteor.userId()).emails[0].address
@@ -72,6 +67,7 @@ Schemas.NotificationsSchema = new SimpleSchema
   message:
     type: String
     optional: false
+    label: "Mensagem"
     min: 20,
     max: 1000,
     autoform: {
@@ -98,7 +94,7 @@ Schemas.NotificationsSchema = new SimpleSchema
 
   icon:
     type: String
-    defaultValue: 'circle-o'
+    defaultValue: "thumbs-up"
     label: ->
       TAPi18n.__("n_Icon")
     allowedValues: [
@@ -121,7 +117,13 @@ Schemas.NotificationsSchema = new SimpleSchema
     autoform:
       options: ->
         _.map Meteor.users.find().fetch(), (user)->
-          label: user.emails[0].address
+          label: Utils.getName(user._id) + " <" + Utils.getEmail(user._id) + ">"
           value: user._id
 
 Notifications.attachSchema(Schemas.NotificationsSchema)
+
+Notifications.readAll = ->
+  Meteor.call 'readAllNotifications'
+
+Notifications.read = (_id) ->
+  Notifications.update _id, {$set: {read: true}}

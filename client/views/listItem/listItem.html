@@ -141,6 +141,7 @@
                     {{#unless Utils.isMobile}}
                         <div class="modal-body">
                             <p align="center">{{Config.smsengineInfo}}
+                                </p><p>
                                 <img src="/img/qrcode_contribuir.png" class="img-thumbnail">
                             </p>
                         </div>
@@ -149,22 +150,22 @@
                         <p align="center">{{Config.mobileInfo}}</p>
                     {{/if}}
                 {{else}}
-                    <div class="modal-body">
-                        <p align="center">{{Config.normalInfo}}</p>
-                    </div>
+                    <!--<div class="modal-body">-->
+                        <p align="justify">{{Config.normalInfo}}</p>
+                    <!--</div>-->
                 {{/if}}
                 {{#unless Utils.isMobile}}
-                    <div class="modal-footer">
+                    <!--<div class="modal-footer">-->
                         <p align="center">
                             <!--<button id="confirm" type="button" class="btn btn-success">Sim, Quero</button>-->
                             <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
                         </p>
-                    </div>
+                    <!--</div>-->
                 {{/unless}}
                 {{#if Utils.isMobile}}
                     <div class="modal-footer">
                         <p align="center">
-                            <a id="wish" href="sms:+3511967958021?body=Contribuir" data-dismiss="modal" class="btn btn-success">
+                            <a id="wish" href="sms:+3511967958021?body=Contribuir" class="btn btn-success">
                                 Contribuir Agora!
                             </a>
                             <!--<button id="confirm" type="button" class="btn btn-info">Depois envio o SMS</button>-->

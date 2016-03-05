@@ -9,11 +9,11 @@
   smsgtw:
     "967958021"
   smsengineInfo: ->
-    "A sua contribuição fica a aguardar a receção de um SMS para o número: " + @smsgtw + ". Também poderá utilizr a imagem em baixo"
+    "A sua contribuição fica a aguardar a receção de um SMS para o número: " + @smsgtw + ". Também poderá utilizar código QR no leitor do Telemóvel."
   normalInfo: ->
     "Na conclusão do projeto, será informado dos passos necessários para formalizar a sua contribuição."
   mobileInfo: ->
-    "Para contribuir agora, utilize o botão contribuir ou poderá enviar de um SMS para o número: " + @smsgtw
+    "Para contribuir agora, utilize o botão contribuir ou poderá enviar mais tarde um SMS para o número: " + @smsgtw
   footer: ->
     @name + ' - Copyright ' + new Date().getFullYear()
   emails:

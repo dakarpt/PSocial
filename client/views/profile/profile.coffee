@@ -4,11 +4,11 @@ AutoForm.hooks
   updateProfile:
     onSuccess: (operation, result, template) ->
 #      console.log("Profile updated:", this);
-      sAlert.success 'Perfil atualizado!',
-        timeout: 3000,
-        onRouteClose: false
-#        onClose: ()->
-      history.back()
+#      sAlert.success 'Perfil atualizado!',
+#        timeout: 3000,
+#        onRouteClose: false
+##        onClose: ()->
+#      history.back()
 
     onError: (operation, error, template) ->
       sAlert.error error

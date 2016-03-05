@@ -1,7 +1,7 @@
 @AdminConfig =
   name: Config.name
   adminEmails: ['dakarpt@gmail.com']
-  collections:
+#  collections:
 #    Posts:
 #      color: 'red'
 #      icon: 'pencil'
@@ -29,16 +29,16 @@
 #            Meteor.users.find comment.owner, limit: 1
 #        }
 #      ]
-    Notifications:
-      color: 'blue'
-      icon: 'pencil'
-      extraFields: ['doc','owner','from']
-      tableColumns: [
-        {label: 'Title', name: 'title'}
-        {label: 'From', name: 'from'}
-        {label: 'To', name: 'to'}
-        {label: 'Msg', name: 'message'}
-      ]
+#    Notifications:
+#      color: 'blue'
+#      icon: 'pencil'
+#      extraFields: ['doc','owner','from']
+#      tableColumns: [
+#        {label: 'Title', name: 'title'}
+#        {label: 'From', name: 'from'}
+#        {label: 'To', name: 'to'}
+#        {label: 'Msg', name: 'message'}
+#      ]
 #    Messages:
 #      color: 'yellow'
 #      icon: 'comments'

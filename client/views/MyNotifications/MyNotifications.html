@@ -2,12 +2,6 @@
     {{> slideMenu}}
     <div class="container">
         <div class="row" id="champion-messages">
-            <!--<div class="col-md-4">-->
-            <!--<div class="col-md-4">-->
-                <!--{{#if User}}-->
-            <!--{{> favoritesSidebar}}-->
-                <!--{{/if}}-->
-            <!--</div>-->
             <div class="col-md-2">
             </div>
             <div class="col-md-8">
@@ -23,6 +17,7 @@
                             {{> tabular table=TabularTables.Notifications class="table table-condensed dataTable form-inline dt-bootstrap no-footer"}}
                         {{else}}
                             <!--{{> noNotifications}}-->
+                            <h5>Sem Mensagens novas</h5>
                         {{/if}}
                     </div>
                 </div>

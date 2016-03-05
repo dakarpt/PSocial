@@ -1,4 +1,20 @@
 @Utils =
+  getEmail: (_id)->
+    if (_id)
+      user = Meteor.users.findOne _id
+    if user
+      if typeof user.emails != 'undefined' and user.emails[0].address
+        user.emails[0].address
+  getName: (_id)->
+    if (_id)
+      user = Meteor.users.findOne _id
+    if user
+      if typeof user.profile != 'undefined' and user.profile.firstName and user.profile.lastName
+        user.profile.firstName + " " + user.profile.lastName
+      else if typeof user.profile != 'undefined' and user.profile.firstName
+        user.profile.firstName
+      else
+        'Utilizador'
   getRanking: (nome)->
     console.log("Requesting ranking for %s", nome)
     1

@@ -13,7 +13,7 @@ Template.showItem.events({
         var slotID = e.target.attributes.ids.value;
         var subtarefaID = e.target.parentElement.attributes.ids.value;
         var itemID = e.target.parentElement.parentElement.attributes.ids.value;
-        var res= GetSlots(itemID, subtarefaID);
+        var res = GetSlots(itemID, subtarefaID);
         var tipo = res.tipo;
         var slots = res.slots;
         var unidade = res.unidade;
@@ -23,10 +23,10 @@ Template.showItem.events({
             Session.set("confirm-itemID", itemID);
             Session.set("confirm-subtarefaID", subtarefaID);
             Session.set("confirm-slotID", slotID);
-            if (tipo !="Donativos")
-                Modal.show('confirmModalSlot', { unidade: unidade });
+            if (tipo != "Donativos")
+                Modal.show('confirmModalSlot', {unidade: unidade});
             else
-                Modal.show('confirmModalSlotDonativos', { unidade: unidade, smsengine: smsengine });
+                Modal.show('confirmModalSlotDonativos', {unidade: unidade, smsengine: smsengine});
             //var user = Meteor.users.findOne(Meteor.userId());
             //if ((user.profile) && (user.profile.picture)) {
             //    var picID = ProfilePictures.findOne(user.profile.picture);
@@ -125,12 +125,15 @@ Template.confirmModalSlotDonativos.events({
         }
         slots[slotID].timestamp = new Date();
         Meteor.call('UpdateSlots', itemID, subtarefaID, slots);
+    },
+    'click #wish': function (e) {
+        Modal.hide("confirmModalSlotDonativos");
     }
 });
 
 Template.showItem.helpers({
     getTitle: function () {
-        console.log("showItem helper",this);
+        console.log("showItem helper", this);
         return "Quer apagar o Projeto: " + this.nome;
     }
 });
