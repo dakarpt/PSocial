@@ -70,9 +70,9 @@ Template.showItem.events({
 Template.confirmModal.events({
     'click #delete': function (e) {
         console.log("Slot Item confirm retirar, event:", e);
-        var itemID = UserSession.get("confirm-itemID");
-        var subtarefaID = UserSession.get("confirm-subtarefaID");
-        var slotID = UserSession.get("confirm-slotID");
+        var itemID = Session.get("confirm-itemID");
+        var subtarefaID = Session.get("confirm-subtarefaID");
+        var slotID = Session.get("confirm-slotID");
         Modal.hide("confirmModal");
         var res = GetSlots(itemID, subtarefaID);
         var slots = res.slots;

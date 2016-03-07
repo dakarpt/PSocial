@@ -2,9 +2,9 @@
  * Created by aramos on 01-12-2015.
  */
 if (Meteor.isServer)
-    //getRanking = function () {
-    //    return 0;
-    //};
+//getRanking = function () {
+//    return 0;
+//};
 
     Accounts.onCreateUser(function (options, user) {
         var d6 = function () {
@@ -14,7 +14,7 @@ if (Meteor.isServer)
         if (options.profile)
             user.profile = options.profile;
         else
-            user.profile = { picture: '/default-profile.png' };
+            user.profile = {picture: '/default-profile.png'};
 
         return user;
     });
@@ -34,76 +34,110 @@ getQueryVariable = function (link, variable) {
 
 pre_process_sms = function (link) {
     console.log("SERVER: pre process sms:", link);
-    var mobile= getQueryVariable(link, "mobile");
+    var mobile = getQueryVariable(link, "mobile");
     if (!mobile) {
         console.log("Cant find mobile in link");
         return "ERROR: Cant find mobile in link";
     }
-    var item= getQueryVariable(link, "item");
+    var item = getQueryVariable(link, "item");
     //var slot= Number(getQueryVariable(link, "slot")) || -1;
-    var slot= -1;
-    var smsText= getQueryVariable(link, "smsText");
-    var dateadded= getQueryVariable(link, "dateadded");
+    var slot = -1;
+    var smsText = getQueryVariable(link, "smsText");
+    var dateadded = getQueryVariable(link, "dateadded");
     console.log("SERVER: Pre Processing sms: Mobile: %s, item: %s, slot: %s, Text: %s ", mobile, item, slot, smsText);
     //if (!smsinfo.findOne({ mobile: mobile, item: item, slot: slot, dateadded: dateadded})) {
-        console.log("inserting: ", { mobile: mobile, item: item, slot: slot, smsText: smsText, dateadded: dateadded} );
-        //smsinfo.insert({ mobile: mobile, item: item, slot: slot});
-        Meteor.call("insertSms", { mobile: mobile, item: item, slot: slot, smsText: smsText, dateadded: dateadded}, function (err) {
-            if (!err)
-                return "SUCCESS"
-            else
-                return "FAIL"
-        } );
+    console.log("inserting: ", {mobile: mobile, item: item, slot: slot, smsText: smsText, dateadded: dateadded});
+    //smsinfo.insert({ mobile: mobile, item: item, slot: slot});
+    Meteor.call("insertSms", {
+        mobile: mobile,
+        item: item,
+        slot: slot,
+        smsText: smsText,
+        dateadded: dateadded
+    }, function (err) {
+        if (!err)
+            return "SUCCESS"
+        else
+            return "FAIL"
+    });
     //}
     return "SUCCESS"
 };
 
-process_Server_smsinfo= function(info) {
+process_Server_smsinfo = function (info) {
     check(info, Match.Any);
-    console.log("SERVER: Call process smsinfo:", info);
-    var user=Meteor.users.findOne({ "profile.mobile": info.mobile });
+    console.log("SERVER: Call process smsinfo");
+    var user = Meteor.users.findOne({"profile.mobile": info.mobile});
     if (!user) {
         console.log("Unknown account: SMS from %s", info.mobile);
         return;
     }
     info.item = UserSession.get("confirm-itemID", user._id);
-    var subtarefa = UserSession.get("confirm-subtarefaID", user._id);
+    if (!info.item) {
+        info.item = UserSession.get("item-clicked", user._id);
+    }
+    if (!info.item) {
+        console.log("Unknown item: SMS from %s", info.mobile);
+        return;
+    }
+    var subtarefa = UserSession.get("confirm-subtarefaID", user._id) || "";
+    info.subtarefa = subtarefa;
     info.slot = UserSession.get("confirm-slotID", user._id) || -1;
 
     //info.slot = Number(info.slot) || -1;
-    console.log("Found user:", user);
+    console.log("Found user:");
     console.log("Updating with:", info);
-    var item = items.findOne({ _id: info.item });
+
+    var item = items.findOne({_id: info.item});
     if (!item) {
         console.log("Unknown item:%s SMS from %s", info.item, info.mobile);
         return;
     }
+    console.log("INfo: ", info);
 
     var subtarefas = item.subtarefas;
-    var f;
-    for ( f = 0; f < subtarefas.length; f++) {
-        if ((subtarefas[f].tipo == "Donativos-sms") && (subtarefas[f].ids==subtarefa)) {
-            for (var j=0; j<subtarefas[f].slots.length;j++) {
-                if ((subtarefas[f].slots[j].num == info.slot)&& subtarefas[f].slots[j].owner.indexOf("empty.png") != -1 ) {
-                    subtarefas[f].slots[j].owner = user._id;
-                    Meteor.call('UpdateSlots', item._id, subtarefas[f].ids, subtarefas[f].slots);
-                    return;
+    if (subtarefa) {
+        var f;
+        for (f = 0; f < subtarefas.length; f++) {
+            if ((subtarefas[f].tipo == "Donativos-sms") && (subtarefas[f].ids == subtarefa)) {
+                for (var j = 0; j < subtarefas[f].slots.length; j++) {
+                    if ((subtarefas[f].slots[j].num == info.slot) && subtarefas[f].slots[j].owner.indexOf("empty.png") != -1) {
+                        subtarefas[f].slots[j].owner = user._id;
+                        console.log("Updating SMS slot #s", subtarefas[f].slots[j].num);
+                        Meteor.call('UpdateSlots', item._id, subtarefas[f].ids, subtarefas[f].slots);
+                        return;
+                    }
+                }
+            }
+        }
+        // nao achou
+        for (f = 0; f < subtarefas.length; f++) {
+            if ((subtarefas[f].tipo == "Donativos-sms") && (subtarefas[f].ids == subtarefa)) {
+                for (var j = 0; j <= subtarefas[f].slots.length; j++) {
+                    if (subtarefas[f].slots[j].owner.indexOf("empty.png") != -1) {
+                        subtarefas[f].slots[j].owner = user._id;
+                        console.log("Updating SMS slot #s, subtarefa: %s", subtarefas[f].slots[j].num, subtarefas[f].slots[j].ids);
+                        Meteor.call('UpdateSlots', item._id, subtarefas[f].ids, subtarefas[f].slots);
+                        return;
+                    }
                 }
             }
         }
     }
-    // nao achou
-    for ( f = 0; f < subtarefas.length; f++) {
-        if (subtarefas[f].ids == subtarefa) {
-            for (var j=0; j<=subtarefas[f].slots.length;j++) {
+    for (f = 0; f < subtarefas.length; f++) {
+        if (subtarefas[f].tipo == "Donativos-sms") {
+            for (var j = 0; j <= subtarefas[f].slots.length; j++) {
                 if (subtarefas[f].slots[j].owner.indexOf("empty.png") != -1) {
                     subtarefas[f].slots[j].owner = user._id;
+                    console.log("Updating SMS random slot #s, subtarefa: %s", subtarefas[f].slots[j].num, subtarefas[f].slots[j].ids);
                     Meteor.call('UpdateSlots', item._id, subtarefas[f].ids, subtarefas[f].slots);
                     return;
                 }
             }
         }
     }
+
+    console.log("No update for SMS from mobile: %s, smsText: %s", info.mobile, info.smsText, info);
 };
 
 //Roles.addUsersToRoles('hJZzwmr8kv9CeWymK', 'admin');
