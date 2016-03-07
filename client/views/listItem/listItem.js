@@ -4,7 +4,7 @@
 Template.showItem.events({
     'click .detalhes': function (e) {
         //console.log("Item click", this, e);
-        Session.set("item-clicked", this._id);
+        //Session.set("item-clicked", this._id);
         if (e.target.attributes.ids === undefined) {
             console.log("Click nao foi num slot", e)
             return;
@@ -17,13 +17,18 @@ Template.showItem.events({
         var tipo = res.tipo;
         var slots = res.slots;
         var unidade = res.unidade;
-        var smsengine = res.smsengine;
+        if (tipo=="Donativos-sms")
+            var smsengine=1;
+        else
+            var smsengine=0;
+        console.log("TIPO: %s", tipo, smsengine);
+        //var smsengine = res.smsengine;
         //var smsengine = 1;
         if (slots[slotID].owner.indexOf("empty.png") != -1) {
-            Session.set("confirm-itemID", itemID);
-            Session.set("confirm-subtarefaID", subtarefaID);
-            Session.set("confirm-slotID", slotID);
-            if (tipo != "Donativos")
+            UserSession.set("confirm-itemID", itemID);
+            UserSession.set("confirm-subtarefaID", subtarefaID);
+            UserSession.set("confirm-slotID", slotID);
+            if (tipo != "Donativos-sms")
                 Modal.show('confirmModalSlot', {unidade: unidade});
             else
                 Modal.show('confirmModalSlotDonativos', {unidade: unidade, smsengine: smsengine});
@@ -40,6 +45,9 @@ Template.showItem.events({
 
         } else {
             console.log("Slot not empty");
+            if (tipo == "Donativos-sms") {
+                return
+            }
             user = Meteor.users.findOne(Meteor.userId());
             if ((user.profile) && (user.profile.picture)) {
                 //picID = ProfilePictures.findOne(user.profile.picture);
@@ -62,9 +70,9 @@ Template.showItem.events({
 Template.confirmModal.events({
     'click #delete': function (e) {
         console.log("Slot Item confirm retirar, event:", e);
-        var itemID = Session.get("confirm-itemID");
-        var subtarefaID = Session.get("confirm-subtarefaID");
-        var slotID = Session.get("confirm-slotID");
+        var itemID = UserSession.get("confirm-itemID");
+        var subtarefaID = UserSession.get("confirm-subtarefaID");
+        var slotID = UserSession.get("confirm-slotID");
         Modal.hide("confirmModal");
         var res = GetSlots(itemID, subtarefaID);
         var slots = res.slots;
@@ -79,9 +87,9 @@ Template.confirmModal.events({
 Template.confirmModalSlot.events({
     'click #confirm': function (e) {
         console.log("Slot Item confirm add, event:", e);
-        var itemID = Session.get("confirm-itemID");
-        var subtarefaID = Session.get("confirm-subtarefaID");
-        var slotID = Session.get("confirm-slotID");
+        var itemID = UserSession.get("confirm-itemID");
+        var subtarefaID = UserSession.get("confirm-subtarefaID");
+        var slotID = UserSession.get("confirm-slotID");
         Modal.hide("confirmModalSlot");
         var res = GetSlots(itemID, subtarefaID);
         var slots = res.slots;
@@ -105,9 +113,9 @@ Template.confirmModalSlot.events({
 Template.confirmModalSlotDonativos.events({
     'click #confirm': function (e) {
         console.log("Slot Item confirm add Donativos, event:", e);
-        var itemID = Session.get("confirm-itemID");
-        var subtarefaID = Session.get("confirm-subtarefaID");
-        var slotID = Session.get("confirm-slotID");
+        var itemID = UserSession.get("confirm-itemID");
+        var subtarefaID = UserSession.get("confirm-subtarefaID");
+        var slotID = UserSession.get("confirm-slotID");
         Modal.hide("confirmModalSlotDonativos");
         var res = GetSlots(itemID, subtarefaID);
         var slots = res.slots;

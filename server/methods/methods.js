@@ -40,11 +40,12 @@ pre_process_sms = function (link) {
         return "ERROR: Cant find mobile in link";
     }
     var item= getQueryVariable(link, "item");
-    var slot= Number(getQueryVariable(link, "slot")) || -1;
+    //var slot= Number(getQueryVariable(link, "slot")) || -1;
+    var slot= -1;
     var smsText= getQueryVariable(link, "smsText");
     var dateadded= getQueryVariable(link, "dateadded");
     console.log("SERVER: Pre Processing sms: Mobile: %s, item: %s, slot: %s, Text: %s ", mobile, item, slot, smsText);
-    if (!smsinfo.findOne({ mobile: mobile, item: item, slot: slot, dateadded: dateadded})) {
+    //if (!smsinfo.findOne({ mobile: mobile, item: item, slot: slot, dateadded: dateadded})) {
         console.log("inserting: ", { mobile: mobile, item: item, slot: slot, smsText: smsText, dateadded: dateadded} );
         //smsinfo.insert({ mobile: mobile, item: item, slot: slot});
         Meteor.call("insertSms", { mobile: mobile, item: item, slot: slot, smsText: smsText, dateadded: dateadded}, function (err) {
@@ -53,7 +54,7 @@ pre_process_sms = function (link) {
             else
                 return "FAIL"
         } );
-    }
+    //}
     return "SUCCESS"
 };
 
@@ -65,7 +66,11 @@ process_Server_smsinfo= function(info) {
         console.log("Unknown account: SMS from %s", info.mobile);
         return;
     }
-    info.slot = Number(info.slot) || -1;
+    info.item = UserSession.get("confirm-itemID", user._id);
+    var subtarefa = UserSession.get("confirm-subtarefaID", user._id);
+    info.slot = UserSession.get("confirm-slotID", user._id) || -1;
+
+    //info.slot = Number(info.slot) || -1;
     console.log("Found user:", user);
     console.log("Updating with:", info);
     var item = items.findOne({ _id: info.item });
@@ -77,7 +82,7 @@ process_Server_smsinfo= function(info) {
     var subtarefas = item.subtarefas;
     var f;
     for ( f = 0; f < subtarefas.length; f++) {
-        if (subtarefas[f].tipo == "Donativos") {
+        if ((subtarefas[f].tipo == "Donativos-sms") && (subtarefas[f].ids==subtarefa)) {
             for (var j=0; j<subtarefas[f].slots.length;j++) {
                 if ((subtarefas[f].slots[j].num == info.slot)&& subtarefas[f].slots[j].owner.indexOf("empty.png") != -1 ) {
                     subtarefas[f].slots[j].owner = user._id;
@@ -89,7 +94,7 @@ process_Server_smsinfo= function(info) {
     }
     // nao achou
     for ( f = 0; f < subtarefas.length; f++) {
-        if (subtarefas[f].tipo == "Donativos") {
+        if (subtarefas[f].ids == subtarefa) {
             for (var j=0; j<=subtarefas[f].slots.length;j++) {
                 if (subtarefas[f].slots[j].owner.indexOf("empty.png") != -1) {
                     subtarefas[f].slots[j].owner = user._id;

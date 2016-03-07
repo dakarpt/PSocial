@@ -50,8 +50,8 @@ GetSlots = function (itemId, subtarefaId) {
             return {
                 slots: subtarefas[f].slots,
                 tipo: subtarefas[f].tipo,
-                unidade: subtarefas[f].unidade,
-                smsengine: subtarefas[f].smsengine
+                unidade: subtarefas[f].unidade
+                //smsengine: subtarefas[f].smsengine
             }
         }
     }
