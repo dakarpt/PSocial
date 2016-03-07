@@ -17,8 +17,8 @@ Template.showItem.events({
         var tipo = res.tipo;
         var slots = res.slots;
         var unidade = res.unidade;
-        //var smsengine = res.smsengine;
-        var smsengine = 1;
+        var smsengine = res.smsengine;
+        //var smsengine = 1;
         if (slots[slotID].owner.indexOf("empty.png") != -1) {
             Session.set("confirm-itemID", itemID);
             Session.set("confirm-subtarefaID", subtarefaID);

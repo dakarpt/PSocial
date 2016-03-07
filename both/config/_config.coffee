@@ -13,7 +13,7 @@
   normalInfo: ->
     "Na conclusão do projeto, será informado dos passos necessários para formalizar a sua contribuição."
   mobileInfo: ->
-    "Para contribuir agora, utilize o botão contribuir ou poderá enviar mais tarde um SMS para o número: " + @smsgtw
+    "Para contribuir agora, utilize o botão ou poderá enviar mais tarde um SMS para o número: " + @smsgtw
   footer: ->
     @name + ' - Copyright ' + new Date().getFullYear()
   emails:
