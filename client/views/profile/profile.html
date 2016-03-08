@@ -6,17 +6,19 @@
                 <div class="col-md-2">
                 </div>
                 <div class="col-md-8">
-                    <!--{{#autoForm id="updatePicture" collection=Users doc=User type="update"}}-->
-                        <!--<div class="">-->
-                            <!--{{> afQuickField name="profile.picture"}}-->
-                        <!--</div>-->
-                    <!--{{/autoForm}}-->
-                    {{#autoForm id="updateProfile" collection=Users doc=User type="update"}}
-                        <div class="">
-                            {{> afQuickField name='profile' omitFields=""}}
-                            <button type="submit" class="btn btn-primary">{{_ "update"}}</button>
+                    <div class="panel panel-default panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Editar Perfil</h3>
                         </div>
-                    {{/autoForm}}
+                        <div class="panel-body">
+                            {{#autoForm id="updateProfile" collection=Users doc=User type="update"}}
+                                <div class="">
+                                    {{> afQuickField resetOnSuccess=false name='profile' omitFields=""}}
+                                    <button type="submit" class="btn btn-primary">{{_ "update"}}</button>
+                                </div>
+                            {{/autoForm}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

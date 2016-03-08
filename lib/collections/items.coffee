@@ -104,12 +104,12 @@ Schemas.subtarefas = new SimpleSchema
     optional: true
     label: "Unidade (ex. um euro)"
 
-  smsengine:
-    type: Boolean
-    optional: true
-    label: "Donativos por sms"
-    autoform:
-      type: 'hidden'
+#  smsengine:
+#    type: Boolean
+#    optional: true
+#    label: "Donativos por sms"
+#    autoform:
+#      type: 'hidden'
 #        if (@field('tipo') != "Donativos")
 #          console.log("AutoFORM smsengine",@field('tipo'))
 #          'hidden'

@@ -8,7 +8,7 @@ AutoForm.hooks
 #        timeout: 3000,
 #        onRouteClose: false
 ##        onClose: ()->
-#      history.back()
+      history.back()
 
     onError: (operation, error, template) ->
       sAlert.error error

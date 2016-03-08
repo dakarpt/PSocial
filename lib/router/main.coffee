@@ -33,10 +33,25 @@ Router.map ->
         Meteor.subscribe 'userData'
         Meteor.subscribe 'ProfilePictures'
         Meteor.subscribe 'favorites'
+        Meteor.subscribe 'Notifications'
       ]
     data: ->
       itemList: items.find({_id: this.params._id}).fetch();
     fastRender: true
+  @route "editItem2",
+    path: "/editItem2/:_id"
+    waitOn: ->
+      [
+        Meteor.subscribe 'items'
+        Meteor.subscribe 'attachments'
+        Meteor.subscribe 'userData'
+        Meteor.subscribe 'Notifications'
+        Meteor.subscribe 'ProfilePictures'
+        Meteor.subscribe 'favorites'
+      ]
+    data: ->
+      items.findOne({_id: this.params._id});
+#    fastRender: true
   @route "MyNotifications",
     path: "/MyNotifications"
     waitOn: ->

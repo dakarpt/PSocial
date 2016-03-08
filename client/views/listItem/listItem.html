@@ -62,11 +62,14 @@
         <a class="pull-left" href="#">
             {{> profileThumb _id=owner }}
         </a>
+        <a id="edit2" href="/editItem2/{{_id}}" class="btn btn-info pull-left">
+            Editar
+        </a>
         <div class="media-body">
             {{#if $eq owner User._id}}
                 <small>
                     {{#afModal buttonContent="Actualizar Projeto" title="Editar Projeto" omitFields="subtarefas.$.slots" class="text-primary" collection="items" operation="update" doc=_id}}
-                        <i class="fa fa-pencil" buttonContent="Editar Projeto"></i> Editar Projeto
+                        <a href="{{pathFor 'editItem2'}}"><i class="fa fa-pencil" buttonContent="Editar Projeto"></i> Editar Projeto</a>
                     {{/afModal}}
                     {{#afModal buttonClasses="" formId="deleteProject" dialogClass="modal-dialog modal-sm navbarpadding" closeButtonContent="Não" buttonContent="Sim, quero" prompt="Esta operação é irreversível" title=getTitle class="text-danger modal-sm navbarpadding" collection="items" operation="remove" doc=_id}}
                         <i class="fa fa-times"></i> Apagar Projeto
@@ -96,6 +99,35 @@
                         <button type="button" class="btn btn-info" data-dismiss="modal">Não</button>
                     </p>
                 </div>
+
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="confirmModalDonativos-sms">
+    <div class="modal modal-warning fade">
+        <div class="modal-dialog modal-sm navbarpadding">
+            <div class="modal-content">
+                <div class="modal-info">
+                    <div class="modal-title">
+                        <h4><p align="center">Aviso!</p></h4>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <p align="center">Não é possível retirar uma contribuição por SMS
+                    </p>
+                </div>
+                <!--<h5 class="modal-body">-->
+                    <!--<p align="center">Não é possível retirar uma contribuição por SMS-->
+                    <!--</p>-->
+                <!--</h5>-->
+                <!--<div class="modal-footer">-->
+                <p align="center">
+                    <!--<button id="delete" type="button" class="btn btn-danger">Sim, Quero</button>-->
+                    <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                </p>
+                <!--</div>-->
 
             </div>
         </div>

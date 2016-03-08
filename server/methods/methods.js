@@ -39,6 +39,7 @@ pre_process_sms = function (link) {
         console.log("Cant find mobile in link");
         return "ERROR: Cant find mobile in link";
     }
+    mobile = mobile.replace(" 351","");
     var item = getQueryVariable(link, "item");
     //var slot= Number(getQueryVariable(link, "slot")) || -1;
     var slot = -1;

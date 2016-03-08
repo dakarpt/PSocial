@@ -1,9 +1,15 @@
 /**
  * Created by aramos on 27-01-2016.
  */
+AutoForm.debug();
+
 Template.showItem.events({
+    'click #edit2': function (e) {
+        console.log("Edit click", this, e);
+        Router.go("/editItem2/" + this._id);
+    },
     'click .detalhes': function (e) {
-        //console.log("Item click", this, e);
+        console.log("Item click", this, e);
         //Session.set("item-clicked", this._id);
         if (e.target.attributes.ids === undefined) {
             console.log("Click nao foi num slot", e)
@@ -17,10 +23,10 @@ Template.showItem.events({
         var tipo = res.tipo;
         var slots = res.slots;
         var unidade = res.unidade;
-        if (tipo=="Donativos-sms")
-            var smsengine=1;
+        if (tipo == "Donativos-sms")
+            var smsengine = 1;
         else
-            var smsengine=0;
+            var smsengine = 0;
         console.log("TIPO: %s", tipo, smsengine);
         //var smsengine = res.smsengine;
         //var smsengine = 1;
@@ -45,9 +51,6 @@ Template.showItem.events({
 
         } else {
             console.log("Slot not empty");
-            if (tipo == "Donativos-sms") {
-                return
-            }
             user = Meteor.users.findOne(Meteor.userId());
             if ((user.profile) && (user.profile.picture)) {
                 //picID = ProfilePictures.findOne(user.profile.picture);
@@ -62,7 +65,11 @@ Template.showItem.events({
             Session.set("confirm-itemID", itemID);
             Session.set("confirm-subtarefaID", subtarefaID);
             Session.set("confirm-slotID", slotID);
-            Modal.show('confirmModal');
+            if (tipo == "Donativos-sms") {
+                Modal.show('confirmModalDonativos-sms');
+            } else {
+                Modal.show('confirmModal');
+            }
         }
     }
 });
@@ -141,7 +148,7 @@ Template.confirmModalSlotDonativos.events({
 
 Template.showItem.helpers({
     getTitle: function () {
-        console.log("showItem helper", this);
+        //console.log("showItem helper", this);
         return "Quer apagar o Projeto: " + this.nome;
     }
 });
