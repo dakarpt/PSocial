@@ -6,7 +6,8 @@ ProfilePictures.allow
   download: (userId)->
     true
   remove: (userId, doc)->
-      userId == doc.owner
+    true
+#      userId == doc.owner
 
 #Posts.allow
 #  insert: (userId, doc) ->
@@ -24,7 +25,7 @@ Attachments.allow
   download: (userId)->
     true
   remove: (userId, doc)->
-    userId == doc.owner
+    true
 
 Meteor.users.allow
   update: (userId, doc, fieldNames, modifier) ->
@@ -51,7 +52,7 @@ smsinfo.allow
 
 Notifications.allow
   insert: (userId, doc) ->
-    doc.owner == userId
+    true
   update: (userId, doc, fieldNames, modifier) ->
     true
 #    doc.owner == userId && fieldNames.length == 1 && fieldNames[0] == 'read'

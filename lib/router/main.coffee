@@ -23,7 +23,7 @@ Router.map ->
       ]
     data: ->
       itemList: items.find().fetch()
-    fastRender: true
+#    fastRender: true
   @route "listItem",
     path: "/listItem/:_id"
     waitOn: ->
@@ -37,7 +37,7 @@ Router.map ->
       ]
     data: ->
       itemList: items.find({_id: this.params._id}).fetch();
-    fastRender: true
+#    fastRender: true
   @route "editItem2",
     path: "/editItem2/:_id"
     waitOn: ->
@@ -77,7 +77,7 @@ Router.map ->
       ]
     data: ->
       Notifications.findOne({_id: this.params._id});
-    fastRender: true
+#    fastRender: true
   @route "smsfrontend",
     path: "/smsfrontend/:smsinfo"
     layoutTemplate: ""

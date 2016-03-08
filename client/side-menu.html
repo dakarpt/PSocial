@@ -36,11 +36,11 @@
                     <a href="{{pathFor 'listItems'}}">Entrar<i class="fa fa-angle-right"></i></a>
                 </li>
             {{/if}}
-            <!--{{#if isInRole 'admin'}}-->
-                <!--<li>-->
-                    <!--<a href="/admin">Administração</a>-->
-                <!--</li>-->
-            <!--{{/if}}-->
+            {{#if isInRole 'admin'}}
+                <li>
+                    <a href="/admin">Administração</a>
+                </li>
+            {{/if}}
             <!--<li><a href="#">Home <i class="fa fa-angle-right"></i></a></li>-->
             <!--<li><a href="#">Tour Information <i class="fa fa-angle-right"></i></a></li>-->
         </ul>

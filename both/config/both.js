@@ -83,12 +83,34 @@ TabularTables.Notifications = new Tabular.Table({
             }
         },
         {data: "title", title: "Titulo"},
+        //{
+        //    data: 'del',
+        //    title: 'Delete',
+        //    createdCell: function (node, cellData, rowData) {
+        //        $(node).html(Blaze.toHTMLWithData(Template.deleteNotification, { _id: rowData._id}),
+        //            {
+        //                //width: '40px',
+        //                orderable: false
+        //            })
+        //    }
+        //},
+        {
+            data : null,
+            title : "Apagar",
+            tmpl: Meteor.isClient && Template.deleteNotification,
+            tmplContext: function (rowData) {
+                return {
+                    _id: rowData._id,
+                    title: rowData.title
+                };
+            }
+        }
     ],
     extraFields: ['date', '_id', 'owner', 'to'],
     order: [[1, 'desc']],
     columnDefs: [
-        {className: "col_center", targets: [0, 1, 2]},
-        {className: "col_left", targets: [3]},
-        { className: "dt[-head|-body]-center", targets: [ 0,1,2,3 ] }
+        {className: "col_center", targets: [0, 1, 2, 3, 4]},
+        //{className: "col_left", targets: [3]},
+        { className: "dt[-head|-body]-center", targets: [ 0,1,2,3, 4 ] }
     ]
 });

@@ -11,7 +11,7 @@
             </div>
             <div class="col-md-8">
 
-                <div class="template-favorites-sidebar">
+                <!--<div class="template-favorites-sidebar">-->
                     <div class="panel panel-default panel-info">
                         <div class="panel-heading">
                             <h3 class="panel-title">Detalhes da Notification</h3>
@@ -19,16 +19,47 @@
                         <div class="panel-body">
                             {{> quickForm id="showNotificationForm" type="readonly" collection="Notifications" doc=this omitFields="icon,link,date,owner,read,class,to"}}
                         </div>
-                        <div class="panel-footer panel-info">
-                            <a id="read" href="/MyNotifications" class="btn btn-info">
+                        <div class="panel-footer panel-info media-body">
+                            <a id="read" href="/MyNotifications" class="btn btn-info pull-left media-left col-md-3">
                                 Marcar como lida
                             </a>
-                            <a href="/MyNotifications" class="btn btn-success">
-                                Responder
-                            </a>
+                            <div class="col-xs-1"></div>
+                            <!--{{#afModal onSuccess=bu title="Quer apagar a mensagem?" formId="deleteNotificationShow" dialogClass="modal-dialog modal-sm navbarpadding" closeButtonContent="Não" buttonContent="Sim, quero" prompt="Esta operação é irreversível" class="text-danger modal-sm navbarpadding" collection="Notifications" operation="remove" doc=_id}}-->
+                                <!--<a href="/MyNotifications" class="btn btn-danger pull-right media-right">-->
+                                    <!--Apagar-->
+                                <!--</a>-->
+                            <!--{{/afModal}}-->
+                            <div id="{{_id}}">
+                                <!--<a id="opendelnot" ids="{{_id}}"href="{{_id}}" class="btn btn-danger pull-right media-right col-md-3">-->
+                                <!--Apagar-->
+                            <!--</a>-->
+                                <div id="opendelnot" class="btn btn-danger media-right pull-right" ids="{{_id}}">Apagar</div>
+                            </div>
                         </div>
                     </div>
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="confirmModalNot">
+    <div class="modal modal-warning fade">
+        <div class="modal-dialog modal-sm navbarpadding">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <p align="center">Quer apagar esta mensagem?
+                        </p>
+                    </h4>
                 </div>
+                <div class="modal-footer">
+                    <p align="center">
+                        <button id="delnot" type="button" class="btn btn-danger">Sim, Quero</button>
+                        <button type="button" class="btn btn-info" data-dismiss="modal">Não</button>
+                    </p>
+                </div>
+
             </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 @AdminConfig =
   name: Config.name
   adminEmails: ['dakarpt@gmail.com']
-#  collections:
+  collections:
 #    Posts:
 #      color: 'red'
 #      icon: 'pencil'
@@ -29,15 +29,34 @@
 #            Meteor.users.find comment.owner, limit: 1
 #        }
 #      ]
-#    Notifications:
+    Notifications:
+      color: 'blue'
+      icon: 'pencil'
+      extraFields: ['doc','owner','from']
+      tableColumns: [
+        {label: 'Title', name: 'title'}
+        {label: 'From', name: 'from_email'}
+        {label: 'To', name: 'to'}
+        {label: 'Msg', name: 'message'}
+      ]
+    smsinfo:
+      color: 'blue'
+      icon: 'pencil'
+      extraFields: ['doc']
+      tableColumns: [
+        {label: 'Mobile', name: 'mobile'}
+        {label: 'smsText', name: 'smsText'}
+        {label: 'When', name: 'timestamp'}
+      ]
+#    Attachments:
 #      color: 'blue'
 #      icon: 'pencil'
-#      extraFields: ['doc','owner','from']
+#      extraFields: ['doc','owner']
 #      tableColumns: [
-#        {label: 'Title', name: 'title'}
-#        {label: 'From', name: 'from'}
-#        {label: 'To', name: 'to'}
-#        {label: 'Msg', name: 'message'}
+#        {label: 'Name', name: 'copies.attachments.name'}
+#        {label: 'Size', name: 'copies.attachments.size'}
+#        {label: 'Type', name: 'copies.attachments.type'}
+#        {label: 'UploadedAt', name: 'copies.attachments.uploadedAt'}
 #      ]
 #    Messages:
 #      color: 'yellow'

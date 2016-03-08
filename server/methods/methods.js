@@ -95,6 +95,11 @@ process_Server_smsinfo = function (info) {
         return;
     }
     console.log("INfo: ", info);
+    console.log("NOTIFICATION: ", { from_email: "Admin@psocial.bitcloud.cu.cc", to: user._id, message: "Recebemos o seu donativo por SMS, do telemóvel " + info.mobile + " para o projeto: " + item.nome, title: "SMS recebido!" });
+    Notifications.insert({ owner: user._id, from_email: "dakarpt@gmail.com", to: user._id, message: "Recebemos o seu donativo por SMS, do telemóvel " + info.mobile + " para o projeto: " + item.nome, title: "SMS recebido!" }, function (err, result) {
+        console.log("ERROR: ", err);
+        console.log("RESULT: ", result);
+    });
 
     var subtarefas = item.subtarefas;
     if (subtarefa) {
@@ -168,7 +173,7 @@ if (Meteor.isServer) Meteor.methods({
             _id: itemId,
             subtarefas: {$elemMatch: {ids: subtarefaId}}
         }, {$set: {"subtarefas.$.slots": slots}})
-    },
+    }
     //'GetSlots': function (itemId, subtarefaId) {
     //    if (!isUser(Meteor.userId())) {
     //        throw new Meteor.Error("not logged in");

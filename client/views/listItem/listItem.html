@@ -62,13 +62,13 @@
         <a class="pull-left" href="#">
             {{> profileThumb _id=owner }}
         </a>
-        <a id="edit2" href="/editItem2/{{_id}}" class="btn btn-info pull-left">
-            Editar
-        </a>
+        <!--<a id="edit2" href="/editItem2/{{_id}}" class="btn btn-info pull-left">-->
+            <!--Editar-->
+        <!--</a>-->
         <div class="media-body">
             {{#if $eq owner User._id}}
                 <small>
-                    {{#afModal buttonContent="Actualizar Projeto" title="Editar Projeto" omitFields="subtarefas.$.slots" class="text-primary" collection="items" operation="update" doc=_id}}
+                    {{#afModal resetOnSuccess=false closeButtonContent="Sair" dialogClass="modal-dialog navbarpadding" buttonContent="Actualizar Projeto" title="Editar Projeto" omitFields="" class="text-primary" collection="items" operation="update" doc=_id}}
                         <a href="{{pathFor 'editItem2'}}"><i class="fa fa-pencil" buttonContent="Editar Projeto"></i> Editar Projeto</a>
                     {{/afModal}}
                     {{#afModal buttonClasses="" formId="deleteProject" dialogClass="modal-dialog modal-sm navbarpadding" closeButtonContent="Não" buttonContent="Sim, quero" prompt="Esta operação é irreversível" title=getTitle class="text-danger modal-sm navbarpadding" collection="items" operation="remove" doc=_id}}

@@ -29,7 +29,6 @@ cfs:standard-packages
 cfs:gridfs
 yogiben:helpers
 iron:router
-yogiben:autoform-modals
 yogiben:pretty-email
 yogiben:autoform-map
 multiply:iron-router-progress
@@ -85,3 +84,5 @@ twbs:bootstrap
 peppelg:bootstrap-3-modal
 benjaminrh:user-session
 kadira:debug
+sacha:spin
+yogiben:autoform-modals

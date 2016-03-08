@@ -71,32 +71,38 @@
     <!--&lt;!&ndash;<button type="button" class="btn btn-xs check-out">Check Out</button>&ndash;&gt;-->
 <!--</template>-->
 <template name="deleteNotification">
-    <a id="delete" data-toggle="modal" doc="{{_id}}" href='#delete-modal'
-       class="hidden-xs btn btn-xs btn-danger btn-delete"><i id="delete" class="fa fa-times" doc="{{_id}}"></i></a>
-    <a id="delete" data-toggle="modal" doc="{{_id}}" href='#delete-modal' class="visible-xs btn btn-sm btn-danger btn-delete"><i
-            class="fa fa-times" doc="{{_id}}" id="delete"></i></a>
+    <!--{{#afModal formId="deleteNot" collection="Notifications" operation="remove" doc=_id}}-->
+        <!--<i class="fa fa-times"></i>-->
+    <!--{{/afModal}}-->
+    <div id="delete">{{#afModal title="Quer apagar a mensagem?" formId="deleteNot" dialogClass="modal-dialog modal-sm navbarpadding" closeButtonContent="Não" buttonContent="Sim, quero" prompt="Esta operação é irreversível" class="text-danger modal-sm navbarpadding" collection="Notifications" operation="remove" doc=_id}}
+        <a id="delete" data-toggle="modal" doc="{{_id}}" href='#delete-modal'
+           class="hidden-xs btn btn-xs btn-danger btn-delete"><i id="delete" class="fa fa-times" doc="{{_id}}"></i></a>
+        <a id="delete" data-toggle="modal" doc="{{_id}}" href='#delete-modal' class="visible-xs btn btn-sm btn-danger btn-delete"><i
+                class="fa fa-times" doc="{{_id}}" id="delete"></i></a>
+    {{/afModal}}</div>
+
 </template>
 
 <template name="UsersMailBtn">
     <a href="/showNotification/{{_id}}" class="">{{email}}</a>
 </template>
 
-<template name="DeleteModal">
-    <div class="modal fade" id="delete-modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Confirm delete</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Are you sure you want to delete this?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" id="confirm-delete" class="btn btn-danger">Delete</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-</template>
+<!--<template name="deleteNotification">-->
+    <!--<div class="modal fade" id="delete-modal">-->
+        <!--<div class="modal-dialog">-->
+            <!--<div class="modal-content">-->
+                <!--<div class="modal-header">-->
+                    <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+                    <!--<h4 class="modal-title">Confirm delete</h4>-->
+                <!--</div>-->
+                <!--<div class="modal-body">-->
+                    <!--<p>Are you sure you want to delete this?</p>-->
+                <!--</div>-->
+                <!--<div class="modal-footer">-->
+                    <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                    <!--<button type="button" id="confirm-delete" class="btn btn-danger">Delete</button>-->
+                <!--</div>-->
+            <!--</div>&lt;!&ndash; /.modal-content &ndash;&gt;-->
+        <!--</div>&lt;!&ndash; /.modal-dialog &ndash;&gt;-->
+    <!--</div>&lt;!&ndash; /.modal &ndash;&gt;-->
+<!--</template>-->

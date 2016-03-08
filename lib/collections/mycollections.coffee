@@ -43,21 +43,23 @@ Schemas.NotificationsSchema = new SimpleSchema
   owner:
     type: String
     regEx: SimpleSchema.RegEx.Id
-    optional: false
+    optional: true
     autoValue: ->
-      if this.isInsert
-        Meteor.userId()
+      if Meteor.isClient
+        if this.isInsert
+          Meteor.userId()
     autoform:
       type: 'hidden'
 
   from_email:
     type: String
-    optional: false
-    regEx: SimpleSchema.RegEx.Email
+    optional: true
+#    regEx: SimpleSchema.RegEx.Email
     label: "De"
     autoValue: ->
-      if this.isInsert || this.isUpdate
-        Meteor.users.findOne(Meteor.userId()).emails[0].address
+      if Meteor.isClient
+        if this.isInsert || this.isUpdate
+          Meteor.users.findOne(Meteor.userId()).emails[0].address
 
   title:
     type: String
@@ -68,7 +70,7 @@ Schemas.NotificationsSchema = new SimpleSchema
     type: String
     optional: false
     label: "Mensagem"
-    min: 20,
+    min: 5,
     max: 1000,
     autoform: {
       rows: 5
@@ -103,17 +105,11 @@ Schemas.NotificationsSchema = new SimpleSchema
       "bolt"
     ]
 
-  class:
-    type: String
-    autoValue: ->
-      if this.isInsert
-        'default'
-
   to:
     type: String
     label: ->
       TAPi18n.__("n_To")
-    defaultValue: "all"
+    defaultValue: ""
     autoform:
       options: ->
         _.map Meteor.users.find().fetch(), (user)->
