@@ -6,23 +6,26 @@
       Meteor.subscribe 'adminUser'
       Meteor.subscribe 'adminCollectionsCount'
     ]
-  onBeforeAction: ->
-    Session.set 'adminSuccess', null
-    Session.set 'adminError', null
+  onBeforeAction:
+    [
+      ()->
+        Session.set 'adminSuccess', null
+        Session.set 'adminError', null
 
-    Session.set 'admin_title', ''
-    Session.set 'admin_subtitle', ''
-    Session.set 'admin_collection_page', null
-    Session.set 'admin_collection_name', null
-    Session.set 'admin_id', null
-    Session.set 'admin_doc', null
+        Session.set 'admin_title', ''
+        Session.set 'admin_subtitle', ''
+        Session.set 'admin_collection_page', null
+        Session.set 'admin_collection_name', null
+        Session.set 'admin_id', null
+        Session.set 'admin_doc', null
 
-    if not Roles.userIsInRole Meteor.userId(), ['admin']
-      Meteor.call 'adminCheckAdmin'
-      if typeof AdminConfig?.nonAdminRedirectRoute == 'string'
-        Router.go AdminConfig.nonAdminRedirectRoute
+        if not Roles.userIsInRole Meteor.userId(), ['admin']
+          Meteor.call 'adminCheckAdmin'
+          if typeof AdminConfig?.nonAdminRedirectRoute == 'string'
+            Router.go AdminConfig.nonAdminRedirectRoute
 
-    @next()
+        @next()
+    ]
 
 
 Router.route "adminDashboard",

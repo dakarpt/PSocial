@@ -52,11 +52,11 @@ Template.showNotification.events({
 //    }
 //});
 
-bu= function () {
-    return function () {
-        console.log("buuuuuu");
-    }
-};
+//bu= function () {
+//    return function () {
+//        console.log("buuuuuu");
+//    }
+//};
 
 
 //AutoForm.addHooks(['deleteNotificationShow'], {

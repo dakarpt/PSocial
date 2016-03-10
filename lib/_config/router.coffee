@@ -6,11 +6,14 @@ Router.configure
   notFoundTemplate: "notFound"
   routeControllerNameConverter: "camelCase"
 
-  onBeforeAction: ->
+  onBeforeAction:
 # Redirect to set username if required
-    if Config.username and Meteor.userId() and not Meteor.user().username
-      @redirect '/setUserName'
-    @next()
+    [
+      ()->
+        if Config.username and Meteor.userId() and not Meteor.user().username
+          @redirect '/setUserName'
+        @next()
+    ]
 
 Router.waitOn ->
   subs.subscribe 'Notifications'

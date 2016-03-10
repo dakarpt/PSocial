@@ -28,7 +28,6 @@ raix:handlebar-helpers
 cfs:standard-packages
 cfs:gridfs
 yogiben:helpers
-iron:router
 yogiben:pretty-email
 yogiben:autoform-map
 multiply:iron-router-progress
@@ -86,3 +85,4 @@ benjaminrh:user-session
 kadira:debug
 sacha:spin
 yogiben:autoform-modals
+iron:router
