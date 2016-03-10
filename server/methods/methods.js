@@ -39,7 +39,7 @@ pre_process_sms = function (link) {
         console.log("Cant find mobile in link");
         return "ERROR: Cant find mobile in link";
     }
-    mobile = mobile.replace(" 351","");
+    mobile = mobile.replace(" 351", "");
     var item = getQueryVariable(link, "item");
     //var slot= Number(getQueryVariable(link, "slot")) || -1;
     var slot = -1;
@@ -87,36 +87,54 @@ process_Server_smsinfo = function (info) {
 
     //info.slot = Number(info.slot) || -1;
     console.log("Found user:");
-    console.log("Updating with:", info);
 
     var item = items.findOne({_id: info.item});
     if (!item) {
         console.log("Unknown item:%s SMS from %s", info.item, info.mobile);
         return;
     }
-    console.log("INfo: ", info);
-    console.log("NOTIFICATION: ", { from_email: "Admin@psocial.bitcloud.cu.cc", to: user._id, message: "Recebemos o seu donativo por SMS, do telemóvel " + info.mobile + " para o projeto: " + item.nome, title: "SMS recebido!" });
-    Notifications.insert({ owner: user._id, from_email: "dakarpt@gmail.com", to: user._id, message: "Recebemos o seu donativo por SMS, do telemóvel " + info.mobile + " para o projeto: " + item.nome, title: "SMS recebido!" }, function (err, result) {
-        console.log("ERROR: ", err);
-        console.log("RESULT: ", result);
-    });
-
+    console.log("Updating with:", info);
+    //console.log("INfo: ", info);
+    //console.log("NOTIFICATION: ", {
+    //    from_email: "Admin@psocial.bitcloud.cu.cc",
+    //    to: user._id,
+    //    message: "Recebemos o seu donativo por SMS, do telemóvel " + info.mobile + " para o projeto: " + item.nome,
+    //    title: "SMS recebido!"
+    //});
+    var emptySlots=0;
     var subtarefas = item.subtarefas;
     if (subtarefa) {
         var f;
         for (f = 0; f < subtarefas.length; f++) {
             if ((subtarefas[f].tipo == "Donativos-sms") && (subtarefas[f].ids == subtarefa)) {
                 for (var j = 0; j < subtarefas[f].slots.length; j++) {
+                    if (subtarefas[f].slots[j].owner.indexOf("empty.png") != -1) {
+                        emptySlots++;
+                    }
                     if ((subtarefas[f].slots[j].num == info.slot) && subtarefas[f].slots[j].owner.indexOf("empty.png") != -1) {
                         subtarefas[f].slots[j].owner = user._id;
-                        console.log("Updating SMS slot #s", subtarefas[f].slots[j].num);
+                        console.log("Updating SMS slot #%s", subtarefas[f].slots[j].num);
                         Meteor.call('UpdateSlots', item._id, subtarefas[f].ids, subtarefas[f].slots);
+                        console.log("NO ERROR INSERTING NOT");
+                        Notifications.insert({
+                                    owner: user._id,
+                                    from_email: "dakarpt@gmail.com",
+                                    to: user._id,
+                                    message: "Recebemos o seu donativo por SMS, do telemóvel " + info.mobile + " para ajudar o Projeto: '" + item.nome + "' na tarefa: "+ subtarefas[f].descricao + ", que ficou registado no slot#" + j++ + "\n\nObrigado,\nA equipa de gestão",
+                                    title: "SMS recebido!"
+                                });
                         return;
                     }
                 }
             }
         }
+
+        console.log("SERVER: SMS, no slot found matching user session");
         // nao achou
+        if (!emptySlots) {
+            console.log("SERVER: No empty slots for tarefa: %s", subtarefa);
+            return;
+        }
         for (f = 0; f < subtarefas.length; f++) {
             if ((subtarefas[f].tipo == "Donativos-sms") && (subtarefas[f].ids == subtarefa)) {
                 for (var j = 0; j <= subtarefas[f].slots.length; j++) {
@@ -124,11 +142,27 @@ process_Server_smsinfo = function (info) {
                         subtarefas[f].slots[j].owner = user._id;
                         console.log("Updating SMS slot #s, subtarefa: %s", subtarefas[f].slots[j].num, subtarefas[f].slots[j].ids);
                         Meteor.call('UpdateSlots', item._id, subtarefas[f].ids, subtarefas[f].slots);
+                        console.log("NO ERROR INSERTING NOT");
+                        Notifications.insert({
+                                    owner: user._id,
+                                    from_email: "dakarpt@gmail.com",
+                                    to: user._id,
+                                    message: "Recebemos o seu donativo por SMS, do telemóvel " + info.mobile + " para ajudar o Projeto: '" + item.nome + "' na tarefa: "+ subtarefas[f].descricao + ", que ficou registado no slot#" + j++ + "\n\nObrigado,\nA equipa de gestão",
+                                    title: "SMS recebido!"
+                                });
                         return;
                     }
                 }
             }
         }
+        Console.log("Sem slots disponíveis para a tarefa: %s", subtarefa);
+        Notifications.insert({
+            owner: user._id,
+            from_email: "dakarpt@gmail.com",
+            to: user._id,
+            message: "Recebemos o seu donativo por SMS, do telemóvel " + info.mobile + " para ajudar o Projeto: '" + item.nome + "' na tarefa: "+ subtarefas[f].descricao + ", que ficou registado no slot#" + j++ + "\n\nObrigado,\nA equipa de gestão",
+            title: "SMS recebido!"
+        });
     }
     for (f = 0; f < subtarefas.length; f++) {
         if (subtarefas[f].tipo == "Donativos-sms") {
@@ -137,13 +171,28 @@ process_Server_smsinfo = function (info) {
                     subtarefas[f].slots[j].owner = user._id;
                     console.log("Updating SMS random slot #s, subtarefa: %s", subtarefas[f].slots[j].num, subtarefas[f].slots[j].ids);
                     Meteor.call('UpdateSlots', item._id, subtarefas[f].ids, subtarefas[f].slots);
+                    console.log("NO ERROR INSERTING NOT");
+                    Notifications.insert({
+                                owner: user._id,
+                                from_email: "dakarpt@gmail.com",
+                                to: user._id,
+                                message: "Recebemos o seu donativo por SMS, do telemóvel " + info.mobile + " para ajudar o Projeto: '" + item.nome + "' na tarefa/atividade: "+ subtarefas[f].descricao + ", que ficou registado no slot#" + j++ + "\n\nObrigado,\nA equipa de gestão",
+                                title: "SMS recebido!"
+                            });
                     return;
                 }
             }
         }
     }
-
     console.log("No update for SMS from mobile: %s, smsText: %s", info.mobile, info.smsText, info);
+
+    Notifications.insert({
+        owner: user._id,
+        from_email: "dakarpt@gmail.com",
+        to: user._id,
+        message: "Recebemos o seu donativo por SMS, do telemóvel " + info.mobile + " para ajudar o Projeto: '" + item.nome + "' na tarefa/atividade: "+ subtarefas[f].descricao + ", mas não existem mais slots disponíveis." + "\n\nObrigado,\nA equipa de gestão",
+        title: "SMS recebido!"
+    });
 };
 
 //Roles.addUsersToRoles('hJZzwmr8kv9CeWymK', 'admin');

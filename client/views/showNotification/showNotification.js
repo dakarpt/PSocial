@@ -30,7 +30,7 @@ Template.confirmModalNot.events({
 
 Template.showNotification.events({
     'click #opendelnot': function (e) {
-        console.log(e);
+        console.log(e.target.attributes.ids.value);
         Session.set("delnot", e.target.attributes.ids.value);
         Modal.show("confirmModalNot");
     },
