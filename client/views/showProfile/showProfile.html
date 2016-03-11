@@ -1,0 +1,47 @@
+<template name="showProfile">
+    {{> slideMenu}}
+    <div class="container">
+        <div class="row" id="champion-messages">
+            <div align="">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-10">
+                    <div class="panel panel-default panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Perfil</h3>
+                        </div>
+                        <div class="panel-body">
+                        <!--{{#autoForm id="showPicture" collection=Users doc=this type="readonly"}}-->
+                            <!--<div class="col-md-4">-->
+                            <!--{{> afQuickField name="profile.picture"}}-->
+                            <!--</div>-->
+                                <!--{{/autoForm}}-->
+                            <!--<a class="pull-left" href="#">-->
+                            <!--{{> profileThumb _id=User._id }}-->
+                            <label class="control-label">Imagem</label>
+                            <img src="{{profileThumbSrc this._id}}"
+                                 class="img-thumbnail">
+                            <!--</a>-->
+                            {{#autoForm id="showProfile" class="my-panel" collection=Users doc=this type="readonly"}}
+                                <!--{{> afQuickField name='profile.picture' omitFields=""}}-->
+                                {{> afQuickField name='profile.firstName' omitFields=""}}
+                                {{> afQuickField name='profile.lastName' omitFields=""}}
+                                {{> afQuickField name='profile.ranking' omitFields=""}}
+                                {{> afQuickField name='profile.bio' omitFields=""}}
+                                {{> afQuickField name='profile.country' omitFields=""}}
+                                <!--<button type="submit" class="btn btn-primary">{{_ "update"}}</button>-->
+                            {{/autoForm}}
+                        </div>
+                        <div class="panel-footer panel-info">
+                            {{#if $eq this._id User._id}}
+                                <small>
+                                    <a href="/profile"><i class="fa fa-pencil"></i> Editar Perfil</a>
+                                </small>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

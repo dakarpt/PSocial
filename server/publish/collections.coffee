@@ -52,3 +52,5 @@ Meteor.publish 'userPresence', ->
 
 Meteor.publish 'smsinfo', ->
   smsinfo.find()
+
+

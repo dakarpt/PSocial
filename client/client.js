@@ -90,10 +90,11 @@ GetSlots = function (itemId, subtarefaId) {
 //TODO pensar nas Alterações das tarefas, quantidade
 //TODO show profile, mini info
 //TODO onhover nos slots - info do participante com link para mini profile
-//TODO onsuccess show notification marcar como lida.
-//TODO icon para read and unread notifications
-//TODO criar o reply e delete
-//TODO lista de notificacoes com crud - rever o conceito
-//TODO diminuir as colunas dos forms, tipo quantidade
+//done onsuccess show notification marcar como lida.
+//done icon para read and unread notifications
+//TODO criar o reply not
+//done criar o delete
+//done lista de notificacoes com crud - rever o conceito
+//done diminuir as colunas dos forms, tipo quantidade
 
 

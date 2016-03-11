@@ -95,3 +95,13 @@ Router.map ->
       res = this.response
       res.end(pre_process_sms(this.params.smsinfo));
       console.log("ACTION Ended")
+  @route "showProfile",
+    path: "/showProfile/:_id"
+    waitOn: ->
+      [
+        ({ myid: this.params._id}) ->
+          Meteor.subscribe 'userProfile', this.myid
+        Meteor.subscribe 'ProfilePictures'
+      ]
+    data: ->
+      Meteor.users.findOne({_id: this.params._id});
