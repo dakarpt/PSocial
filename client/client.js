@@ -84,6 +84,7 @@ GetSlots = function (itemId, subtarefaId) {
 //done altera o processo de selecao para donativos, confirmação no slot - ongoing
 //TODO update slot, confirmar as alterações por causa da modal
 //done rever o apagar not da mynots
+//done RC 0.2
 
 //Nice to have
 //TODO pensar nas Alterações das tarefas, quantidade
