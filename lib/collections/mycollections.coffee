@@ -73,7 +73,7 @@ Schemas.NotificationsSchema = new SimpleSchema
     min: 5,
     max: 1000,
     autoform: {
-      rows: 5
+      rows: 10
     }
 
   link:

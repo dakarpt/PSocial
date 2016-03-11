@@ -50,7 +50,7 @@ TabularTables.Notifications = new Tabular.Table({
     columns: [
         {
             data: 'icon',
-            title: 'Lida',
+            title: '',
             createdCell: function (node, cellData, rowData) {
                 $(node).html(Blaze.toHTMLWithData(Template.showIcon, {icon: cellData, _id: rowData._id}),
                     {
@@ -96,7 +96,7 @@ TabularTables.Notifications = new Tabular.Table({
         //},
         {
             data : null,
-            title : "Apagar",
+            title : "",
             tmpl: Meteor.isClient && Template.deleteNotification,
             tmplContext: function (rowData) {
                 return {
@@ -104,6 +104,7 @@ TabularTables.Notifications = new Tabular.Table({
                     title: rowData.title
                 };
             }
+
         }
     ],
     extraFields: ['date', '_id', 'owner', 'to'],

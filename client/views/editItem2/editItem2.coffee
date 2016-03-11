@@ -1,4 +1,4 @@
-AutoForm.debug()
+#AutoForm.debug()
 #
 #AutoForm.hooks
 #  editItem2:
@@ -8,8 +8,9 @@ AutoForm.debug()
 ##        timeout: 3000,
 ##        onRouteClose: false
 ##        onClose: ()->
-##      history.back()
-#      Router.go("/listItems");
+#      history.back()
+##      Router.go("/listItems");
+#      @event.preventDefault()
 #
 #    onError: (operation, error, template) ->
 #      sAlert.error error

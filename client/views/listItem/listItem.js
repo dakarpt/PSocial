@@ -7,6 +7,7 @@ Template.showItem.events({
     //'click #edit2': function (e) {
     //    console.log("Edit click", this, e);
     //    Router.go("/editItem2/" + this._id);
+    //    e.preventDefault();
     //},
     'click .detalhes': function (e) {
         console.log("Item click", this, e);

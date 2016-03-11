@@ -3,5 +3,5 @@
 #    if (result)
 #      console.log("deleteProject hook submit");
 #      Router.go("/listItems")
-##      this.done()
-##      return true
+#      this.done()
+#      return true

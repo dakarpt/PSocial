@@ -25,6 +25,7 @@ Template.confirmModalNot.events({
         console.log("Notfication to delete: ", Not);
         Notifications.remove(Not);
         Router.go("/MyNotifications");
+        e.preventDefault();
     }
 });
 
