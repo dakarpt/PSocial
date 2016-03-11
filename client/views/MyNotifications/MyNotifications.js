@@ -79,3 +79,18 @@ Template.registerHelper("iconOptions", function () {
 //        console.log("Click tabular delete", this._id);
 //    }
 //});
+//
+//var hooksObject = {
+//    onSuccess: function (formType, result) {
+//        console.log("Success delete");
+//    }
+//};
+//
+//AutoForm.addHooks(['deleteNot'], hooksObject);
+//AutoForm.hooks({
+//    deleteNot: {
+//        onSuccess: function (formType, result) {
+//        console.log("Success delete");
+//        }
+//    }
+//});

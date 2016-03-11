@@ -79,11 +79,11 @@ GetSlots = function (itemId, subtarefaId) {
 //TODO crop do avatar, multicrop das pics
 
 //Must Have
-//TODO onsubmit dos forms voltar ao inicio, delete do project
+//done onsubmit dos forms voltar ao inicio, delete do project
 //done altera o processo de selecao para todos os tipos, confirmação no slot
 //done altera o processo de selecao para donativos, confirmação no slot - ongoing
 //TODO update slot, confirmar as alterações por causa da modal
-//TODO rever o apagar not da mynots
+//done rever o apagar not da mynots
 
 //Nice to have
 //TODO pensar nas Alterações das tarefas, quantidade
